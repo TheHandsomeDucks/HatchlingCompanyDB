@@ -33,6 +33,7 @@ You'll be able to:
 <br>
 
 ## Tasks
+
 Task | Estimated Time | Actual Time | 
 |:-|:-:|:-:|:-:|:-:|
 Initial Structure | 8hrs | - |
@@ -43,6 +44,7 @@ Test App | 15hrs | -
 <br>
 
 ## Features
+
 Feature | Owner(s) | Estimated Time | Actual Time | Unit Testing ET | Unit Testing AT
 |:-|:-:|:-:|:-:|:-:|:-:|
 Add Record | Marto | 3hrs | - | 2hrs | - 

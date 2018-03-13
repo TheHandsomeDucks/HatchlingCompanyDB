@@ -35,7 +35,7 @@ You'll be able to:
 ## Tasks
 
 |Task | Estimated Time | Actual Time |
-|:-|:-:|:-:|:-:|:-:|
+|:-|:-:|:-:|
 |Initial Structure | 8hrs | - |
 |Connect to DB | 1hr | - |
 |Implement features | 33hrs | - |

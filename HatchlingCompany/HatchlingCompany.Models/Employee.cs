@@ -30,7 +30,7 @@ namespace HatchlingCompany.Models
         public string JobTitle { get; set; }
 
         public int EmployeeDetailsId { get; set; }
-        public virtual EmployeeDetails EmployeeDetails { get; set; }
+        public virtual EmployeeDetail EmployeeDetails { get; set; }
 
         public int ManagerId { get; set; }
 

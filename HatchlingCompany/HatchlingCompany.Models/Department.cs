@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HatchlingCompany.Models
 {
@@ -12,6 +13,8 @@ namespace HatchlingCompany.Models
         }
         public int Id { get; set; }
 
+        [MinLength(2)]
+        [MaxLength(50)]
         public string Name { get; set; }
 
         public int TownId { get; set; }

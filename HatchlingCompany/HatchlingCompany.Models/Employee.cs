@@ -55,7 +55,6 @@ namespace HatchlingCompany.Models
         public virtual Employee Manager { get; set; }
 
         public int DepartmentId { get; set; }
-
         public virtual Department Department { get; set; }
 
     }

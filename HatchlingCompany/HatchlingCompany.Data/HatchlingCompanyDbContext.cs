@@ -1,4 +1,5 @@
-﻿using HatchlingCompany.Models;
+﻿using HatchlingCompany.Data.Migrations;
+using HatchlingCompany.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -9,8 +10,8 @@ namespace HatchlingCompany.Data
     {
         public HatchlingCompanyDbContext() : base("HatchlingCompanyConnection")
         {
-            //var strategy = new MigrateDatabaseToLatestVersion<HatchlingCompanyDbContext, Configuration>();
-            //Database.SetInitializer(strategy);
+            var strategy = new MigrateDatabaseToLatestVersion<HatchlingCompanyDbContext, Configuration>();
+            Database.SetInitializer(strategy);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

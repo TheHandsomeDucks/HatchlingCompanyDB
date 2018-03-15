@@ -35,8 +35,15 @@
     <StartupObject>HatchlingCompany.Data.Startup</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,13 +52,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HatchlingCompanyConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Core.csproj">
+      <Project>{00CEBC20-1262-4F2D-9041-79673AEEE5A9}</Project>
+      <Name>HatchlingCompany.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">
       <Project>{02ad755b-24ce-4184-8f86-1add9d792cf3}</Project>
       <Name>HatchlingCompany.Data</Name>

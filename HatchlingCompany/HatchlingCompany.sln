@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HatchlingCompany.Models", "HatchlingCompany.Models\HatchlingCompany.Models.csproj", "{840E7571-093D-4287-B9A9-0FA296CC027E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HatchlingCompany.Data", "HatchlingCompany.Data\HatchlingCompany.Data.csproj", "{02AD755B-24CE-4184-8F86-1ADD9D792CF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HatchlingCompany.Console", "HatchlingCompany.Console\HatchlingCompany.Console.csproj", "{8CF99061-1BD7-4E31-94C9-E9846BD5ED0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{840E7571-093D-4287-B9A9-0FA296CC027E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{840E7571-093D-4287-B9A9-0FA296CC027E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{840E7571-093D-4287-B9A9-0FA296CC027E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02AD755B-24CE-4184-8F86-1ADD9D792CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02AD755B-24CE-4184-8F86-1ADD9D792CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02AD755B-24CE-4184-8F86-1ADD9D792CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02AD755B-24CE-4184-8F86-1ADD9D792CF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CF99061-1BD7-4E31-94C9-E9846BD5ED0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF99061-1BD7-4E31-94C9-E9846BD5ED0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF99061-1BD7-4E31-94C9-E9846BD5ED0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF99061-1BD7-4E31-94C9-E9846BD5ED0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

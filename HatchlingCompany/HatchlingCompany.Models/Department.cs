@@ -26,7 +26,7 @@ namespace HatchlingCompany.Models
         public virtual ICollection<Employee> Employees
         {
             get => new HashSet<Employee>(this.employees);
-            //private set => employees = value; // TODO do we need setter?
+            private set => this.employees = value; // TODO do we need setter
         }
     }
 }

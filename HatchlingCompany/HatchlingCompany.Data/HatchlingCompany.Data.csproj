@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HatchlingCompanyDbContext.cs" />
+    <Compile Include="IHatchlingCompanyDbContext.cs" />
     <Compile Include="Migrations\201803150738484_init.cs" />
     <Compile Include="Migrations\201803150738484_init.Designer.cs">
       <DependentUpon>201803150738484_init.cs</DependentUpon>

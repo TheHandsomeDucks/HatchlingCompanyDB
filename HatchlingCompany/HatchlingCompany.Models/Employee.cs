@@ -48,13 +48,13 @@ namespace HatchlingCompany.Models
         [MaxLength(30)]
         public string JobTitle { get; set; }
 
-        public int EmployeeDetailsId { get; set; }
+        public int? EmployeeDetailsId { get; set; }
         public virtual EmployeeDetail EmployeeDetails { get; set; }
 
-        public int ManagerId { get; set; }
+        public int? ManagerId { get; set; }
         public virtual Employee Manager { get; set; }
 
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
         public virtual Department Department { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
             //}
             #endregion
 
-            var employee = new Employee() { Birthdate = DateTime.Now, HireDate = DateTime.Now, Status = role, Salary = 1000, EmployeeDetailsId = 1, ManagerId = 1, DepartmentId = 1 };
+            var employee = new Employee() { Birthdate = DateTime.Now, HireDate = DateTime.Now, Status = role, Salary = 1000 };
 
             this.db.Employees.Add(employee);
             this.db.SaveChanges();

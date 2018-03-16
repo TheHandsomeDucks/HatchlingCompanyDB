@@ -31,7 +31,7 @@ namespace HatchlingCompany.Data
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             modelBuilder.Entity<Employee>()
-                .HasRequired(x => x.Department)
+                .HasOptional(x => x.Department)
                 .WithMany(x => x.Employees);
 
             modelBuilder.Entity<Department>()
@@ -39,7 +39,7 @@ namespace HatchlingCompany.Data
 
             modelBuilder.Entity<Department>()
                 .HasMany(x => x.Employees)
-                .WithRequired(x => x.Department);
+                .WithOptional(x => x.Department);
 
             base.OnModelCreating(modelBuilder);
         }

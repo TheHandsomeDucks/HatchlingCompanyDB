@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using HatchlingCompany.Core.Contracts;
+using HatchlingCompany.Core;
 using System.Reflection;
 
 namespace HatchlingCompany.Data

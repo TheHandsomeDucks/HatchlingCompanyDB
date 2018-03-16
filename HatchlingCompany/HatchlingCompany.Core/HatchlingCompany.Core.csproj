@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -39,6 +42,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,17 +54,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\ICommand.cs" />
-    <Compile Include="Contracts\IEngine.cs" />
+    <Compile Include="Common\CommandProcessor.cs" />
+    <Compile Include="Commands\Implementations\Command.cs" />
+    <Compile Include="Commands\Implementations\CreateEmployeeCommand.cs" />
+    <Compile Include="Common\ICommandProcessor.cs" />
+    <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Factories\Implementations\CommandFactory.cs" />
+    <Compile Include="IEngine.cs" />
     <Compile Include="Engine.cs" />
+    <Compile Include="Factories\Contracts\ICommandFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Contracts\IReader.cs" />
+    <Compile Include="Providers\Contracts\IWriter.cs" />
+    <Compile Include="Providers\Implemetations\ConsoleReader.cs" />
+    <Compile Include="Providers\Implemetations\ConsoleWriter.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">
+      <Project>{02AD755B-24CE-4184-8F86-1ADD9D792CF3}</Project>
+      <Name>HatchlingCompany.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HatchlingCompany.Models\HatchlingCompany.Models.csproj">
+      <Project>{840E7571-093D-4287-B9A9-0FA296CC027E}</Project>
+      <Name>HatchlingCompany.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HatchlingCompany.Utils\HatchlingCompany.Utils.csproj">
+      <Project>{F89833FC-A673-4CD5-92F1-2A8D034B7204}</Project>
+      <Name>HatchlingCompany.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

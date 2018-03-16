@@ -1,4 +1,4 @@
-﻿namespace HatchlingCompany.Core.Contracts
+﻿namespace HatchlingCompany.Core
 {
     public interface IEngine
     {

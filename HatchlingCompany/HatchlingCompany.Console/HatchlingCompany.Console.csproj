@@ -73,6 +73,10 @@
       <Project>{840e7571-093d-4287-b9a9-0fa296cc027e}</Project>
       <Name>HatchlingCompany.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HatchlingCompany.Utils\HatchlingCompany.Utils.csproj">
+      <Project>{F89833FC-A673-4CD5-92F1-2A8D034B7204}</Project>
+      <Name>HatchlingCompany.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

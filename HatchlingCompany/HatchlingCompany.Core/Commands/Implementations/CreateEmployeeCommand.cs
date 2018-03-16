@@ -1,6 +1,7 @@
 ﻿using HatchlingCompany.Core.Contracts;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models;
+using HatchlingCompany.Models.Common;
 using System;
 using System.Linq;
 
@@ -18,9 +19,11 @@ namespace HatchlingCompany.Core.Commands.Implementations
         public override void Execute()
         {
             var parameters = this.Parameters;
-            var email = parameters[1];
-            var phoneNumber = parameters[2];
-            //var role = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[5].ToLower());
+            var firstName = parameters[1];
+            var lastName = parameters[2];
+            var email = parameters[3];
+            var phoneNumber = parameters[4];
+            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[5].ToLower());
 
             var employeeFound = this.db.Employees.SingleOrDefault(e => e.PhoneNumber == phoneNumber);
 
@@ -31,7 +34,11 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
             this.db.Employees.Add(new Employee
             {
-                Email = email
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email,
+                PhoneNumber = phoneNumber,
+                Status = status
             });
             this.db.SaveChanges();
         }

@@ -13,8 +13,8 @@ namespace HatchlingCompany.Core
         public Engine(ICommandProcessor commandProcessor, IReader reader, IWriter writer)
         {
             this.commandProcessor = commandProcessor ?? throw new ArgumentNullException("commandProcessor");
-            this.reader = reader ?? throw new ArgumentNullException("reader");
-            this.writer = writer ?? throw new ArgumentNullException("writer");
+            this.reader = reader ?? throw new ArgumentNullException(nameof(reader));
+            this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
         public void Start()

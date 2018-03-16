@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Implementations\FindEmployeeCommand.cs" />
     <Compile Include="Common\CommandProcessor.cs" />
     <Compile Include="Commands\Implementations\Command.cs" />
     <Compile Include="Commands\Implementations\CreateEmployeeCommand.cs" />

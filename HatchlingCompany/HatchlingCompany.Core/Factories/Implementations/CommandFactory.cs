@@ -11,7 +11,7 @@ namespace HatchlingCompany.Core.Factories.Implementations
 
         public CommandFactory(IComponentContext container)
         {
-            this.container = container ?? throw new ArgumentNullException("container");
+            this.container = container ?? throw new ArgumentNullException("container is null");
         }
 
         public ICommand CreateCommand(string name)

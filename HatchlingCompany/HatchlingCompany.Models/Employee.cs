@@ -1,6 +1,7 @@
 ﻿using HatchlingCompany.Models.Common;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HatchlingCompany.Models
 {
@@ -51,11 +52,9 @@ namespace HatchlingCompany.Models
         public virtual EmployeeDetail EmployeeDetails { get; set; }
 
         public int ManagerId { get; set; }
-
         public virtual Employee Manager { get; set; }
 
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
-
     }
 }

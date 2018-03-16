@@ -7,6 +7,5 @@
         Suspended = 3,
         Fired = 4,
         BlackListed = 5
-
     }
 }

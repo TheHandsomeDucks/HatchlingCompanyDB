@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace HatchlingCompany.Core.Commands.Implementations
 {
-    public class CreateEmployeeCommand : Command, ICommand
+    public class CreateEmployeeCommand : Command
     {
         private readonly IHatchlingCompanyDbContext db;
 

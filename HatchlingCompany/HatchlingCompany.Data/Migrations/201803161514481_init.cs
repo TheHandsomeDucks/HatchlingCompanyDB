@@ -2,7 +2,7 @@ namespace HatchlingCompany.Data.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    public partial class init : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -50,21 +50,23 @@ namespace HatchlingCompany.Data.Migrations
                     FirstName = c.String(maxLength: 50),
                     MiddleName = c.String(maxLength: 50),
                     LastName = c.String(maxLength: 50),
-                    Email = c.String(maxLength: 50),
+                    Email = c.String(nullable: false, maxLength: 50),
                     PhoneNumber = c.String(maxLength: 30),
-                    Birthdate = c.DateTime(nullable: false),
-                    HireDate = c.DateTime(nullable: false),
+                    Birthdate = c.DateTime(),
+                    HireDate = c.DateTime(),
                     BankAccount = c.String(maxLength: 30),
-                    Status = c.Int(nullable: false),
-                    Salary = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    Status = c.Int(),
+                    Salary = c.Decimal(precision: 18, scale: 2),
                     JobTitle = c.String(maxLength: 30),
-                    EmployeeDetailsId = c.Int(nullable: false),
-                    ManagerId = c.Int(nullable: false),
-                    DepartmentId = c.Int(nullable: false)
+                    EmployeeDetailsId = c.Int(),
+                    ManagerId = c.Int(),
+                    DepartmentId = c.Int(),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Departments", t => t.DepartmentId)
                 .ForeignKey("dbo.Employees", t => t.ManagerId)
+                .ForeignKey("dbo.Departments", t => t.DepartmentId)
+                .Index(t => t.Email, unique: true)
+                .Index(t => t.PhoneNumber, unique: true)
                 .Index(t => t.ManagerId)
                 .Index(t => t.DepartmentId);
 
@@ -86,15 +88,15 @@ namespace HatchlingCompany.Data.Migrations
         {
             DropForeignKey("dbo.Departments", "TownId", "dbo.Towns");
             DropForeignKey("dbo.Departments", "ManagerId", "dbo.Employees");
-            DropForeignKey("dbo.Employees", "Department_Id", "dbo.Departments");
+            DropForeignKey("dbo.Employees", "DepartmentId", "dbo.Departments");
             DropForeignKey("dbo.Employees", "ManagerId", "dbo.Employees");
             DropForeignKey("dbo.EmployeeDetails", "Id", "dbo.Employees");
-            DropForeignKey("dbo.Employees", "DepartmentId", "dbo.Departments");
             DropForeignKey("dbo.Towns", "CountryId", "dbo.Countries");
             DropIndex("dbo.EmployeeDetails", new[] { "Id" });
-            DropIndex("dbo.Employees", new[] { "Department_Id" });
             DropIndex("dbo.Employees", new[] { "DepartmentId" });
             DropIndex("dbo.Employees", new[] { "ManagerId" });
+            DropIndex("dbo.Employees", new[] { "PhoneNumber" });
+            DropIndex("dbo.Employees", new[] { "Email" });
             DropIndex("dbo.Departments", new[] { "ManagerId" });
             DropIndex("dbo.Departments", new[] { "TownId" });
             DropIndex("dbo.Towns", new[] { "CountryId" });

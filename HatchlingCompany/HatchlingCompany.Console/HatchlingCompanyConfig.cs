@@ -2,6 +2,7 @@
 using HatchlingCompany.Core;
 using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Contracts;
+using HatchlingCompany.Data;
 using System.Reflection;
 
 namespace HatchlingCompany.Console
@@ -11,7 +12,12 @@ namespace HatchlingCompany.Console
 
         protected override void Load(ContainerBuilder builder)
         {
-            // reg Core
+            // register Data layer
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IHatchlingCompanyDbContext)))
+               .AsImplementedInterfaces()
+               .SingleInstance();
+
+            // register Core layer
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
                 .Where(x => x.Namespace.Contains("Commands") ||
                             x.Namespace.Contains("Common") ||

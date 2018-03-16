@@ -2,13 +2,13 @@
 using HatchlingCompany.Core;
 using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Contracts;
+using HatchlingCompany.Data;
 using System.Reflection;
 
 namespace HatchlingCompany.Console
 {
     public class HatchlingCompanyConfig : Autofac.Module
     {
-
         protected override void Load(ContainerBuilder builder)
         {
             // reg Core
@@ -21,12 +21,14 @@ namespace HatchlingCompany.Console
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
+            // reg DbContext
+            builder.RegisterType<HatchlingCompanyDbContext>().As<IDbContext>().InstancePerDependency();
+
             // reg Autofac
             builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();
 
             // Employee Commands
-            builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("createemployee").SingleInstance();
-
+            builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("create-employee").SingleInstance();
         }
     }
 }

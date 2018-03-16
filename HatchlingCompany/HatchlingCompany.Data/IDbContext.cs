@@ -3,9 +3,8 @@ using System.Data.Entity;
 
 namespace HatchlingCompany.Data
 {
-    public interface IHatchlingCompanyDbContext
+    public interface IDbContext
     {
-
         IDbSet<Employee> Employees { get; set; }
 
         IDbSet<EmployeeDetail> EmployeeDetails { get; set; }

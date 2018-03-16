@@ -6,7 +6,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace HatchlingCompany.Data
 {
-    public class HatchlingCompanyDbContext : DbContext, IHatchlingCompanyDbContext
+    public class HatchlingCompanyDbContext : DbContext, IDbContext
     {
         public HatchlingCompanyDbContext() : base("HatchlingCompanyConnection")
         {

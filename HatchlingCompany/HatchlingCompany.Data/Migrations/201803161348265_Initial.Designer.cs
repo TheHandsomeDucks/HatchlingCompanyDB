@@ -13,7 +13,7 @@ namespace HatchlingCompany.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201803161207520_Initial"; }
+            get { return "201803161348265_Initial"; }
         }
         
         string IMigrationMetadata.Source

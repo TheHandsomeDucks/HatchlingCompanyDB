@@ -1,4 +1,4 @@
-﻿namespace HatchlingCompany.Core.Providers.Contracts
+﻿namespace HatchlingCompany.Core.Common.Contracts
 {
     public interface IReader
     {

@@ -1,55 +1,35 @@
-﻿using HatchlingCompany.Models.Common;
+﻿using HatchlingCompany.Models;
+using HatchlingCompany.Models.Common;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
-namespace HatchlingCompany.Models
+namespace HatchlingCompany.Core.Models
 {
-    public class Employee
+    public class ListEmployeeDetailsModel
     {
         public int Id { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(50)]
         public string FirstName { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(50)]
         public string MiddleName { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(50)]
         public string LastName { get; set; }
 
-        [Required]
-        [Index(IsUnique = true)]
-        [MaxLength(50)]
-        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Index(IsUnique = true)]
-        [MaxLength(30)]
-        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [DataType(DataType.DateTime)]
         public DateTime? Birthdate { get; set; }
 
-        [DataType(DataType.DateTime)]
         public DateTime? HireDate { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(30)]
         public string BankAccount { get; set; }
 
         public EmployeeStatus? Status { get; set; }
 
-        [DataType(DataType.Currency)]
         public decimal? Salary { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(30)]
         public string JobTitle { get; set; }
 
         public int? ProjectId { get; set; }
@@ -62,5 +42,23 @@ namespace HatchlingCompany.Models
         public virtual Department Department { get; set; }
 
         public virtual ICollection<Project> Projects { get; set; } = new HashSet<Project>();
+
+        public string PrintInfo()
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine($"Full Name: {this.FirstName} {this.MiddleName} {this.LastName}");
+            sb.AppendLine($"Email: {this.Email}");
+            sb.AppendLine($"PhoneNumber: {this.PhoneNumber}");
+            sb.AppendLine($"Birthdate: {this.Birthdate}");
+            sb.AppendLine($"HireDate: {this.HireDate}");
+            sb.AppendLine($"BankAccount: {this.BankAccount}");
+            sb.AppendLine($"Job Title: {this.JobTitle}");
+            sb.AppendLine($"Project: {this.Project}");
+            sb.AppendLine($"Manager: {this.Manager}");
+            sb.AppendLine($"Department: {this.Department}");
+
+            return sb.ToString();
+        }
     }
 }

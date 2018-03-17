@@ -1,17 +1,17 @@
-﻿using HatchlingCompany.Core.Contracts;
-using HatchlingCompany.Core.Providers.Contracts;
+﻿using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Data;
 using System;
 using System.Linq;
 
-namespace HatchlingCompany.Core.Commands.Implementations
+namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class FindEmployeeCommand : Command, ICommand
+    public class FindEmployeeByMail : Command
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
 
-        public FindEmployeeCommand(IDbContext db, IWriter writer)
+        public FindEmployeeByMail(IHatchlingCompanyDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));

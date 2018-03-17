@@ -1,5 +1,4 @@
-﻿using HatchlingCompany.Core.Common;
-using HatchlingCompany.Core.Providers.Contracts;
+﻿using HatchlingCompany.Core.Common.Contracts;
 using System;
 
 namespace HatchlingCompany.Core

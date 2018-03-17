@@ -1,8 +1,8 @@
-﻿using HatchlingCompany.Core.Contracts;
+﻿using HatchlingCompany.Core.Common.Contracts;
 using System;
 using System.Collections.Generic;
 
-namespace HatchlingCompany.Core.Commands.Implementations
+namespace HatchlingCompany.Core.Common.Implementations
 {
     public abstract class Command : ICommand
     {

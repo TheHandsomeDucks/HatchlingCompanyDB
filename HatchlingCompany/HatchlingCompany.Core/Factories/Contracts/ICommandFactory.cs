@@ -1,4 +1,4 @@
-﻿using HatchlingCompany.Core.Contracts;
+﻿using HatchlingCompany.Core.Common.Contracts;
 
 namespace HatchlingCompany.Core.Factories.Contracts
 {

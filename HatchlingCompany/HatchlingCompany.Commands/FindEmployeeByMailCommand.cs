@@ -1,10 +1,9 @@
-﻿using HatchlingCompany.Core.Contracts;
-using HatchlingCompany.Core.Providers.Contracts;
+﻿using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
 using System;
 using System.Linq;
 
-namespace HatchlingCompany.Core.Commands.Implementations
+namespace HatchlingCompany.Console.Commands
 {
     public class FindEmployeeByMailCommand : Command, ICommand
     {

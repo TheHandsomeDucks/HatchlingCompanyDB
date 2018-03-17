@@ -1,11 +1,10 @@
-﻿using HatchlingCompany.Core.Contracts;
-using HatchlingCompany.Core.Providers.Contracts;
+﻿using HatchlingCompany.Core.Common.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace HatchlingCompany.Core.Commands.Implementations
+namespace HatchlingCompany.Console.Commands
 {
     public class HelpCommand : Command, ICommand
     {
@@ -36,8 +35,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
         private IEnumerable<string> GetAllCommandNames()
         {
-            var assembly = Assembly.GetAssembly(typeof(ICommand)); /// TODO get Commands folder only
-                // .Where(x => x.Namespace.Contains("Commands")); 
+            var assembly = Assembly.GetAssembly(typeof(Command));
             var types = assembly.DefinedTypes
                 .Where(type => type.ImplementedInterfaces.Any(i => i == typeof(ICommand))).ToList();
 

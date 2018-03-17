@@ -1,9 +1,9 @@
-﻿using HatchlingCompany.Core.Factories.Contracts;
-using HatchlingCompany.Core.Providers.Contracts;
+﻿using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Factories.Contracts;
 using System;
 using System.Linq;
 
-namespace HatchlingCompany.Core.Common
+namespace HatchlingCompany.Core.Common.Implementations
 {
     public class CommandProcessor : ICommandProcessor
     {

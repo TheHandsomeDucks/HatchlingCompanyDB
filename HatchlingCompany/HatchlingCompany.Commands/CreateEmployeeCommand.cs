@@ -1,11 +1,11 @@
-﻿using HatchlingCompany.Core.Contracts;
+﻿using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using HatchlingCompany.Models.Common;
 using System;
 using System.Linq;
 
-namespace HatchlingCompany.Core.Commands.Implementations
+namespace HatchlingCompany.Console.Commands
 {
     public class CreateEmployeeCommand : Command, ICommand
     {

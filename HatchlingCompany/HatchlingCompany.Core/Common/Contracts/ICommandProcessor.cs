@@ -1,4 +1,4 @@
-﻿namespace HatchlingCompany.Core.Common
+﻿namespace HatchlingCompany.Core.Common.Contracts
 {
     public interface ICommandProcessor
     {

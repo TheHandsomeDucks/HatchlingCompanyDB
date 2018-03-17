@@ -1,7 +1,7 @@
 ﻿using Autofac;
+using HatchlingCompany.Console.Commands;
 using HatchlingCompany.Core;
-using HatchlingCompany.Core.Commands.Implementations;
-using HatchlingCompany.Core.Contracts;
+using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
 using System.Reflection;
 
@@ -19,10 +19,8 @@ namespace HatchlingCompany.Console
 
             // register Core layer
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IEngine)))
-                .Where(x => x.Namespace.Contains("Commands") ||
-                            x.Namespace.Contains("Common") ||
+                .Where(x => x.Namespace.Contains("Common") ||
                             x.Namespace.Contains("Factories") ||
-                            x.Namespace.Contains("Providers") ||
                             x.Name.EndsWith("Engine"))
                 .AsImplementedInterfaces()
                 .SingleInstance();

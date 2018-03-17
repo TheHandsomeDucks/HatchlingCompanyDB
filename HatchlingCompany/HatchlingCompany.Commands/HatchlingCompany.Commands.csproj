@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8CF99061-1BD7-4E31-94C9-E9846BD5ED0E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>HatchlingCompany.Console</RootNamespace>
-    <AssemblyName>HatchlingCompany.Console</AssemblyName>
+    <ProjectGuid>{A7B9360C-0132-4D11-BD04-238288803E1F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HatchlingCompany.Commands</RootNamespace>
+    <AssemblyName>HatchlingCompany.Commands</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,13 +29,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>HatchlingCompany.Data.Startup</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -47,10 +39,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,31 +47,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HatchlingCompanyConfig.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="CreateEmployeeCommand.cs" />
+    <Compile Include="FindEmployeeByMailCommand.cs" />
+    <Compile Include="HelpCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Core.csproj">
+      <Project>{00cebc20-1262-4f2d-9041-79673aeee5a9}</Project>
+      <Name>HatchlingCompany.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">
+      <Project>{02AD755B-24CE-4184-8F86-1ADD9D792CF3}</Project>
+      <Name>HatchlingCompany.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HatchlingCompany.Models\HatchlingCompany.Models.csproj">
+      <Project>{840E7571-093D-4287-B9A9-0FA296CC027E}</Project>
+      <Name>HatchlingCompany.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HatchlingCompany.Commands\HatchlingCompany.Commands.csproj">
-      <Project>{A7B9360C-0132-4D11-BD04-238288803E1F}</Project>
-      <Name>HatchlingCompany.Commands</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Core.csproj">
-      <Project>{00CEBC20-1262-4F2D-9041-79673AEEE5A9}</Project>
-      <Name>HatchlingCompany.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">
-      <Project>{02ad755b-24ce-4184-8f86-1add9d792cf3}</Project>
-      <Name>HatchlingCompany.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HatchlingCompany.Models\HatchlingCompany.Models.csproj">
-      <Project>{840e7571-093d-4287-b9a9-0fa296cc027e}</Project>
-      <Name>HatchlingCompany.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

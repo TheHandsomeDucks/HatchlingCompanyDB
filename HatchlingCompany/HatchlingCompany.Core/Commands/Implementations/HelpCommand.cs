@@ -36,7 +36,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
         private IEnumerable<string> GetAllCommandNames()
         {
-            var assembly = Assembly.GetAssembly(typeof(ICommand));
+            var assembly = Assembly.GetAssembly(typeof(ICommand)); /// TODO get Commands folder only
             var types = assembly.DefinedTypes
                 .Where(type => type.ImplementedInterfaces.Any(i => i == typeof(ICommand))).ToList();
 

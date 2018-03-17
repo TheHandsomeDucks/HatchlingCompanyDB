@@ -9,9 +9,9 @@ namespace HatchlingCompany.Core.Commands.Implementations
 {
     public class CreateEmployeeCommand : Command
     {
-        private readonly IHatchlingCompanyDbContext db;
+        private readonly IDbContext db;
 
-        public CreateEmployeeCommand(IHatchlingCompanyDbContext db)
+        public CreateEmployeeCommand(IDbContext db)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }

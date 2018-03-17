@@ -9,7 +9,6 @@ namespace HatchlingCompany.Console
 {
     public class HatchlingCompanyConfig : Autofac.Module
     {
-
         protected override void Load(ContainerBuilder builder)
         {
             // register Data layer
@@ -27,13 +26,16 @@ namespace HatchlingCompany.Console
                 .AsImplementedInterfaces()
                 .SingleInstance();
 
+            // reg DbContext
+            builder.RegisterType<HatchlingCompanyDbContext>().As<IDbContext>().InstancePerDependency();
+
             // reg Autofac
             builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();
 
             // Employee Commands
-            builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("createemployee").SingleInstance();
+            builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("create-employee").SingleInstance();
 
-            builder.RegisterType<FindEmployeeCommand>().Named<ICommand>("findemployee").SingleInstance();
+            builder.RegisterType<FindEmployeeCommand>().Named<ICommand>("find-employee").SingleInstance();
         }
     }
 }

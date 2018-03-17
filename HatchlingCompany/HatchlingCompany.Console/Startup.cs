@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using HatchlingCompany.Core;
+using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Data.Migrations;
 using System.Data.Entity;
 using System.Reflection;
@@ -13,6 +14,8 @@ namespace HatchlingCompany.Data
             var strategy = new MigrateDatabaseToLatestVersion<HatchlingCompanyDbContext, Configuration>();
             Database.SetInitializer(strategy);
 
+            AutoMapperProfile.Initialize();
+
             var builder = new ContainerBuilder();
 
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
@@ -22,8 +25,6 @@ namespace HatchlingCompany.Data
             var engine = container.Resolve<IEngine>();
 
             engine.Start();
-
-            AutoMapper.Mapper.Configuration.AssertConfigurationIsValid();
         }
     }
 }

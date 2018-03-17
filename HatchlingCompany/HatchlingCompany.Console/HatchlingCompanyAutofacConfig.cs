@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace HatchlingCompany.Console
 {
-    public class HatchlingCompanyConfig : Autofac.Module
+    public class HatchlingCompanyAutofacConfig : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -29,8 +29,8 @@ namespace HatchlingCompany.Console
                 .InstancePerDependency();
 
             // AutoMapper
-            builder.RegisterType<AutoMapperProfile>().AsSelf();
-            builder.Register(x => Mapper.Instance);
+            //builder.RegisterType<AutoMapperProfile>().AsSelf();
+            //builder.Register(x => Mapper.Instance);
 
             // Autofac
             builder.RegisterType<ContainerBuilder>().AsSelf().InstancePerDependency();

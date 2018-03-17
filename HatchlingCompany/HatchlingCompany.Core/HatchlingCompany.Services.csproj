@@ -68,6 +68,7 @@
     <Compile Include="IEngine.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Common\Implemetations\AutoMapperProfile.cs" />
+    <Compile Include="Models\ListEmployees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\Contracts\IReader.cs" />
     <Compile Include="Common\Contracts\IWriter.cs" />

@@ -55,7 +55,7 @@
     <Compile Include="CRUD\CreateEmployeeCommand.cs" />
     <Compile Include="CRUD\FindEmployeeByMailCommand.cs" />
     <Compile Include="Listing\HelpCommand.cs" />
-    <Compile Include="Listing\ListAllEmployeesCommand.cs" />
+    <Compile Include="Listing\ListEmployeesCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

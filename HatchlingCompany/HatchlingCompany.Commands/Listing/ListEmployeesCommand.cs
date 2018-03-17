@@ -8,12 +8,12 @@ using System.Text;
 
 namespace HatchlingCompany.Commands.Listing
 {
-    public class ListAllEmployeesCommand : Command, ICommand
+    public class ListEmployeesCommand : Command, ICommand
     {
         private readonly IHatchlingCompanyDbContext db;
         private readonly IWriter writer;
 
-        public ListAllEmployeesCommand(IHatchlingCompanyDbContext db, IWriter writer)
+        public ListEmployeesCommand(IHatchlingCompanyDbContext db, IWriter writer)
         {
             this.db = db ?? throw new System.ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new System.ArgumentNullException(nameof(writer));

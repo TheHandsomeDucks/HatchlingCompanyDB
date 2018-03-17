@@ -12,7 +12,7 @@ namespace HatchlingCompany.Core.Common.Implementations
             var allTypes = AppDomain
                 .CurrentDomain
                 .GetAssemblies()
-                .Where(a => a.GetName().Name.Contains("HatchlingCompany.Data"))
+                .Where(a => a.GetName().Name.Contains("HatchlingCompany"))
                 .SelectMany(a => a.GetTypes());
 
             allTypes

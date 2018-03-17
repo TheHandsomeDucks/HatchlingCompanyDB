@@ -22,6 +22,8 @@ namespace HatchlingCompany.Data
             var engine = container.Resolve<IEngine>();
 
             engine.Start();
+
+            AutoMapper.Mapper.Configuration.AssertConfigurationIsValid();
         }
     }
 }

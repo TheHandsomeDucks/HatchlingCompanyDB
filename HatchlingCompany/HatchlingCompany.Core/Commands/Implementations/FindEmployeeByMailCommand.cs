@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace HatchlingCompany.Core.Commands.Implementations
 {
-    public class FindEmployeeCommand : Command, ICommand
+    public class FindEmployeeByMailCommand : Command, ICommand
     {
         private readonly IHatchlingCompanyDbContext db;
         private readonly IWriter writer;
 
-        public FindEmployeeCommand(IHatchlingCompanyDbContext db, IWriter writer)
+        public FindEmployeeByMailCommand(IHatchlingCompanyDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));

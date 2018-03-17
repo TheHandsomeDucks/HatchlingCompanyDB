@@ -1,10 +1,8 @@
 ﻿using Autofac;
-using AutoMapper;
 using HatchlingCompany.Commands.Listing;
 using HatchlingCompany.Console.Commands.CRUD;
 using HatchlingCompany.Core;
 using HatchlingCompany.Core.Common.Contracts;
-using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Data;
 using System.Reflection;
 

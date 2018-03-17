@@ -8,10 +8,10 @@ namespace HatchlingCompany.Core.Commands.Implementations
 {
     public class FindEmployeeCommand : Command, ICommand
     {
-        private readonly IHatchlingCompanyDbContext db;
+        private readonly IDbContext db;
         private readonly IWriter writer;
 
-        public FindEmployeeCommand(IHatchlingCompanyDbContext db, IWriter writer)
+        public FindEmployeeCommand(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));

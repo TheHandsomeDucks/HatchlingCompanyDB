@@ -12,7 +12,7 @@ namespace HatchlingCompany.Console
         protected override void Load(ContainerBuilder builder)
         {
             // register Data layer
-            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IHatchlingCompanyDbContext)))
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IDbContext)))
                .AsImplementedInterfaces()
                .SingleInstance();
 

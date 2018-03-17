@@ -29,11 +29,12 @@ namespace HatchlingCompany.Console
             // reg Autofac
             builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();
 
-            // Employee Commands
+            // CRUD Commands
             builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("createEmployee").SingleInstance();
 
             builder.RegisterType<FindEmployeeByMailCommand>().Named<ICommand>("FindEmployeeByMail").SingleInstance();
 
+            // Listing Commands
             builder.RegisterType<HelpCommand>().Named<ICommand>("help").SingleInstance();
         }
     }

@@ -1,17 +1,17 @@
-﻿using HatchlingCompany.Core.Common.Contracts;
+﻿using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using HatchlingCompany.Models.Common;
 using System;
 using System.Linq;
 
-namespace HatchlingCompany.Console.Commands.CRUD
+namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class CreateEmployeeCommand : Command, ICommand
+    public class CreateEmployee : Command
     {
         private readonly IHatchlingCompanyDbContext db;
 
-        public CreateEmployeeCommand(IHatchlingCompanyDbContext db)
+        public CreateEmployee(IHatchlingCompanyDbContext db)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }

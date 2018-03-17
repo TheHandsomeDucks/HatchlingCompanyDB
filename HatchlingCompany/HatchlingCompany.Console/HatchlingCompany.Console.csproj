@@ -71,10 +71,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HatchlingCompany.Commands\HatchlingCompany.Commands.csproj">
-      <Project>{A7B9360C-0132-4D11-BD04-238288803E1F}</Project>
-      <Name>HatchlingCompany.Commands</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Core.csproj">
       <Project>{00CEBC20-1262-4F2D-9041-79673AEEE5A9}</Project>
       <Name>HatchlingCompany.Core</Name>

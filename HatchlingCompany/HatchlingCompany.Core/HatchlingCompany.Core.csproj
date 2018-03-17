@@ -77,6 +77,10 @@
     <Compile Include="Common\Contracts\IWriter.cs" />
     <Compile Include="Common\Implemetations\ConsoleReader.cs" />
     <Compile Include="Common\Implemetations\ConsoleWriter.cs" />
+    <Compile Include="Services\CRUD\CreateEmployee.cs" />
+    <Compile Include="Services\CRUD\FindEmployeeByMail.cs" />
+    <Compile Include="Services\Listing\Help.cs" />
+    <Compile Include="Services\Listing\ListEmployee.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,8 +1,8 @@
 ﻿using Autofac;
-using HatchlingCompany.Commands.Listing;
-using HatchlingCompany.Console.Commands.CRUD;
 using HatchlingCompany.Core;
 using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Services.CRUD;
+using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
 using System.Reflection;
 
@@ -22,25 +22,19 @@ namespace HatchlingCompany.Console
                 .Where(x => x.Namespace.Contains("Common") ||
                             x.Namespace.Contains("Factories") ||
                             x.Namespace.Contains("Models") ||
+                            x.Namespace.Contains("Services") ||
                             x.Name.EndsWith("Engine"))
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
 
-            // AutoMapper
-            //builder.RegisterType<AutoMapperProfile>().AsSelf();
-            //builder.Register(x => Mapper.Instance);
-
-            // Autofac
-            builder.RegisterType<ContainerBuilder>().AsSelf().InstancePerDependency();
-
             // CRUD Commands
-            builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("createEmployee").InstancePerDependency();
+            builder.RegisterType<CreateEmployee>().Named<ICommand>("createEmployee").InstancePerDependency();
 
-            builder.RegisterType<FindEmployeeByMailCommand>().Named<ICommand>("findEmployeeByMail").InstancePerDependency();
+            builder.RegisterType<FindEmployeeByMail>().Named<ICommand>("findEmployeeByMail").InstancePerDependency();
 
             // Listing Commands
-            builder.RegisterType<HelpCommand>().Named<ICommand>("help").InstancePerDependency();
-            builder.RegisterType<ListEmployeesCommand>().Named<ICommand>("listAllEmployees").InstancePerDependency();
+            builder.RegisterType<Help>().Named<ICommand>("help").InstancePerDependency();
+            builder.RegisterType<ListEmployee>().Named<ICommand>("listEmployees").InstancePerDependency();
         }
     }
 }

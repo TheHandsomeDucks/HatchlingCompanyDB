@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace HatchlingCompany.Console.Commands
+namespace HatchlingCompany.Console.Commands.CRUD
 {
     public abstract class Command : ICommand
     {

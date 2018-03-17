@@ -1,10 +1,11 @@
-﻿using HatchlingCompany.Core.Common.Contracts;
+﻿using HatchlingCompany.Console.Commands.CRUD;
+using HatchlingCompany.Core.Common.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace HatchlingCompany.Console.Commands
+namespace HatchlingCompany.Console.Commands.Listing
 {
     public class HelpCommand : Command, ICommand
     {

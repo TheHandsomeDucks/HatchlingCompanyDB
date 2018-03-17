@@ -47,10 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command.cs" />
-    <Compile Include="CreateEmployeeCommand.cs" />
-    <Compile Include="FindEmployeeByMailCommand.cs" />
-    <Compile Include="HelpCommand.cs" />
+    <Compile Include="CRUD\Command.cs" />
+    <Compile Include="CRUD\CreateEmployeeCommand.cs" />
+    <Compile Include="CRUD\FindEmployeeByMailCommand.cs" />
+    <Compile Include="Listing\HelpCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

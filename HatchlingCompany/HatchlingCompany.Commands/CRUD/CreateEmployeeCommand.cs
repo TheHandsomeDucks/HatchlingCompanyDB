@@ -5,7 +5,7 @@ using HatchlingCompany.Models.Common;
 using System;
 using System.Linq;
 
-namespace HatchlingCompany.Console.Commands
+namespace HatchlingCompany.Console.Commands.CRUD
 {
     public class CreateEmployeeCommand : Command, ICommand
     {

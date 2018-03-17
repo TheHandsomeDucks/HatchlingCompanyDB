@@ -3,7 +3,7 @@ using HatchlingCompany.Data;
 using System;
 using System.Linq;
 
-namespace HatchlingCompany.Console.Commands
+namespace HatchlingCompany.Console.Commands.CRUD
 {
     public class FindEmployeeByMailCommand : Command, ICommand
     {

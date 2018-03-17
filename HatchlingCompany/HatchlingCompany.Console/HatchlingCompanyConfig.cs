@@ -1,5 +1,6 @@
 ﻿using Autofac;
-using HatchlingCompany.Console.Commands;
+using HatchlingCompany.Console.Commands.CRUD;
+using HatchlingCompany.Console.Commands.Listing;
 using HatchlingCompany.Core;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
@@ -31,7 +32,7 @@ namespace HatchlingCompany.Console
             // Employee Commands
             builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("createEmployee").SingleInstance();
 
-            builder.RegisterType<FindEmployeeByMailCommand>().Named<ICommand>("findEmployee").SingleInstance();
+            builder.RegisterType<FindEmployeeByMailCommand>().Named<ICommand>("FindEmployeeByMail").SingleInstance();
 
             builder.RegisterType<HelpCommand>().Named<ICommand>("help").SingleInstance();
         }

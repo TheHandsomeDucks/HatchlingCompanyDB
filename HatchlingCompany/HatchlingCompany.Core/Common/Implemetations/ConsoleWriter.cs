@@ -1,7 +1,7 @@
 ﻿using HatchlingCompany.Core.Common.Contracts;
 using System;
 
-namespace HatchlingCompany.Core.Common.Implemetations
+namespace HatchlingCompany.Core.Common.Implementations
 {
     public class ConsoleWriter : IWriter
     {

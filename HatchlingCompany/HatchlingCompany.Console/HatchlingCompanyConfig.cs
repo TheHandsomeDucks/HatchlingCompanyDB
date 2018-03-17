@@ -31,9 +31,11 @@ namespace HatchlingCompany.Console
             builder.RegisterType<ContainerBuilder>().AsSelf().SingleInstance();
 
             // Employee Commands
-            builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("createemployee").SingleInstance();
+            builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("createEmployee").SingleInstance();
 
-            builder.RegisterType<FindEmployeeCommand>().Named<ICommand>("findemployee").SingleInstance();
+            builder.RegisterType<FindEmployeeCommand>().Named<ICommand>("findEmployee").SingleInstance();
+
+            builder.RegisterType<HelpCommand>().Named<ICommand>("help").SingleInstance();
         }
     }
 }

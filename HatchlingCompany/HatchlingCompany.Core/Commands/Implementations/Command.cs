@@ -16,7 +16,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
         public IList<string> Parameters
         {
             get => this.parameters;
-            set => this.parameters = value ?? throw new ArgumentNullException("parameters");
+            set => this.parameters = value ?? throw new ArgumentNullException(nameof(parameters));
         }
 
         public abstract void Execute();

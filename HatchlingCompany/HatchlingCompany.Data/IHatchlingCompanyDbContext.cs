@@ -5,7 +5,6 @@ namespace HatchlingCompany.Data
 {
     public interface IHatchlingCompanyDbContext
     {
-
         IDbSet<Employee> Employees { get; set; }
 
         IDbSet<EmployeeDetail> EmployeeDetails { get; set; }

@@ -9,6 +9,7 @@ namespace HatchlingCompany.Models
         {
             this.Employees = new HashSet<Employee>();
         }
+        
         public int Id { get; set; }
 
         [MinLength(2)]

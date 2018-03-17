@@ -1,17 +1,14 @@
-﻿using HatchlingCompany.Data.Migrations;
-using HatchlingCompany.Models;
+﻿using HatchlingCompany.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-
 
 namespace HatchlingCompany.Data
 {
     public class HatchlingCompanyDbContext : DbContext, IHatchlingCompanyDbContext
     {
-        public HatchlingCompanyDbContext() : base("HatchlingCompanyConnection")
+        public HatchlingCompanyDbContext() 
+            : base("HatchlingCompanyConnection")
         {
-            var strategy = new MigrateDatabaseToLatestVersion<HatchlingCompanyDbContext, Configuration>();
-            Database.SetInitializer(strategy);
         }
 
         public virtual IDbSet<Employee> Employees { get; set; }
@@ -24,14 +21,13 @@ namespace HatchlingCompany.Data
 
         public virtual IDbSet<Country> Countries { get; set; }
 
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             modelBuilder.Entity<Employee>()
-                .HasRequired(x => x.Department)
+                .HasOptional(x => x.Department)
                 .WithMany(x => x.Employees);
 
             modelBuilder.Entity<Department>()
@@ -39,10 +35,9 @@ namespace HatchlingCompany.Data
 
             modelBuilder.Entity<Department>()
                 .HasMany(x => x.Employees)
-                .WithRequired(x => x.Department);
+                .WithOptional(x => x.Department);
 
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }

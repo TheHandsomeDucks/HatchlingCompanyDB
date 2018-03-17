@@ -16,7 +16,6 @@ namespace HatchlingCompany.Models
         [MaxLength(50)]
         public string Name { get; set; }
 
-        public virtual ICollection<Town> Towns { get; set; }
-
+        public virtual ICollection<Town> Towns { get; set; } = new HashSet<Town>();
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using HatchlingCompany.Core;
+using HatchlingCompany.Data.Migrations;
+using System.Data.Entity;
 using System.Reflection;
 
 namespace HatchlingCompany.Data
@@ -8,6 +10,9 @@ namespace HatchlingCompany.Data
     {
         public static void Main()
         {
+            var strategy = new MigrateDatabaseToLatestVersion<HatchlingCompanyDbContext, Configuration>();
+            Database.SetInitializer(strategy);
+
             var builder = new ContainerBuilder();
 
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());

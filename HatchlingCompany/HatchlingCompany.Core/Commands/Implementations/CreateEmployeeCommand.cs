@@ -1,5 +1,6 @@
 ﻿using HatchlingCompany.Core.Contracts;
 using HatchlingCompany.Data;
+using HatchlingCompany.Models;
 using HatchlingCompany.Models.Common;
 using System;
 using System.Linq;
@@ -20,18 +21,26 @@ namespace HatchlingCompany.Core.Commands.Implementations
             var parameters = this.Parameters;
             var firstName = parameters[1];
             var lastName = parameters[2];
-            var phoneNumber = parameters[3];
-            var email = parameters[4];
-            var role = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[5].ToLower());
+            var email = parameters[3];
+            var phoneNumber = parameters[4];
+            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[5].ToLower());
 
-            var employee = this.db.Employees.SingleOrDefault(e => e.PhoneNumber == phoneNumber);
+            var employeeFound = this.db.Employees.SingleOrDefault(e => e.PhoneNumber == phoneNumber);
 
-            if (employee != null)
+            if (employeeFound != null)
             {
-                throw new ArgumentNullException($"{employee.FirstName} {employee.LastName} already exists");
+                throw new ArgumentNullException($"{employeeFound.FirstName} {employeeFound.LastName} already exists");
             }
 
-            this.db.Employees.Add(employee);
+            this.db.Employees.Add(new Employee
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email,
+                PhoneNumber = phoneNumber,
+                Status = status
+            });
+
             this.db.SaveChanges();
         }
     }

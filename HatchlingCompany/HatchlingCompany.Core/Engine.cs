@@ -1,5 +1,4 @@
 ﻿using HatchlingCompany.Core.Common;
-using HatchlingCompany.Core.Contracts;
 using HatchlingCompany.Core.Providers.Contracts;
 using System;
 
@@ -14,27 +13,27 @@ namespace HatchlingCompany.Core
         public Engine(ICommandProcessor commandProcessor, IReader reader, IWriter writer)
         {
             this.commandProcessor = commandProcessor ?? throw new ArgumentNullException("commandProcessor");
-            this.reader = reader ?? throw new ArgumentNullException("reader");
-            this.writer = writer ?? throw new ArgumentNullException("writer");
+            this.reader = reader ?? throw new ArgumentNullException(nameof(reader));
+            this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
         public void Start()
         {
-            this.writer.WriteLine(" System running...");
+            this.writer.WriteLine("System running...");
 
             while (true)
             {
                 var commandLine = this.reader.ReadLine();
 
-                if (commandLine.Trim().ToLower() == "finish")
+                if (commandLine.Trim().ToLower() == "end")
                 {
-                    this.writer.WriteLine(" Goodbye!");
+                    this.writer.WriteLine("Ciao!");
                     break;
                 }
 
                 this.commandProcessor.ProcessCommand(commandLine);
 
-                this.writer.WriteLine(" Waiting for command...");
+                this.writer.WriteLine("Waiting for command...");
             }
         }
     }

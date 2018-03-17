@@ -59,9 +59,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Services.csproj">
+    <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Core.csproj">
       <Project>{00cebc20-1262-4f2d-9041-79673aeee5a9}</Project>
-      <Name>HatchlingCompany.Services</Name>
+      <Name>HatchlingCompany.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">
       <Project>{02AD755B-24CE-4184-8F86-1ADD9D792CF3}</Project>

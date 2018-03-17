@@ -76,9 +76,9 @@
       <Project>{A7B9360C-0132-4D11-BD04-238288803E1F}</Project>
       <Name>HatchlingCompany.Commands</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Services.csproj">
+    <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Core.csproj">
       <Project>{00CEBC20-1262-4F2D-9041-79673AEEE5A9}</Project>
-      <Name>HatchlingCompany.Services</Name>
+      <Name>HatchlingCompany.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">
       <Project>{02ad755b-24ce-4184-8f86-1add9d792cf3}</Project>

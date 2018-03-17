@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HatchlingCompany.Core.Models
 {
-    public class ListEmployees : IMapFrom<Employee>
+    public class ListEmployeesModel : IMapFrom<Employee>
     {
         public string FirstName { get; set; }
 

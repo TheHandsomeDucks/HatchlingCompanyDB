@@ -6,20 +6,20 @@ namespace HatchlingCompany.Data
 {
     public class HatchlingCompanyDbContext : DbContext, IHatchlingCompanyDbContext
     {
-        public HatchlingCompanyDbContext() 
+        public HatchlingCompanyDbContext()
             : base("HatchlingCompanyConnection")
         {
         }
 
         public virtual IDbSet<Employee> Employees { get; set; }
 
-        public virtual IDbSet<EmployeeDetail> EmployeeDetails { get; set; }
-
         public virtual IDbSet<Department> Departments { get; set; }
 
         public virtual IDbSet<Town> Towns { get; set; }
 
         public virtual IDbSet<Country> Countries { get; set; }
+
+        public virtual IDbSet<Project> Projects { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,12 +30,23 @@ namespace HatchlingCompany.Data
                 .HasOptional(x => x.Department)
                 .WithMany(x => x.Employees);
 
+            modelBuilder.Entity<Employee>()
+               .HasOptional(x => x.Project)
+               .WithMany(x => x.Employees);
+
             modelBuilder.Entity<Department>()
                 .HasRequired(x => x.Manager);
 
             modelBuilder.Entity<Department>()
                 .HasMany(x => x.Employees)
                 .WithOptional(x => x.Department);
+
+            modelBuilder.Entity<Project>()
+              .HasRequired(x => x.Manager);
+
+            modelBuilder.Entity<Project>()
+                .HasMany(x => x.Employees)
+                .WithOptional(x => x.Project);
 
             base.OnModelCreating(modelBuilder);
         }

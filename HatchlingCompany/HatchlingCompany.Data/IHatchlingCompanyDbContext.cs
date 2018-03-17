@@ -7,7 +7,7 @@ namespace HatchlingCompany.Data
     {
         IDbSet<Employee> Employees { get; set; }
 
-        IDbSet<EmployeeDetail> EmployeeDetails { get; set; }
+        IDbSet<Project> Projects { get; set; }
 
         IDbSet<Department> Departments { get; set; }
 

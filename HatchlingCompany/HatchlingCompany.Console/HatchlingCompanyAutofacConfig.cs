@@ -33,7 +33,8 @@ namespace HatchlingCompany.Console
 
             // Listing Named Services
             builder.RegisterType<Help>().Named<ICommand>("help").InstancePerDependency();
-            builder.RegisterType<ListEmployee>().Named<ICommand>("listEmployees").InstancePerDependency();
+            builder.RegisterType<ListEmployees>().Named<ICommand>("listEmployees").InstancePerDependency();
+            builder.RegisterType<ListEmployeeDetails>().Named<ICommand>("listEmployeeDetails").InstancePerDependency();
         }
     }
 }

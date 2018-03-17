@@ -9,12 +9,12 @@ using System.Text;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class ListEmployee : Command
+    public class ListEmployees : Command
     {
         private readonly IHatchlingCompanyDbContext db;
         private readonly IWriter writer;
 
-        public ListEmployee(IHatchlingCompanyDbContext db, IWriter writer)
+        public ListEmployees(IHatchlingCompanyDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             var employees = this.db
                             .Employees
-                            .ProjectTo<ListEmployees>()
+                            .ProjectTo<ListEmployeesModel>()
                             .ToList();
 
             if (!employees.Any())

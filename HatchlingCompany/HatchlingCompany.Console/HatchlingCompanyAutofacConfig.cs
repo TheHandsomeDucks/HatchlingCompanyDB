@@ -4,6 +4,7 @@ using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Services.CRUD;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
+using System.Data.Entity;
 using System.Reflection;
 
 namespace HatchlingCompany.Console
@@ -13,7 +14,7 @@ namespace HatchlingCompany.Console
         protected override void Load(ContainerBuilder builder)
         {
             // Data
-            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IHatchlingCompanyDbContext)))
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(DbContext)))
                .AsImplementedInterfaces()
                .InstancePerDependency();
 
@@ -27,14 +28,17 @@ namespace HatchlingCompany.Console
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
 
+            // DbContext
+            builder.RegisterType<HatchlingCompanyDbContext>().As<IDbContext>().InstancePerDependency();
+
             // CRUD Named Services
-            builder.RegisterType<CreateEmployee>().Named<ICommand>("createEmployee").InstancePerDependency();
-            builder.RegisterType<FindEmployeeByMail>().Named<ICommand>("findEmployeeByMail").InstancePerDependency();
+            builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("createemployee").InstancePerDependency();
+            builder.RegisterType<FindEmployeeByMailCommand>().Named<ICommand>("findemployeebymail").InstancePerDependency();
 
             // Listing Named Services
-            builder.RegisterType<Help>().Named<ICommand>("help").InstancePerDependency();
-            builder.RegisterType<ListEmployees>().Named<ICommand>("listEmployees").InstancePerDependency();
-            builder.RegisterType<ListEmployeeDetails>().Named<ICommand>("listEmployeeDetails").InstancePerDependency();
+            builder.RegisterType<HelpCommand>().Named<ICommand>("help").InstancePerDependency();
+            builder.RegisterType<ListEmployeesCommand>().Named<ICommand>("listemployees").InstancePerDependency();
+            builder.RegisterType<ListEmployeeDetailsCommand>().Named<ICommand>("listemployeedetails").InstancePerDependency();
         }
     }
 }

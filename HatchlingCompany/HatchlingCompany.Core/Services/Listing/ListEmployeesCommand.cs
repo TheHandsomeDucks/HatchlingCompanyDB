@@ -9,12 +9,12 @@ using System.Text;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class ListEmployees : Command
+    public class ListEmployeesCommand : Command
     {
-        private readonly IHatchlingCompanyDbContext db;
+        private readonly IDbContext db;
         private readonly IWriter writer;
 
-        public ListEmployees(IHatchlingCompanyDbContext db, IWriter writer)
+        public ListEmployeesCommand(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));

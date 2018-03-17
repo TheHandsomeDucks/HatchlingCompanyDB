@@ -50,7 +50,6 @@ namespace HatchlingCompany.Core.Commands.Implementations
                     result.Add(commandName);
                 }
             }
-
             return result;
         }
     }

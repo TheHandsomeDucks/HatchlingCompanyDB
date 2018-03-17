@@ -40,6 +40,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
                 PhoneNumber = phoneNumber,
                 Status = status
             });
+
             this.db.SaveChanges();
         }
     }

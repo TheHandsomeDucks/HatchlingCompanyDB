@@ -1,16 +1,14 @@
-﻿
-using HatchlingCompany.Models;
+﻿using HatchlingCompany.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-
 
 namespace HatchlingCompany.Data
 {
     public class HatchlingCompanyDbContext : DbContext, IHatchlingCompanyDbContext
     {
-        public HatchlingCompanyDbContext() : base("HatchlingCompanyConnection")
+        public HatchlingCompanyDbContext() 
+            : base("HatchlingCompanyConnection")
         {
-
         }
 
         public virtual IDbSet<Employee> Employees { get; set; }
@@ -22,7 +20,6 @@ namespace HatchlingCompany.Data
         public virtual IDbSet<Town> Towns { get; set; }
 
         public virtual IDbSet<Country> Countries { get; set; }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,6 +39,5 @@ namespace HatchlingCompany.Data
 
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }

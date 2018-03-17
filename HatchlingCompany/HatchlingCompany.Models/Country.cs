@@ -12,6 +12,5 @@ namespace HatchlingCompany.Models
         public string Name { get; set; }
 
         public virtual ICollection<Town> Towns { get; set; } = new HashSet<Town>();
-
     }
 }

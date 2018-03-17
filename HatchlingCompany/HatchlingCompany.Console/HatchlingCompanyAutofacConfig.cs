@@ -27,12 +27,11 @@ namespace HatchlingCompany.Console
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
 
-            // CRUD Commands
+            // CRUD Named Services
             builder.RegisterType<CreateEmployee>().Named<ICommand>("createEmployee").InstancePerDependency();
-
             builder.RegisterType<FindEmployeeByMail>().Named<ICommand>("findEmployeeByMail").InstancePerDependency();
 
-            // Listing Commands
+            // Listing Named Services
             builder.RegisterType<Help>().Named<ICommand>("help").InstancePerDependency();
             builder.RegisterType<ListEmployee>().Named<ICommand>("listEmployees").InstancePerDependency();
         }

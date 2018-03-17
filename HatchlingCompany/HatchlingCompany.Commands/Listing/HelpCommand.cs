@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace HatchlingCompany.Console.Commands.Listing
+namespace HatchlingCompany.Commands.Listing
 {
     public class HelpCommand : Command, ICommand
     {

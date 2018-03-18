@@ -54,18 +54,6 @@
   <ItemGroup>
     <Compile Include="HatchlingCompanyDbContext.cs" />
     <Compile Include="IDbContext.cs" />
-    <Compile Include="Migrations\201803161348265_Initial.cs" />
-    <Compile Include="Migrations\201803161348265_Initial.Designer.cs">
-      <DependentUpon>201803161348265_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803161432136_Made ForeignKeys in Employee nullable.cs" />
-    <Compile Include="Migrations\201803161432136_Made ForeignKeys in Employee nullable.Designer.cs">
-      <DependentUpon>201803161432136_Made ForeignKeys in Employee nullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803170747099_Made Employee%27s email &amp; phone unique.cs" />
-    <Compile Include="Migrations\201803170747099_Made Employee%27s email &amp; phone unique.Designer.cs">
-      <DependentUpon>201803170747099_Made Employee%27s email &amp; phone unique.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,17 +66,6 @@
       <Project>{840E7571-093D-4287-B9A9-0FA296CC027E}</Project>
       <Name>HatchlingCompany.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803161348265_Initial.resx">
-      <DependentUpon>201803161348265_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803161432136_Made ForeignKeys in Employee nullable.resx">
-      <DependentUpon>201803161432136_Made ForeignKeys in Employee nullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803170747099_Made Employee%27s email &amp; phone unique.resx">
-      <DependentUpon>201803170747099_Made Employee%27s email &amp; phone unique.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

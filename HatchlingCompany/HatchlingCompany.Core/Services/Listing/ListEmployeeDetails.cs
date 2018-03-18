@@ -42,19 +42,9 @@ namespace HatchlingCompany.Core.Services.Listing
                                      .ProjectTo<ListEmployeeDetailsModel>()
                                      .SingleOrDefault();
 
-
-            //foreach (var prop in employeeDetails)
-            //{
-            //    if (prop != null)
-            //    {
-            //        sb.AppendLine(prop);
-            //    }
-            //}
-
             sb.AppendLine(employeeDetails.PrintInfo());
 
             this.writer.WriteLine(sb.ToString());
-
         }
     }
 }

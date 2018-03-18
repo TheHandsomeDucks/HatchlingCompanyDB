@@ -30,9 +30,9 @@ namespace HatchlingCompany.Core.Services.CRUD
             }
             else
             {
-                this.writer.WriteLine($"Fullname:{employee.FirstName} {employee.LastName}");
-                this.writer.WriteLine($"Email:{employee.Email}");
-                this.writer.WriteLine($"Phone:{employee.PhoneNumber}");
+                this.writer.WriteLine($"Fullname: {employee.FirstName} {employee.LastName}");
+                this.writer.WriteLine($"Email: {employee.Email}");
+                this.writer.WriteLine($"Phone: {employee.PhoneNumber}");
             }
 
         }

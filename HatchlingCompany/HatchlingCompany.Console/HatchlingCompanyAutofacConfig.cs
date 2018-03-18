@@ -28,7 +28,7 @@ namespace HatchlingCompany.Console
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
 
-            // CRUD
+            // --------------------------- CRUD ---------------------------
 
             // Manager
             builder.RegisterType<CreateManager>().Named<ICommand>("createManager").InstancePerDependency();
@@ -41,7 +41,7 @@ namespace HatchlingCompany.Console
             builder.RegisterType<CreateProject>().Named<ICommand>("createProject").InstancePerDependency();
             builder.RegisterType<FindProjectByName>().Named<ICommand>("findProjectByName").InstancePerDependency();
 
-            //Listing
+            // ------------------------- Listing ----------------------------
 
             // Help
             builder.RegisterType<Help>().Named<ICommand>("help").InstancePerDependency();

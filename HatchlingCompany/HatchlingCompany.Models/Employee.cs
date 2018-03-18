@@ -23,8 +23,8 @@ namespace HatchlingCompany.Models
         public string LastName { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
         [MaxLength(50)]
+        [Index(IsUnique = true)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
@@ -57,5 +57,7 @@ namespace HatchlingCompany.Models
 
         public int? DepartmentId { get; set; }
         public virtual Department Department { get; set; }
+
+        public virtual ICollection<Project> Projects { get; set; }
     }
 }

@@ -15,11 +15,7 @@ namespace HatchlingCompany.Console
         protected override void Load(ContainerBuilder builder)
         {
             // Data
-<<<<<<< HEAD
             builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IDbContext)))
-=======
-            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(DbContext)))
->>>>>>> Iovo
                .AsImplementedInterfaces()
                .InstancePerDependency();
 
@@ -37,13 +33,13 @@ namespace HatchlingCompany.Console
             builder.RegisterType<HatchlingCompanyDbContext>().As<IDbContext>().InstancePerDependency();
 
             // CRUD Named Services
-            builder.RegisterType<CreateEmployeeCommand>().Named<ICommand>("createemployee").InstancePerDependency();
-            builder.RegisterType<FindEmployeeByMailCommand>().Named<ICommand>("findemployeebymail").InstancePerDependency();
+            builder.RegisterType<CreateEmployee>().Named<ICommand>("createemployee").InstancePerDependency();
+            builder.RegisterType<FindEmployeeByMail>().Named<ICommand>("findemployeebymail").InstancePerDependency();
 
             // Listing Named Services
             builder.RegisterType<HelpCommand>().Named<ICommand>("help").InstancePerDependency();
-            builder.RegisterType<ListEmployeesCommand>().Named<ICommand>("listemployees").InstancePerDependency();
-            builder.RegisterType<ListEmployeeDetailsCommand>().Named<ICommand>("listemployeedetails").InstancePerDependency();
+            builder.RegisterType<ListEmployees>().Named<ICommand>("listemployees").InstancePerDependency();
+            builder.RegisterType<ListEmployeeDetails>().Named<ICommand>("listemployeedetails").InstancePerDependency();
         }
     }
 }

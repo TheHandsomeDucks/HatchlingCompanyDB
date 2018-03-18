@@ -9,7 +9,7 @@ using System.Text;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class ListEmployeesCommand : Command
+    public class ListEmployees : Command
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
@@ -42,7 +42,6 @@ namespace HatchlingCompany.Core.Services.Listing
             }
 
             this.writer.WriteLine(sb.ToString());
-
         }
     }
 }

@@ -42,9 +42,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Reflection">
-      <HintPath>..\packages\Mono.Reflection.1.1.0.0\lib\Mono.Reflection.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -78,11 +75,11 @@
     <Compile Include="Common\Contracts\IWriter.cs" />
     <Compile Include="Common\Implemetations\ConsoleReader.cs" />
     <Compile Include="Common\Implemetations\ConsoleWriter.cs" />
-    <Compile Include="Services\CRUD\CreateEmployeeCommand.cs" />
-    <Compile Include="Services\CRUD\FindEmployeeByMailCommand.cs" />
-    <Compile Include="Services\Listing\ListEmployeeDetailsCommand.cs" />
+    <Compile Include="Services\CRUD\CreateEmployee.cs" />
+    <Compile Include="Services\CRUD\FindEmployeeByMail.cs" />
+    <Compile Include="Services\Listing\ListEmployeeDetails.cs" />
     <Compile Include="Services\Listing\HelpCommand.cs" />
-    <Compile Include="Services\Listing\ListEmployeesCommand.cs" />
+    <Compile Include="Services\Listing\ListEmployees.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">

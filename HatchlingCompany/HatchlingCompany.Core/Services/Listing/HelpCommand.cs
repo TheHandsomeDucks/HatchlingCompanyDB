@@ -7,11 +7,11 @@ using System.Reflection;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class Help : Command
+    public class HelpCommand : Command
     {
         private readonly IWriter writer;
 
-        public Help(IWriter writer)
+        public HelpCommand(IWriter writer)
         {
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
@@ -30,7 +30,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             foreach (var command in commandsList)
             {
-                this.writer.WriteLine($"{++counter}. {command}");
+                this.writer.WriteLine($"{++counter}. {command.Substring(0, command.Length - "command".Length)}");
             }
         }
 
@@ -50,6 +50,7 @@ namespace HatchlingCompany.Core.Services.Listing
                     result.Add(commandName);
                 }
             }
+
             return result;
         }
     }

@@ -78,16 +78,11 @@
     <Compile Include="Common\Contracts\IWriter.cs" />
     <Compile Include="Common\Implemetations\ConsoleReader.cs" />
     <Compile Include="Common\Implemetations\ConsoleWriter.cs" />
-    <Compile Include="Services\CRUD\CreateEmployee.cs" />
-    <Compile Include="Services\CRUD\FindEmployeeByMail.cs" />
-    <Compile Include="Services\Listing\ListEmployeeDetails.cs" />
-    <Compile Include="Services\Listing\Help.cs" />
-    <Compile Include="Services\Listing\ListEmployees.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Compile Include="Services\CRUD\CreateEmployeeCommand.cs" />
+    <Compile Include="Services\CRUD\FindEmployeeByMailCommand.cs" />
+    <Compile Include="Services\Listing\ListEmployeeDetailsCommand.cs" />
+    <Compile Include="Services\Listing\HelpCommand.cs" />
+    <Compile Include="Services\Listing\ListEmployeesCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">
@@ -98,6 +93,10 @@
       <Project>{840E7571-093D-4287-B9A9-0FA296CC027E}</Project>
       <Name>HatchlingCompany.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

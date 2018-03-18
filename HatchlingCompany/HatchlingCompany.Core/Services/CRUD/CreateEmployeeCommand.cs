@@ -23,7 +23,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
             var lastName = parameters[2];
             var email = parameters[3];
             var phoneNumber = parameters[4];
-            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[5].ToLower());
+            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[5].ToLower(), true);
 
             var employeeFound = this.db.Employees.SingleOrDefault(e => e.PhoneNumber == phoneNumber);
 
@@ -38,7 +38,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
                 LastName = lastName,
                 Email = email,
                 PhoneNumber = phoneNumber,
-                Status = status
+                Status = EmployeeStatus.Assigned
             });
 
             this.db.SaveChanges();

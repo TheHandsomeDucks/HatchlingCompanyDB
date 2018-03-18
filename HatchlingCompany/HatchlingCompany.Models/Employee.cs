@@ -57,7 +57,5 @@ namespace HatchlingCompany.Models
 
         public int? DepartmentId { get; set; }
         public virtual Department Department { get; set; }
-
-        public virtual ICollection<Project> Projects { get; set; } = new HashSet<Project>();
     }
 }

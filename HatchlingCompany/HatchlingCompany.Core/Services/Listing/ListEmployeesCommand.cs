@@ -9,7 +9,7 @@ using System.Text;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class ListEmployees : Command
+    public class ListEmployeesCommand : Command
     {
         private readonly IDbContext db;
         private readonly IWriter writer;

@@ -18,7 +18,7 @@ namespace HatchlingCompany.Core.Common.Implementations
 
         public void ProcessCommand(string commandLine)
         {
-            var commandParts = commandLine.Split(new[] { ' ', ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var commandParts = commandLine.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             var delimeter = "----------------------------------------";
 
             if (!commandParts.Any())
@@ -29,7 +29,7 @@ namespace HatchlingCompany.Core.Common.Implementations
 
             try
             {
-                var commandName = commandParts[0];
+                var commandName = commandParts[0].ToLower();
                 var command = this.commandFactory.CreateCommand(commandName);
 
                 if (command == null)

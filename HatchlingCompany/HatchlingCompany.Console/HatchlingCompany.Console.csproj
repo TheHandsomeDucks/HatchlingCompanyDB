@@ -79,10 +79,6 @@
       <Project>{02ad755b-24ce-4184-8f86-1add9d792cf3}</Project>
       <Name>HatchlingCompany.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HatchlingCompany.Models\HatchlingCompany.Models.csproj">
-      <Project>{840e7571-093d-4287-b9a9-0fa296cc027e}</Project>
-      <Name>HatchlingCompany.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

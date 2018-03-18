@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class FindEmployeeByMail : Command
+    public class FindEmployeeByMailCommand : Command
     {
         private readonly IDbContext db;
         private readonly IWriter writer;

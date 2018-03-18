@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using HatchlingCompany.Core;
+using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Services.CRUD;
 using HatchlingCompany.Core.Services.Listing;
@@ -13,7 +14,7 @@ namespace HatchlingCompany.Console
         protected override void Load(ContainerBuilder builder)
         {
             // Data
-            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IHatchlingCompanyDbContext)))
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(IDbContext)))
                .AsImplementedInterfaces()
                .InstancePerDependency();
 

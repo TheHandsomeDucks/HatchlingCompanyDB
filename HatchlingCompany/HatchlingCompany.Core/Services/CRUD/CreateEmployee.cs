@@ -1,4 +1,4 @@
-﻿using HatchlingCompany.Core.Contracts;
+﻿using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using HatchlingCompany.Models.Common;
@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace HatchlingCompany.Core.Commands.Implementations
 {
-    public class CreateEmployeeCommand : Command
+    public class CreateEmployee : Command
     {
         private readonly IDbContext db;
 
-        public CreateEmployeeCommand(IDbContext db)
+        public CreateEmployee(IDbContext db)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }

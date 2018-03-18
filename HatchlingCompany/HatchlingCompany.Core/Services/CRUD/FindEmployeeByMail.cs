@@ -8,10 +8,10 @@ namespace HatchlingCompany.Core.Services.CRUD
 {
     public class FindEmployeeByMail : Command
     {
-        private readonly IHatchlingCompanyDbContext db;
+        private readonly IDbContext db;
         private readonly IWriter writer;
 
-        public FindEmployeeByMail(IHatchlingCompanyDbContext db, IWriter writer)
+        public FindEmployeeByMail(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));

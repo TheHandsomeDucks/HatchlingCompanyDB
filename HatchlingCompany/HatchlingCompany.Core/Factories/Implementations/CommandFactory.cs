@@ -14,7 +14,6 @@ namespace HatchlingCompany.Core.Factories.Implementations
             this.container = container ?? throw new ArgumentNullException(nameof(container));
         }
 
-        public ICommand CreateCommand(string name)
-            => this.container.ResolveNamed<ICommand>(name);
+        public ICommand CreateCommand(string name) => this.container.ResolveNamed<ICommand>(name);
     }
 }

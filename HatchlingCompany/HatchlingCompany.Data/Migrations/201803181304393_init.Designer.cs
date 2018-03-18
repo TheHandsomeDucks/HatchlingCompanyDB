@@ -7,13 +7,13 @@ namespace HatchlingCompany.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class MadeForeignKeysinEmployeenullable : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MadeForeignKeysinEmployeenullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803161432136_Made ForeignKeys in Employee nullable"; }
+            get { return "201803181304393_init"; }
         }
         
         string IMigrationMetadata.Source

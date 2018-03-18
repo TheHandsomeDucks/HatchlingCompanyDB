@@ -26,15 +26,12 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             if (employee == null)
             {
-                this.writer.WriteLine($"Person with {email} could not be found");
-            }
-            else
-            {
-                this.writer.WriteLine($"Fullname: {employee.FirstName} {employee.LastName}");
-                this.writer.WriteLine($"Email: {employee.Email}");
-                this.writer.WriteLine($"Phone: {employee.PhoneNumber}");
+                throw new ArgumentNullException($"Person with {email} could not be found");
             }
 
+            this.writer.WriteLine($"Fullname: {employee.FirstName} {employee.LastName}");
+            this.writer.WriteLine($"Email: {employee.Email}");
+            this.writer.WriteLine($"Phone: {employee.PhoneNumber}");
         }
     }
 }

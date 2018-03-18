@@ -4,13 +4,13 @@ using HatchlingCompany.Models;
 using System;
 using System.Linq;
 
-namespace HatchlingCompany.Core.Commands.Implementations
+namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class CreateEmployee : Command
+    public class CreateManager : Command
     {
         private readonly IDbContext db;
 
-        public CreateEmployee(IDbContext db)
+        public CreateManager(IDbContext db)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
@@ -22,13 +22,12 @@ namespace HatchlingCompany.Core.Commands.Implementations
             var lastName = parameters[2];
             var email = parameters[3];
             var phoneNumber = parameters[4];
-            var managerId = int.Parse(parameters[5]);
 
-            var employee = this.db.Employees.SingleOrDefault(e => e.Email == email);
+            var manager = this.db.Employees.SingleOrDefault(e => e.Email == email);
 
-            if (employee != null)
+            if (manager != null)
             {
-                throw new ArgumentNullException($"{employee.FirstName} {employee.LastName} already exists");
+                throw new ArgumentNullException($"{manager.FirstName} {manager.LastName} already exists");
             }
 
             this.db.Employees.Add(new Employee
@@ -36,8 +35,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
-                PhoneNumber = phoneNumber,
-                ManagerId = managerId
+                PhoneNumber = phoneNumber
             });
 
             this.db.SaveChanges();

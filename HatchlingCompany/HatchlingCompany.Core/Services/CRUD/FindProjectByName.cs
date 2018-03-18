@@ -26,7 +26,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             if (project == null)
             {
-                this.writer.WriteLine($"Project with {name} could not be found");
+                throw new ArgumentNullException($"Project with {name} could not be found");
             }
 
             this.writer.WriteLine($"Name: {project.Name}");

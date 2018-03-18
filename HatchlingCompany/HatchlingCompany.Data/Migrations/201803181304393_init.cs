@@ -3,7 +3,7 @@ namespace HatchlingCompany.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -51,35 +51,51 @@ namespace HatchlingCompany.Data.Migrations
                         FirstName = c.String(maxLength: 50),
                         MiddleName = c.String(maxLength: 50),
                         LastName = c.String(maxLength: 50),
-                        Email = c.String(maxLength: 50),
+                        Email = c.String(nullable: false, maxLength: 50),
                         PhoneNumber = c.String(maxLength: 30),
-                        Birthdate = c.DateTime(nullable: false),
-                        HireDate = c.DateTime(nullable: false),
+                        Birthdate = c.DateTime(),
+                        HireDate = c.DateTime(),
                         BankAccount = c.String(maxLength: 30),
-                        Status = c.Int(nullable: false),
-                        Salary = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Status = c.Int(),
+                        Salary = c.Decimal(precision: 18, scale: 2),
                         JobTitle = c.String(maxLength: 30),
-                        EmployeeDetailsId = c.Int(nullable: false),
-                        ManagerId = c.Int(nullable: false),
-                        DepartmentId = c.Int(nullable: false),
+                        ManagerId = c.Int(),
+                        DepartmentId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Employees", t => t.ManagerId)
                 .ForeignKey("dbo.Departments", t => t.DepartmentId)
+                .Index(t => t.Email, unique: true)
+                .Index(t => t.PhoneNumber, unique: true)
                 .Index(t => t.ManagerId)
                 .Index(t => t.DepartmentId);
             
             CreateTable(
-                "dbo.EmployeeDetails",
+                "dbo.Projects",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(maxLength: 30),
                         Detail = c.String(),
-                        EmployeeId = c.Int(nullable: false),
+                        ManagerId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Employees", t => t.Id)
-                .Index(t => t.Id);
+                .ForeignKey("dbo.Employees", t => t.ManagerId)
+                .Index(t => t.Name, unique: true)
+                .Index(t => t.ManagerId);
+            
+            CreateTable(
+                "dbo.EmployeeProjects",
+                c => new
+                    {
+                        Employee_Id = c.Int(nullable: false),
+                        Project_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Employee_Id, t.Project_Id })
+                .ForeignKey("dbo.Employees", t => t.Employee_Id)
+                .ForeignKey("dbo.Projects", t => t.Project_Id)
+                .Index(t => t.Employee_Id)
+                .Index(t => t.Project_Id);
             
         }
         
@@ -88,16 +104,24 @@ namespace HatchlingCompany.Data.Migrations
             DropForeignKey("dbo.Departments", "TownId", "dbo.Towns");
             DropForeignKey("dbo.Departments", "ManagerId", "dbo.Employees");
             DropForeignKey("dbo.Employees", "DepartmentId", "dbo.Departments");
+            DropForeignKey("dbo.EmployeeProjects", "Project_Id", "dbo.Projects");
+            DropForeignKey("dbo.EmployeeProjects", "Employee_Id", "dbo.Employees");
+            DropForeignKey("dbo.Projects", "ManagerId", "dbo.Employees");
             DropForeignKey("dbo.Employees", "ManagerId", "dbo.Employees");
-            DropForeignKey("dbo.EmployeeDetails", "Id", "dbo.Employees");
             DropForeignKey("dbo.Towns", "CountryId", "dbo.Countries");
-            DropIndex("dbo.EmployeeDetails", new[] { "Id" });
+            DropIndex("dbo.EmployeeProjects", new[] { "Project_Id" });
+            DropIndex("dbo.EmployeeProjects", new[] { "Employee_Id" });
+            DropIndex("dbo.Projects", new[] { "ManagerId" });
+            DropIndex("dbo.Projects", new[] { "Name" });
             DropIndex("dbo.Employees", new[] { "DepartmentId" });
             DropIndex("dbo.Employees", new[] { "ManagerId" });
+            DropIndex("dbo.Employees", new[] { "PhoneNumber" });
+            DropIndex("dbo.Employees", new[] { "Email" });
             DropIndex("dbo.Departments", new[] { "ManagerId" });
             DropIndex("dbo.Departments", new[] { "TownId" });
             DropIndex("dbo.Towns", new[] { "CountryId" });
-            DropTable("dbo.EmployeeDetails");
+            DropTable("dbo.EmployeeProjects");
+            DropTable("dbo.Projects");
             DropTable("dbo.Employees");
             DropTable("dbo.Departments");
             DropTable("dbo.Towns");

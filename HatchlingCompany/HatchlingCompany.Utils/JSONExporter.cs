@@ -3,9 +3,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HatchlingCompany.Utils
 {
@@ -36,6 +33,11 @@ namespace HatchlingCompany.Utils
 
         private void SaveToFile(string text, string path, string fileName)
         {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
             string file = String.Concat(path, fileName);
 
             using (StreamWriter writer = File.CreateText(file))

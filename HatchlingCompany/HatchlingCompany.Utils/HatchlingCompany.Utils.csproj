@@ -46,6 +46,7 @@
     <Compile Include="Contracts\IExporter.cs" />
     <Compile Include="Contracts\IImporter.cs" />
     <Compile Include="JSONExporter.cs" />
+    <Compile Include="JSONImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

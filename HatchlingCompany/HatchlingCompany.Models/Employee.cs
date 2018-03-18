@@ -52,9 +52,6 @@ namespace HatchlingCompany.Models
         [MaxLength(30)]
         public string JobTitle { get; set; }
 
-        public int? ProjectId { get; set; }
-        public virtual Project Project { get; set; }
-
         public int? ManagerId { get; set; }
         public virtual Employee Manager { get; set; }
 

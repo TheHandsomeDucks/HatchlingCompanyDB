@@ -30,8 +30,8 @@ namespace HatchlingCompany.Core.Services.Listing
             if (!employees.Any())
             {
                 this.writer.WriteLine("No employees registered");
+                return;
             }
-
 
             var sb = new StringBuilder();
             sb.AppendLine("Listing employees...");
@@ -42,6 +42,7 @@ namespace HatchlingCompany.Core.Services.Listing
             }
 
             this.writer.WriteLine(sb.ToString());
+
         }
     }
 }

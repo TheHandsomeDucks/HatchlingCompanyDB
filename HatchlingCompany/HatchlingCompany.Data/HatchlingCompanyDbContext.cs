@@ -31,7 +31,7 @@ namespace HatchlingCompany.Data
                 .WithMany(x => x.Employees);
 
             modelBuilder.Entity<Employee>()
-               .HasOptional(x => x.Project)
+               .HasMany(x => x.Projects)
                .WithMany(x => x.Employees);
 
             modelBuilder.Entity<Department>()
@@ -46,7 +46,7 @@ namespace HatchlingCompany.Data
 
             modelBuilder.Entity<Project>()
                 .HasMany(x => x.Employees)
-                .WithOptional(x => x.Project);
+                .WithMany(x => x.Projects);
 
             base.OnModelCreating(modelBuilder);
         }

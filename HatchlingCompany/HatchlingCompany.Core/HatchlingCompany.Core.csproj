@@ -84,7 +84,7 @@
     <Compile Include="Services\CRUD\FindProjectByName.cs" />
     <Compile Include="Services\CRUD\UpdateEmployeeStatus.cs" />
     <Compile Include="Services\Listing\ListEmployeeDetails.cs" />
-    <Compile Include="Services\Listing\HelpCommand.cs" />
+    <Compile Include="Services\Listing\Help.cs" />
     <Compile Include="Services\Listing\ListEmployees.cs" />
     <Compile Include="Services\Listing\ListEmployeesByStatus.cs" />
     <Compile Include="Services\Listing\ListProjectDetails.cs" />

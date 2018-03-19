@@ -5,7 +5,6 @@ using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Services.CRUD;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
-using System.Data.Entity;
 using System.Reflection;
 
 namespace HatchlingCompany.Console

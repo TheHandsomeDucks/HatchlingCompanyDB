@@ -7,11 +7,11 @@ using System.Reflection;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class HelpCommand : Command
+    public class Help : Command
     {
         private readonly IWriter writer;
 
-        public HelpCommand(IWriter writer)
+        public Help(IWriter writer)
         {
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }

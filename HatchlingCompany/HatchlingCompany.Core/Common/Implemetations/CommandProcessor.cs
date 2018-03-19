@@ -29,7 +29,7 @@ namespace HatchlingCompany.Core.Common.Implementations
 
             try
             {
-                var commandName = commandParts[0];
+                var commandName = commandParts[0].ToLower();
                 var command = this.commandFactory.CreateCommand(commandName);
 
                 if (command == null)

@@ -28,6 +28,8 @@ namespace HatchlingCompany.Console
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
 
+            // DbContext
+            builder.RegisterType<HatchlingCompanyDbContext>().As<IDbContext>().InstancePerDependency();
             // --------------------- CRUD -------------------------
 
             // Manager
@@ -49,7 +51,7 @@ namespace HatchlingCompany.Console
             // Employees
             builder.RegisterType<ListEmployees>().Named<ICommand>("listemployees").InstancePerDependency();
             builder.RegisterType<ListEmployeeDetails>().Named<ICommand>("listemployeedetails").InstancePerDependency();
-            builder.RegisterType<UpdateEmployeeStatus>().Named<ICommand>("updateemployeedtatus").InstancePerDependency();
+            builder.RegisterType<UpdateEmployeeStatus>().Named<ICommand>("updateemployeestatus").InstancePerDependency();
             builder.RegisterType<ListEmployeesByStatus>().Named<ICommand>("listemployeesbystatus").InstancePerDependency();
 
             // Projects

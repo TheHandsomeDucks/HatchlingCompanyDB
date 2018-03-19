@@ -92,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">
-      <Project>{02AD755B-24CE-4184-8F86-1ADD9D792CF3}</Project>
+      <Project>{02ad755b-24ce-4184-8f86-1add9d792cf3}</Project>
       <Name>HatchlingCompany.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\HatchlingCompany.Models\HatchlingCompany.Models.csproj">

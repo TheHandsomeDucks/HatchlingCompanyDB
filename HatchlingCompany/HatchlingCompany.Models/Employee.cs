@@ -8,6 +8,17 @@ namespace HatchlingCompany.Models
 {
     public class Employee
     {
+        private ICollection<Project> projects;
+        private ICollection<Relationship> sentRelationships;
+        private ICollection<Relationship> receivedRelationships;
+
+        public Employee()
+        {
+            this.projects = new HashSet<Project>();
+            this.sentRelationships = new HashSet<Relationship>();
+            this.receivedRelationships = new HashSet<Relationship>();
+        }
+        
         public int Id { get; set; }
 
         [MinLength(2)]
@@ -58,10 +69,25 @@ namespace HatchlingCompany.Models
         public int? DepartmentId { get; set; }
         public virtual Department Department { get; set; }
 
-        public virtual ICollection<Project> Projects { get; set; }
+        public virtual ICollection<Project> Projects
+        {
+            get => this.projects;
 
-        public virtual ICollection<Relationship> SentRelationships { get; set; }
+            set => this.projects = value;
+        }
 
-        public virtual ICollection<Relationship> ReceivedRelationships { get; set; }
+        public virtual ICollection<Relationship> SentRelationships
+        {
+            get => this.sentRelationships;
+
+            set => this.sentRelationships = value;
+        }
+
+        public virtual ICollection<Relationship> ReceivedRelationships
+        {
+            get => this.receivedRelationships;
+
+            set => this.receivedRelationships = value;
+        }
     }
 }

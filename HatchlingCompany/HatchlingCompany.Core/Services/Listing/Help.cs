@@ -44,7 +44,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             foreach (var type in types)
             {
-                string commandName = type.Name; //.Substring(0, type.Name.Length - "Command".Length);
+                string commandName = type.Name;
                 if (commandName != "Command")
                 {
                     result.Add(commandName);

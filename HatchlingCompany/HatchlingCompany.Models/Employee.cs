@@ -47,7 +47,7 @@ namespace HatchlingCompany.Models
 
         [DataType(DataType.Currency)]
         public decimal? Salary { get; set; }
- 
+
         [MinLength(2)]
         [MaxLength(30)]
         public string JobTitle { get; set; }

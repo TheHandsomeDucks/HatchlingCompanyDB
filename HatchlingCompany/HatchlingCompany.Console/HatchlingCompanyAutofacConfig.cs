@@ -48,9 +48,9 @@ namespace HatchlingCompany.Console
 
             // Employees
             builder.RegisterType<ListEmployees>().Named<ICommand>("listemployees").InstancePerDependency();
-            builder.RegisterType<ListEmployeeDetails>().Named<ICommand>("listemployeeDetails").InstancePerDependency();
-            builder.RegisterType<UpdateEmployeeStatus>().Named<ICommand>("updateemployeeStatus").InstancePerDependency();
-            builder.RegisterType<ListEmployeesByStatus>().Named<ICommand>("listemployeesByStatus").InstancePerDependency();
+            builder.RegisterType<ListEmployeeDetails>().Named<ICommand>("listemployeedetails").InstancePerDependency();
+            builder.RegisterType<UpdateEmployeeStatus>().Named<ICommand>("updateemployeestatus").InstancePerDependency();
+            builder.RegisterType<ListEmployeesByStatus>().Named<ICommand>("listemployeesbystatus").InstancePerDependency();
 
             // Projects
             builder.RegisterType<ListProjects>().Named<ICommand>("listprojects").InstancePerDependency();

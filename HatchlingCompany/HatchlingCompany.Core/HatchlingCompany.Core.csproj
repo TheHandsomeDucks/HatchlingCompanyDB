@@ -70,16 +70,25 @@
     <Compile Include="Common\Implemetations\AutoMapperProfile.cs" />
     <Compile Include="Models\ListEmployeeDetailsModel.cs" />
     <Compile Include="Models\ListEmployeesModel.cs" />
+    <Compile Include="Models\ListProjectDetailsModel.cs" />
+    <Compile Include="Models\ListProjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\Contracts\IReader.cs" />
     <Compile Include="Common\Contracts\IWriter.cs" />
     <Compile Include="Common\Implemetations\ConsoleReader.cs" />
     <Compile Include="Common\Implemetations\ConsoleWriter.cs" />
     <Compile Include="Services\CRUD\CreateEmployee.cs" />
+    <Compile Include="Services\CRUD\CreateManager.cs" />
+    <Compile Include="Services\CRUD\CreateProject.cs" />
     <Compile Include="Services\CRUD\FindEmployeeByMail.cs" />
+    <Compile Include="Services\CRUD\FindProjectByName.cs" />
+    <Compile Include="Services\CRUD\UpdateEmployeeStatus.cs" />
     <Compile Include="Services\Listing\ListEmployeeDetails.cs" />
     <Compile Include="Services\Listing\Help.cs" />
     <Compile Include="Services\Listing\ListEmployees.cs" />
+    <Compile Include="Services\Listing\ListEmployeesByStatus.cs" />
+    <Compile Include="Services\Listing\ListProjectDetails.cs" />
+    <Compile Include="Services\Listing\ListProjects.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">

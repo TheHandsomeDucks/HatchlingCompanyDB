@@ -9,12 +9,12 @@ using System.Text;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class ListEmployees : Command
+    public class ListProjects : Command
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
 
-        public ListEmployees(IDbContext db, IWriter writer)
+        public ListProjects(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
@@ -22,22 +22,22 @@ namespace HatchlingCompany.Core.Services.Listing
 
         public override void Execute()
         {
-            var employees = this.db
-                            .Employees
-                            .ProjectTo<ListEmployeesModel>()
-                            .ToList();
+            var projects = this.db
+                               .Projects
+                               .ProjectTo<ListProjectModel>()
+                               .ToList();
 
-            if (!employees.Any())
+            if (!projects.Any())
             {
-                throw new ArgumentNullException("No employees registered");
+                throw new ArgumentNullException("No projects registered");
             }
 
             var sb = new StringBuilder();
-            sb.AppendLine("Listing employees...");
+            sb.AppendLine("Listing projects...");
 
-            foreach (var employee in employees)
+            foreach (var project in projects)
             {
-                sb.AppendLine(employee.PrintInfo());
+                sb.AppendLine(project.PrintInfo());
             }
 
             this.writer.WriteLine(sb.ToString());

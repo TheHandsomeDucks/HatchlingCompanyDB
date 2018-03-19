@@ -31,15 +31,33 @@ namespace HatchlingCompany.Console
 
             // DbContext
             builder.RegisterType<HatchlingCompanyDbContext>().As<IDbContext>().InstancePerDependency();
+            // --------------------- CRUD -------------------------
 
-            // CRUD Named Services
+            // Manager
+            builder.RegisterType<CreateManager>().Named<ICommand>("createmanager").InstancePerDependency();
+
+            // Employees
             builder.RegisterType<CreateEmployee>().Named<ICommand>("createemployee").InstancePerDependency();
             builder.RegisterType<FindEmployeeByMail>().Named<ICommand>("findemployeebymail").InstancePerDependency();
 
-            // Listing Named Services
+            // Projects
+            builder.RegisterType<CreateProject>().Named<ICommand>("createproject").InstancePerDependency();
+            builder.RegisterType<FindProjectByName>().Named<ICommand>("findprojectbyname").InstancePerDependency();
+
+            // ------------------   Listing  ---------------------------------
+
+            // Help
             builder.RegisterType<Help>().Named<ICommand>("help").InstancePerDependency();
+
+            // Employees
             builder.RegisterType<ListEmployees>().Named<ICommand>("listemployees").InstancePerDependency();
             builder.RegisterType<ListEmployeeDetails>().Named<ICommand>("listemployeedetails").InstancePerDependency();
+            builder.RegisterType<UpdateEmployeeStatus>().Named<ICommand>("updateemployeestatus").InstancePerDependency();
+            builder.RegisterType<ListEmployeesByStatus>().Named<ICommand>("listemployeesbystatus").InstancePerDependency();
+
+            // Projects
+            builder.RegisterType<ListProjects>().Named<ICommand>("listprojects").InstancePerDependency();
+            builder.RegisterType<ListProjectDetails>().Named<ICommand>("listprojectdetails").InstancePerDependency();
         }
     }
 }

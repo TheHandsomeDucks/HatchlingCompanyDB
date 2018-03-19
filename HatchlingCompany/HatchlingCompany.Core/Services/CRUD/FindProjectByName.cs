@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class FindEmployeeByMail : Command
+    public class FindProjectByName : Command
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
 
-        public FindEmployeeByMail(IDbContext db, IWriter writer)
+        public FindProjectByName(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
@@ -20,18 +20,18 @@ namespace HatchlingCompany.Core.Services.CRUD
         public override void Execute()
         {
             var parameters = this.Parameters;
-            var email = parameters[1];
+            var name = parameters[1];
 
-            var employee = this.db.Employees.SingleOrDefault(e => e.Email == email);
+            var project = this.db.Projects.SingleOrDefault(p => p.Name == name);
 
-            if (employee == null)
+            if (project == null)
             {
-                throw new ArgumentNullException($"Person with {email} could not be found");
+                throw new ArgumentNullException($"Project with {name} could not be found");
             }
 
-            this.writer.WriteLine($"Fullname: {employee.FirstName} {employee.LastName}");
-            this.writer.WriteLine($"Email: {employee.Email}");
-            this.writer.WriteLine($"Phone: {employee.PhoneNumber}");
+            this.writer.WriteLine($"Name: {project.Name}");
+            this.writer.WriteLine($"Manager: {project.Manager.FirstName} {project.Manager.LastName}");
+            this.writer.WriteLine($"Details: {project.Detail}");
         }
     }
 }

@@ -31,6 +31,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
                 throw new ArgumentNullException($"{employee.FirstName} {employee.LastName} already exists");
             }
 
+
             this.db.Employees.Add(new Employee
             {
                 FirstName = firstName,

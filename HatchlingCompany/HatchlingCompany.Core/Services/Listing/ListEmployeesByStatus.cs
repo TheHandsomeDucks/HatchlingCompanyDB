@@ -1,5 +1,7 @@
-﻿using HatchlingCompany.Core.Common.Contracts;
+﻿using AutoMapper.QueryableExtensions;
+using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Common.Implementations;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models.Common;
 using System;
@@ -27,6 +29,7 @@ namespace HatchlingCompany.Core.Services.Listing
             var employees = this.db
                                 .Employees
                                 .Where(e => e.Status == status)
+                                .ProjectTo<ListEmployeesModel>()
                                 .ToList();
 
             if (!employees.Any())

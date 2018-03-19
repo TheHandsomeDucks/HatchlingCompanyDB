@@ -60,8 +60,8 @@ namespace HatchlingCompany.Models
 
         public virtual ICollection<Project> Projects { get; set; }
 
-        public virtual ICollection<Comment> SentComments { get; set; }
+        public virtual ICollection<Relationship> SentRelationships { get; set; }
 
-        public virtual ICollection<Comment> ReceivedComments { get; set; }
+        public virtual ICollection<Relationship> ReceivedRelationships { get; set; }
     }
 }

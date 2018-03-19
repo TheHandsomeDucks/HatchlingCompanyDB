@@ -21,7 +21,7 @@ namespace HatchlingCompany.Data
 
         public virtual IDbSet<Project> Projects { get; set; }
 
-        public virtual IDbSet<Comment> Comments { get; set; }
+        public virtual IDbSet<Relationship> Relationships { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -53,13 +53,13 @@ namespace HatchlingCompany.Data
                 .HasMany(x => x.Employees)
                 .WithMany(x => x.Projects);
 
-            modelBuilder.Entity<Comment>()
+            modelBuilder.Entity<Relationship>()
                 .HasRequired(x => x.Author)
-                .WithMany(x => x.SentComments);
+                .WithMany(x => x.SentRelationships);
 
-            modelBuilder.Entity<Comment>()
+            modelBuilder.Entity<Relationship>()
                 .HasRequired(x => x.Recipient)
-                .WithMany(x => x.ReceivedComments);
+                .WithMany(x => x.ReceivedRelationships);
 
             base.OnModelCreating(modelBuilder);
         }

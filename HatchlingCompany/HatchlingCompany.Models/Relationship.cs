@@ -2,7 +2,7 @@
 
 namespace HatchlingCompany.Models
 {
-    public class Comment
+    public class Relationship
     {
         public int Id { get; set; }
 
@@ -13,6 +13,8 @@ namespace HatchlingCompany.Models
         public virtual Employee Recipient { get; set; }
         
         [MinLength(2)]
-        public string Content { get; set; }
+        public string Comment { get; set; }
+
+        public int RelationshipStrength { get; set; }
     }
 }

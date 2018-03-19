@@ -25,12 +25,12 @@ namespace HatchlingCompany.Core.Services.Listing
                 throw new ArgumentNullException("No commands created yet");
             }
 
-            this.writer.WriteLine(("The following commands are available:"));
+            this.writer.WriteLine("The following commands are available:");
             var counter = 0;
 
             foreach (var command in commandsList)
             {
-                this.writer.WriteLine($"{++counter}. {command.Substring(0, command.Length - "command".Length)}");
+                this.writer.WriteLine($"{++counter}. {command}");
             }
         }
 

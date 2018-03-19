@@ -5,6 +5,13 @@ namespace HatchlingCompany.Models
 {
     public class Project
     {
+        private ICollection<Employee> employees;
+
+        public Project()
+        {
+            this.employees = new HashSet<Employee>();
+        }
+
         public int Id { get; set; }
 
         [MinLength(2)]
@@ -17,6 +24,11 @@ namespace HatchlingCompany.Models
         public int ManagerId { get; set; }
         public virtual Employee Manager { get; set; }
 
-        public virtual ICollection<Employee> Employees { get; set; } = new HashSet<Employee>();
+        public virtual ICollection<Employee> Employees
+        {
+            get => this.employees;
+
+            set => this.employees = value;
+        }
     }
 }

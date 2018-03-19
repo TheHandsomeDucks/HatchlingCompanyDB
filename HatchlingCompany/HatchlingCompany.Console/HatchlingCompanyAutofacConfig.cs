@@ -37,7 +37,7 @@ namespace HatchlingCompany.Console
             builder.RegisterType<FindEmployeeByMail>().Named<ICommand>("findemployeebymail").InstancePerDependency();
 
             // Listing Named Services
-            builder.RegisterType<HelpCommand>().Named<ICommand>("help").InstancePerDependency();
+            builder.RegisterType<Help>().Named<ICommand>("help").InstancePerDependency();
             builder.RegisterType<ListEmployees>().Named<ICommand>("listemployees").InstancePerDependency();
             builder.RegisterType<ListEmployeeDetails>().Named<ICommand>("listemployeedetails").InstancePerDependency();
         }

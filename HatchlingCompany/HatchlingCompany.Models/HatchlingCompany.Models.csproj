@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comment.cs" />
     <Compile Include="Common\EmployeeStatus.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Department.cs" />

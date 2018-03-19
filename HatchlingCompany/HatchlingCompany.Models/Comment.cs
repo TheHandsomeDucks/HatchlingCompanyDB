@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace HatchlingCompany.Models
 {
@@ -15,7 +11,8 @@ namespace HatchlingCompany.Models
 
         public int RecipientId { get; set; }
         public virtual Employee Recipient { get; set; }
-
+        
+        [MinLength(2)]
         public string Content { get; set; }
     }
 }

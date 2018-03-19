@@ -21,6 +21,8 @@ namespace HatchlingCompany.Data
 
         public virtual IDbSet<Project> Projects { get; set; }
 
+        public virtual IDbSet<Comment> Comments { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
@@ -50,6 +52,14 @@ namespace HatchlingCompany.Data
             modelBuilder.Entity<Project>()
                 .HasMany(x => x.Employees)
                 .WithMany(x => x.Projects);
+
+            modelBuilder.Entity<Comment>()
+                .HasRequired(x => x.Author)
+                .WithMany(x => x.SentComments);
+
+            modelBuilder.Entity<Comment>()
+                .HasRequired(x => x.Recipient)
+                .WithMany(x => x.ReceivedComments);
 
             base.OnModelCreating(modelBuilder);
         }

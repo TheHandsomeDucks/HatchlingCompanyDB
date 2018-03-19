@@ -47,7 +47,7 @@ namespace HatchlingCompany.Models
 
         [DataType(DataType.Currency)]
         public decimal? Salary { get; set; }
-
+ 
         [MinLength(2)]
         [MaxLength(30)]
         public string JobTitle { get; set; }
@@ -59,5 +59,9 @@ namespace HatchlingCompany.Models
         public virtual Department Department { get; set; }
 
         public virtual ICollection<Project> Projects { get; set; }
+
+        public virtual ICollection<Comment> SentComments { get; set; }
+
+        public virtual ICollection<Comment> ReceivedComments { get; set; }
     }
 }

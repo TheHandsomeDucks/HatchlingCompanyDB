@@ -22,7 +22,6 @@ namespace HatchlingCompany.Core.Services.Listing
 
         public string Execute(IList<string> parameters)
         {
-            //var parameters = this.Parameters;
             var email = parameters[1];
 
             var employee = this.db.Employees.SingleOrDefault(e => e.Email == email);

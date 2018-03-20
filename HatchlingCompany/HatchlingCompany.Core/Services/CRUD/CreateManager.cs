@@ -23,7 +23,7 @@ namespace HatchlingCompany.Core.Services.CRUD
             {
                 throw new ArgumentNullException(nameof(parameters));
             }
-            //var parameters = this.Parameters;
+
             var firstName = parameters[1];
             var lastName = parameters[2];
             var email = parameters[3];

@@ -23,7 +23,6 @@ namespace HatchlingCompany.Core.Services.CRUD
                 throw new ArgumentNullException(nameof(parameters));
             }
 
-            //var parameters = this.Parameters;
             var email = parameters[1];
             var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[2].ToLower());
 

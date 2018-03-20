@@ -27,7 +27,6 @@ namespace HatchlingCompany.Core.Services.Listing
                 throw new ArgumentNullException(nameof(parameters));
             }
 
-            //var parameters = this.Parameters;
             var name = parameters[1];
 
             var project = this.db.Projects.SingleOrDefault(p => p.Name == name);

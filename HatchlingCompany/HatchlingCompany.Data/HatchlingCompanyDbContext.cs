@@ -12,6 +12,7 @@ namespace HatchlingCompany.Data
         {
         }
 
+        // for unit testing with Effort
         public HatchlingCompanyDbContext(DbConnection connection)
             : base(connection, true)
         {

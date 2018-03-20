@@ -27,7 +27,7 @@ namespace HatchlingCompany.Core.Services.Listing
             {
                 throw new ArgumentNullException(nameof(parameters));
             }
-            //var parameters = this.Parameters;
+
             var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[1].ToLower());
 
             var employees = this.db

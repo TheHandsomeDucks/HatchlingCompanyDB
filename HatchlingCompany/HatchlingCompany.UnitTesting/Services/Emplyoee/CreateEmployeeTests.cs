@@ -1,8 +1,7 @@
 ﻿using HatchlingCompany.Core.Commands.Implementations;
+using HatchlingCompany.Core.Services.CRUD;
 using HatchlingCompany.Data;
-using HatchlingCompany.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,22 +15,22 @@ namespace HatchlingCompany.UnitTesting.Services.Emplyoee
         {
             // Arragne
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
-
             var createEmployeeService = new CreateEmployee(dbMock);
-            var employeeMock = new Mock<Employee>();
+            var createManagerService = new CreateManager(dbMock);
 
-            var parameters = new List<string>()
+            createManagerService.Execute(new List<string>()
             {
-                "Pesho", "Velev", "mail", "phone", "1"
-            };
+                "createManager", "Manager", "Manager", "mailm", "phone"
+            });
 
             //Act
-            createEmployeeService.Execute(parameters);
-
-            dbMock.Employees.Add(employeeMock.Object);
+            createEmployeeService.Execute(new List<string>()
+            {
+                "createEmployee", "Alex", "Alexov", "maila", "phone", "1"
+            });
 
             // Assert
-            Assert.AreEqual(1, dbMock.Employees.Count());
+            Assert.AreEqual(2, dbMock.Employees.Count());
         }
     }
 }

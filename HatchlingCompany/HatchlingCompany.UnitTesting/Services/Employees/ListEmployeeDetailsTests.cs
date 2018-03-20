@@ -1,10 +1,8 @@
 ﻿using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Common.Implementations;
-using HatchlingCompany.Core.Models;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
-using HatchlingCompany.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
@@ -44,7 +42,8 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             var employee = dbMock.Employees.SingleOrDefault(x => x.Email == "alex@gmail.com");
 
             // Assert
-            Assert.AreEqual(employee.FirstName, "Alex"); // TODO
+            Assert.AreEqual(employee.FirstName, "Alex"); // TODO error Message: Test method HatchlingCompany.UnitTesting.Services.Employees.ListEmployeeDetailsTests.ListEmployeeDetails_Should_Call_PrintInfo_Of_Concret_Employee threw exception: 
+                                                         //System.IO.FileLoadException: Could not load file or assembly 'System.Data.Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies.The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
         }
 
     }

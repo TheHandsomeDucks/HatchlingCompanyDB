@@ -29,9 +29,8 @@ namespace HatchlingCompany.Core.Services.Listing
 
             if (employee == null)
             {
-                this.writer.WriteLine($"Person with {email} could not be found");
+                throw new ArgumentNullException($"Person with {email} could not be found");
             }
-
 
             var sb = new StringBuilder();
             sb.AppendLine("Listing employees details...");
@@ -42,19 +41,9 @@ namespace HatchlingCompany.Core.Services.Listing
                                      .ProjectTo<ListEmployeeDetailsModel>()
                                      .SingleOrDefault();
 
-
-            //foreach (var prop in employeeDetails)
-            //{
-            //    if (prop != null)
-            //    {
-            //        sb.AppendLine(prop);
-            //    }
-            //}
-
             sb.AppendLine(employeeDetails.PrintInfo());
 
             this.writer.WriteLine(sb.ToString());
-
         }
     }
 }

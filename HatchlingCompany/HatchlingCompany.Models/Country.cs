@@ -5,9 +5,11 @@ namespace HatchlingCompany.Models
 {
     public class Country
     {
+        private ICollection<Town> towns;
+
         public Country()
         {
-            this.Towns = new HashSet<Town>();
+            this.towns = new HashSet<Town>();
         }
         
         public int Id { get; set; }
@@ -16,6 +18,11 @@ namespace HatchlingCompany.Models
         [MaxLength(50)]
         public string Name { get; set; }
 
-        public virtual ICollection<Town> Towns { get; set; } = new HashSet<Town>();
+        public virtual ICollection<Town> Towns
+        {
+            get => this.towns;
+
+            set => this.towns = value;
+        }
     }
 }

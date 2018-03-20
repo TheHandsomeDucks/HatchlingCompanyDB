@@ -1,6 +1,7 @@
 ﻿using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Common.Implementations;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models;
@@ -19,8 +20,8 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         {
             // Arrange 
             // create employee
-            var writerMock = new Mock<IWriter>();
             AutoMapperProfile.Initialize();
+            var writerMock = new Mock<IWriter>();
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
             var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object);
 
@@ -39,12 +40,12 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
 
             // Act
             listEmployeeDetailsService.Execute(listDetailsParamas);
+
             var employee = dbMock.Employees.SingleOrDefault(x => x.Email == "alex@gmail.com");
 
             // Assert
-            Assert.IsInstanceOfType(employee, typeof(Employee));
+            Assert.AreEqual(employee.FirstName, "Alex"); // TODO
         }
-
 
     }
 }

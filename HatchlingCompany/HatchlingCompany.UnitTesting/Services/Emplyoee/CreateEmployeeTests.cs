@@ -24,13 +24,17 @@ namespace HatchlingCompany.UnitTesting.Services.Emplyoee
             });
 
             //Act
-            createEmployeeService.Execute(new List<string>()
+            var returnMessage = createEmployeeService.Execute(new List<string>()
             {
                 "createEmployee", "Alex", "Alexov", "maila", "phone", "1"
             });
 
+            var employee = dbMock.Employees.SingleOrDefault(e => e.Email == "maila");
+
             // Assert
             Assert.AreEqual(2, dbMock.Employees.Count());
+            Assert.AreEqual("maila", employee.Email);
+            Assert.AreEqual(returnMessage, "A new employee with name Alex Alexov was created.");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HatchlingCompany.Models;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -8,6 +9,12 @@ namespace HatchlingCompany.Data
     {
         public HatchlingCompanyDbContext()
             : base("HatchlingCompanyConnection")
+        {
+        }
+
+        // for unit testing with Effort
+        public HatchlingCompanyDbContext(DbConnection connection)
+            : base(connection, true)
         {
         }
 
@@ -47,7 +54,7 @@ namespace HatchlingCompany.Data
                 .WithOptional(x => x.Department);
 
             modelBuilder.Entity<Project>()
-              .HasRequired(x => x.Manager);
+              .HasOptional(x => x.Manager);
 
             modelBuilder.Entity<Project>()
                 .HasMany(x => x.Employees)

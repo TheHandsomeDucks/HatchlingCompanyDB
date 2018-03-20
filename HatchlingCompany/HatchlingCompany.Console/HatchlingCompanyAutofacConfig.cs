@@ -31,11 +31,8 @@ namespace HatchlingCompany.Console
 
             // DbContext
             builder.RegisterType<HatchlingCompanyDbContext>().As<IDbContext>().InstancePerDependency();
+
             // --------------------- CRUD -------------------------
-
-            // Manager
-            builder.RegisterType<CreateManager>().Named<ICommand>("createmanager").InstancePerDependency();
-
             // Employees
             builder.RegisterType<CreateEmployee>().Named<ICommand>("createemployee").InstancePerDependency();
             builder.RegisterType<FindEmployeeByMail>().Named<ICommand>("findemployeebymail").InstancePerDependency();
@@ -45,7 +42,6 @@ namespace HatchlingCompany.Console
             builder.RegisterType<FindProjectByName>().Named<ICommand>("findprojectbyname").InstancePerDependency();
 
             // ------------------   Listing  ---------------------------------
-
             // Help
             builder.RegisterType<Help>().Named<ICommand>("help").InstancePerDependency();
 

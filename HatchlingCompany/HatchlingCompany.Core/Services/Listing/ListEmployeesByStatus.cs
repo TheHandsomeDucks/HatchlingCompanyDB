@@ -1,16 +1,16 @@
 ﻿using AutoMapper.QueryableExtensions;
 using HatchlingCompany.Core.Common.Contracts;
-using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class ListEmployeesByStatus : Command
+    public class ListEmployeesByStatus : ICommand
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
@@ -21,9 +21,13 @@ namespace HatchlingCompany.Core.Services.Listing
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public override void Execute()
+        public void Execute(IList<string> parameters)
         {
-            var parameters = this.Parameters;
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+
             var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[1].ToLower());
 
             var employees = this.db
@@ -42,6 +46,8 @@ namespace HatchlingCompany.Core.Services.Listing
             employees.ForEach(e => sb.AppendLine($"FullName: {e.FirstName} {e.LastName}"));
 
             this.writer.WriteLine(sb.ToString());
+
+            this.writer.WriteLine($"All employees with status {status} have been listed");
         }
     }
 }

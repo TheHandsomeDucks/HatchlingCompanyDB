@@ -1,12 +1,12 @@
 ﻿using HatchlingCompany.Core.Common.Contracts;
-using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Data;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class FindProjectByName : Command
+    public class FindProjectByName : ICommand
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
@@ -17,9 +17,13 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public override void Execute()
+        public void Execute(IList<string> parameters)
         {
-            var parameters = this.Parameters;
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+
             var name = parameters[1];
 
             var project = this.db.Projects.SingleOrDefault(p => p.Name == name);
@@ -32,6 +36,8 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.writer.WriteLine($"Name: {project.Name}");
             this.writer.WriteLine($"Manager: {project.Manager.FirstName} {project.Manager.LastName}");
             this.writer.WriteLine($"Details: {project.Detail}");
+
+            this.writer.WriteLine($"Project with name {name} was found");
         }
     }
 }

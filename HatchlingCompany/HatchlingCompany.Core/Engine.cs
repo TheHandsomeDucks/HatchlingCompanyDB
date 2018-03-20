@@ -5,11 +5,11 @@ namespace HatchlingCompany.Core
 {
     public class Engine : IEngine
     {
-        private readonly ICommandProcessor commandProcessor;
+        private readonly ICommandParser commandProcessor;
         private readonly IReader reader;
         private readonly IWriter writer;
 
-        public Engine(ICommandProcessor commandProcessor, IReader reader, IWriter writer)
+        public Engine(ICommandParser commandProcessor, IReader reader, IWriter writer)
         {
             this.commandProcessor = commandProcessor ?? throw new ArgumentNullException("commandProcessor");
             this.reader = reader ?? throw new ArgumentNullException(nameof(reader));
@@ -30,7 +30,7 @@ namespace HatchlingCompany.Core
                     break;
                 }
 
-                this.commandProcessor.ProcessCommand(commandLine);
+                this.commandProcessor.ParseCommand(commandLine);
 
                 this.writer.WriteLine("Waiting for command...");
             }

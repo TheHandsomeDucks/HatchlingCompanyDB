@@ -1,25 +1,31 @@
-﻿using HatchlingCompany.Core.Common.Implementations;
+﻿using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class CreateProject : Command
+    public class CreateProject : ICommand
     {
         private readonly IDbContext db;
+        private readonly IWriter writer;
 
-        public CreateProject(IDbContext db)
+        public CreateProject(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
+            this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public override void Execute()
+        public void Execute(IList<string> parameters)
         {
-            var parameters = this.Parameters;
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+
             var name = parameters[1];
-            var managerId = int.Parse(parameters[2]);
 
             var project = this.db.Projects.SingleOrDefault(p => p.Name == name);
 
@@ -30,11 +36,12 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             this.db.Projects.Add(new Project
             {
-                Name = name,
-                ManagerId = managerId
+                Name = name
             });
 
             this.db.SaveChanges();
+
+            this.writer.WriteLine($"A new project with name {name} was created.");
         }
     }
 }

@@ -19,9 +19,9 @@ namespace HatchlingCompany.Core.Models
 
         public string PhoneNumber { get; set; }
 
-        public DateTime Birthdate { get; set; }
+        public DateTime? Birthdate { get; set; }
 
-        public DateTime HireDate { get; set; }
+        public DateTime? HireDate { get; set; }
 
         public string BankAccount { get; set; }
 
@@ -39,14 +39,14 @@ namespace HatchlingCompany.Core.Models
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine($"Full Name: {this.FirstName} {this.MiddleName} {this.LastName}");
+            sb.AppendLine($"Full Name: {this.FirstName} {this.LastName}");
             sb.AppendLine($"Email: {this.Email}");
             sb.AppendLine($"PhoneNumber: {this.PhoneNumber}");
             sb.AppendLine($"Birthdate: {this.Birthdate}");
             sb.AppendLine($"HireDate: {this.HireDate}");
             sb.AppendLine($"BankAccount: {this.BankAccount}");
             sb.AppendLine($"Job Title: {this.JobTitle}");
-            sb.AppendLine($"Manager: {this.Manager.FirstName} {this.Manager.LastName}");
+            // sb.AppendLine($"Manager: {this.Manager.FirstName} {this.Manager.LastName}");
             sb.AppendLine($"Department: {this.Department}");
 
             return sb.ToString();

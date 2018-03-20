@@ -7,13 +7,13 @@ namespace HatchlingCompany.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class init : IMigrationMetadata
+    public sealed partial class managerforprojectsettonullable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(managerforprojectsettonullable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803191134138_init"; }
+            get { return "201803200926310_manager for project set to nullable"; }
         }
         
         string IMigrationMetadata.Source

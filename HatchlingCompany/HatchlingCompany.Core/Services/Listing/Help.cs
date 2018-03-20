@@ -1,5 +1,4 @@
 ﻿using HatchlingCompany.Core.Common.Contracts;
-using HatchlingCompany.Core.Common.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Reflection;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class Help : Command
+    public class Help : ICommand
     {
         private readonly IWriter writer;
 
@@ -16,8 +15,13 @@ namespace HatchlingCompany.Core.Services.Listing
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public override void Execute()
+        public void Execute(IList<string> parameters)
         {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+
             var commandsList = this.GetAllCommandNames().OrderBy(x => x);
 
             if (commandsList == null)
@@ -25,7 +29,7 @@ namespace HatchlingCompany.Core.Services.Listing
                 throw new ArgumentNullException("No commands created yet");
             }
 
-            this.writer.WriteLine("The following commands are available:");
+            this.writer.WriteLine($"Listing available commands...");
             var counter = 0;
 
             foreach (var command in commandsList)

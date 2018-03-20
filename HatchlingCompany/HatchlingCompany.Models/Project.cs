@@ -23,7 +23,7 @@ namespace HatchlingCompany.Models
         [DataType(DataType.MultilineText)]
         public string Detail { get; set; }
 
-        public int ManagerId { get; set; }
+        public int? ManagerId { get; set; }
         public virtual Employee Manager { get; set; }
 
         public virtual ICollection<Employee> Employees

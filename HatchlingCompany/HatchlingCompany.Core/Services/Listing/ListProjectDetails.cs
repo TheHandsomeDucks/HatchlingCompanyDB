@@ -1,15 +1,15 @@
 ﻿using AutoMapper.QueryableExtensions;
 using HatchlingCompany.Core.Common.Contracts;
-using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class ListProjectDetails : Command
+    public class ListProjectDetails : ICommand
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
@@ -20,9 +20,13 @@ namespace HatchlingCompany.Core.Services.Listing
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public override void Execute()
+        public void Execute(IList<string> parameters)
         {
-            var parameters = this.Parameters;
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+
             var name = parameters[1];
 
             var project = this.db.Projects.SingleOrDefault(p => p.Name == name);
@@ -43,6 +47,8 @@ namespace HatchlingCompany.Core.Services.Listing
             sb.AppendLine(projectDetails.PrintInfo());
 
             this.writer.WriteLine(sb.ToString());
+
+            this.writer.WriteLine($"All details for project {name} have been listed");
         }
     }
 }

@@ -7,7 +7,7 @@ namespace HatchlingCompany.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationDataLossAllowed = false;
         }
     }
 }

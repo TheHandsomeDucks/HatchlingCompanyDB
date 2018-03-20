@@ -17,7 +17,7 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public string Execute(IList<string> parameters)
+        public void Execute(IList<string> parameters)
         {
             if (parameters == null)
             {
@@ -37,7 +37,7 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.writer.WriteLine($"Email: {employee.Email}");
             this.writer.WriteLine($"Phone: {employee.PhoneNumber}");
 
-            return $"Employee with email {email} was found";
+            this.writer.WriteLine($"Employee with email {email} was found");
         }
     }
 }

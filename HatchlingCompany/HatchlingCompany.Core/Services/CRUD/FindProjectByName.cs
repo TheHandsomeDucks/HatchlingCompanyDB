@@ -17,7 +17,7 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public string Execute(IList<string> parameters)
+        public void Execute(IList<string> parameters)
         {
             if (parameters == null)
             {
@@ -37,7 +37,7 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.writer.WriteLine($"Manager: {project.Manager.FirstName} {project.Manager.LastName}");
             this.writer.WriteLine($"Details: {project.Detail}");
 
-            return $"Project with name {name} was found";
+            this.writer.WriteLine($"Project with name {name} was found");
         }
     }
 }

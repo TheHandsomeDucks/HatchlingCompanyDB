@@ -20,7 +20,7 @@ namespace HatchlingCompany.Core.Services.Listing
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public string Execute(IList<string> parameters)
+        public void Execute(IList<string> parameters)
         {
             var email = parameters[1];
 
@@ -40,11 +40,13 @@ namespace HatchlingCompany.Core.Services.Listing
                                      .ProjectTo<ListEmployeeDetailsModel>()
                                      .SingleOrDefault();
 
+
             sb.AppendLine(employeeDetails.PrintInfo());
+
 
             this.writer.WriteLine(sb.ToString());
 
-            return $"All details for employee {employee.FirstName} {employee.LastName} have been listed";
+            this.writer.WriteLine($"All details for employee {employee.FirstName} {employee.LastName} have been listed");
         }
     }
 }

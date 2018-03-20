@@ -1,11 +1,13 @@
 ﻿using HatchlingCompany.Core.Commands.Implementations;
+using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
 
-namespace HatchlingCompany.UnitTesting.Services.Emplyoee
+namespace HatchlingCompany.UnitTesting.Services.Employees
 {
     [TestClass]
     public class CreateEmployeeTests
@@ -15,7 +17,8 @@ namespace HatchlingCompany.UnitTesting.Services.Emplyoee
         {
             // Arragne
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
-            var createEmployeeService = new CreateEmployee(dbMock);
+            var writerMock = new Mock<IWriter>();
+            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object);
 
             //Act
             var parameters = new List<string>()
@@ -28,14 +31,15 @@ namespace HatchlingCompany.UnitTesting.Services.Emplyoee
         }
 
         [TestMethod]
-        public void CreateEmployee_Should_Create_Employee()
+        public void CreateEmployee_Should_Create_New_Employee()
         {
             // Arragne
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
-            var createEmployeeService = new CreateEmployee(dbMock);
+            var writerMock = new Mock<IWriter>();
+            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object);
 
             //Act
-            var returnMessage = createEmployeeService.Execute(new List<string>()
+            createEmployeeService.Execute(new List<string>()
             {
                 "createEmployee", "Alex", "Alexov", "alex@gmail.com", "phone"
             });
@@ -45,7 +49,6 @@ namespace HatchlingCompany.UnitTesting.Services.Emplyoee
             // Assert
             Assert.AreEqual(1, dbMock.Employees.Count());
             Assert.AreEqual("alex@gmail.com", employee.Email);
-            Assert.AreEqual(returnMessage, "A new employee with name Alex Alexov was created.");
         }
     }
 }

@@ -10,13 +10,15 @@ namespace HatchlingCompany.Core.Services.CRUD
     public class UpdateEmployeeStatus : ICommand
     {
         private readonly IDbContext db;
+        private readonly IWriter writer;
 
-        public UpdateEmployeeStatus(IDbContext db)
+        public UpdateEmployeeStatus(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
+            this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public string Execute(IList<string> parameters)
+        public void Execute(IList<string> parameters)
         {
             if (parameters == null)
             {
@@ -39,7 +41,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             this.db.SaveChanges();
 
-            return $"{employee.FirstName} {employee.LastName} status was updated to {employee.Status} ";
+            this.writer.WriteLine($"{employee.FirstName} {employee.LastName} status was updated to {employee.Status}");
         }
     }
 }

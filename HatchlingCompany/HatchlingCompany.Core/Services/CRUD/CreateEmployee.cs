@@ -10,13 +10,15 @@ namespace HatchlingCompany.Core.Commands.Implementations
     public class CreateEmployee : ICommand
     {
         private readonly IDbContext db;
+        private readonly IWriter writer;
 
-        public CreateEmployee(IDbContext db)
+        public CreateEmployee(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
+            this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public string Execute(IList<string> parameters)
+        public void Execute(IList<string> parameters)
         {
             if (parameters == null)
             {
@@ -46,7 +48,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
             this.db.SaveChanges();
 
-            return $"A new employee with name {firstName} {lastName} was created.";
+            this.writer.WriteLine($"A new employee with name {firstName} {lastName} was created.");
         }
     }
 }

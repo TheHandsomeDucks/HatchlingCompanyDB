@@ -15,7 +15,7 @@ namespace HatchlingCompany.Core.Services.Listing
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public string Execute(IList<string> parameters)
+        public void Execute(IList<string> parameters)
         {
             if (parameters == null)
             {
@@ -29,15 +29,13 @@ namespace HatchlingCompany.Core.Services.Listing
                 throw new ArgumentNullException("No commands created yet");
             }
 
-            this.writer.WriteLine("The following commands are available:");
+            this.writer.WriteLine($"Listing available commands...");
             var counter = 0;
 
             foreach (var command in commandsList)
             {
                 this.writer.WriteLine($"{++counter}. {command}");
             }
-
-            return $"Listing available commands...";
         }
 
         private IEnumerable<string> GetAllCommandNames()

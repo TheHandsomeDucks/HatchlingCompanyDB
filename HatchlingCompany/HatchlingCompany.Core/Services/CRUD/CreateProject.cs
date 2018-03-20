@@ -10,13 +10,15 @@ namespace HatchlingCompany.Core.Services.CRUD
     public class CreateProject : ICommand
     {
         private readonly IDbContext db;
+        private readonly IWriter writer;
 
-        public CreateProject(IDbContext db)
+        public CreateProject(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
+            this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public string Execute(IList<string> parameters)
+        public void Execute(IList<string> parameters)
         {
             if (parameters == null)
             {
@@ -39,7 +41,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             this.db.SaveChanges();
 
-            return $"A new project with name {name} was created.";
+            this.writer.WriteLine($"A new project with name {name} was created.");
         }
     }
 }

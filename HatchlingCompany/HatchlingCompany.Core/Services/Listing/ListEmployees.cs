@@ -20,7 +20,7 @@ namespace HatchlingCompany.Core.Services.Listing
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public string Execute(IList<string> parameters)
+        public void Execute(IList<string> parameters)
         {
             if (parameters == null)
             {
@@ -47,7 +47,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             this.writer.WriteLine(sb.ToString());
 
-            return $"All employees have been listed";
+            this.writer.WriteLine($"All employees have been listed");
         }
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8CF99061-1BD7-4E31-94C9-E9846BD5ED0E}</ProjectGuid>
+    <ProjectGuid>{699E720F-81D0-43F4-95EC-5577404D2E12}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>HatchlingCompany.Console</RootNamespace>
-    <AssemblyName>HatchlingCompany.Console</AssemblyName>
+    <RootNamespace>HatchlingCompany.Sandbox</RootNamespace>
+    <AssemblyName>HatchlingCompany.Sandbox</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,29 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>HatchlingCompany.Data.Startup</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,23 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HatchlingCompanyAutofacConfig.cs" />
+    <Compile Include="Sandbox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Core.csproj">
-      <Project>{00CEBC20-1262-4F2D-9041-79673AEEE5A9}</Project>
-      <Name>HatchlingCompany.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">
-      <Project>{02ad755b-24ce-4184-8f86-1add9d792cf3}</Project>
-      <Name>HatchlingCompany.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HatchlingCompany.Utils\HatchlingCompany.Utils.csproj">
       <Project>{F89833FC-A673-4CD5-92F1-2A8D034B7204}</Project>
       <Name>HatchlingCompany.Utils</Name>

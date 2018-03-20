@@ -54,7 +54,7 @@ namespace HatchlingCompany.Data
                 .WithOptional(x => x.Department);
 
             modelBuilder.Entity<Project>()
-              .HasRequired(x => x.Manager);
+              .HasOptional(x => x.Manager);
 
             modelBuilder.Entity<Project>()
                 .HasMany(x => x.Employees)

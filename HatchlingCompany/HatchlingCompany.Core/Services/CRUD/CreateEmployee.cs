@@ -22,12 +22,11 @@ namespace HatchlingCompany.Core.Commands.Implementations
             {
                 throw new ArgumentNullException(nameof(parameters));
             }
-            
+
             var firstName = parameters[1];
             var lastName = parameters[2];
             var email = parameters[3];
             var phoneNumber = parameters[4];
-            var managerId = int.Parse(parameters[5]);
 
             var employee = this.db.Employees.SingleOrDefault(e => e.Email == email);
 
@@ -42,8 +41,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
-                PhoneNumber = phoneNumber,
-                ManagerId = managerId
+                PhoneNumber = phoneNumber
             });
 
             this.db.SaveChanges();

@@ -24,7 +24,6 @@ namespace HatchlingCompany.Core.Services.CRUD
             }
 
             var name = parameters[1];
-            var managerId = int.Parse(parameters[2]);
 
             var project = this.db.Projects.SingleOrDefault(p => p.Name == name);
 
@@ -35,8 +34,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             this.db.Projects.Add(new Project
             {
-                Name = name,
-                ManagerId = managerId
+                Name = name
             });
 
             this.db.SaveChanges();

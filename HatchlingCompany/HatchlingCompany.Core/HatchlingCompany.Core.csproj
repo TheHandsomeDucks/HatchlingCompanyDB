@@ -77,7 +77,6 @@
     <Compile Include="Common\Implemetations\ConsoleReader.cs" />
     <Compile Include="Common\Implemetations\ConsoleWriter.cs" />
     <Compile Include="Services\CRUD\CreateEmployee.cs" />
-    <Compile Include="Services\CRUD\CreateManager.cs" />
     <Compile Include="Services\CRUD\CreateProject.cs" />
     <Compile Include="Services\CRUD\FindEmployeeByMail.cs" />
     <Compile Include="Services\CRUD\FindProjectByName.cs" />

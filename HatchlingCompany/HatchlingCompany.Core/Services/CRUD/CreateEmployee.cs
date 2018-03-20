@@ -1,12 +1,13 @@
-﻿using HatchlingCompany.Core.Common.Implementations;
+﻿using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HatchlingCompany.Core.Commands.Implementations
 {
-    public class CreateEmployee : Command
+    public class CreateEmployee : ICommand
     {
         private readonly IDbContext db;
 
@@ -15,9 +16,13 @@ namespace HatchlingCompany.Core.Commands.Implementations
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public override void Execute()
+        public string Execute(IList<string> parameters)
         {
-            var parameters = this.Parameters;
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+            //var parameters = this.Parameters;
             var firstName = parameters[1];
             var lastName = parameters[2];
             var email = parameters[3];
@@ -42,6 +47,8 @@ namespace HatchlingCompany.Core.Commands.Implementations
             });
 
             this.db.SaveChanges();
+
+            return $"A new employee with name {firstName} {lastName} was created.";
         }
     }
 }

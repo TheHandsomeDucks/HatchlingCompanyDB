@@ -4,8 +4,6 @@ namespace HatchlingCompany.Core.Common.Contracts
 {
     public interface ICommand
     {
-        void Execute();
-
-        IList<string> Parameters { get; set; }
+        string Execute(IList<string> parameters);
     }
 }

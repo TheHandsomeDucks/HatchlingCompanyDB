@@ -1,15 +1,15 @@
 ﻿using AutoMapper.QueryableExtensions;
 using HatchlingCompany.Core.Common.Contracts;
-using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace HatchlingCompany.Core.Services.Listing
 {
-    public class ListEmployeeDetails : Command
+    public class ListEmployeeDetails : ICommand
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
@@ -20,9 +20,9 @@ namespace HatchlingCompany.Core.Services.Listing
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public override void Execute()
+        public string Execute(IList<string> parameters)
         {
-            var parameters = this.Parameters;
+            //var parameters = this.Parameters;
             var email = parameters[1];
 
             var employee = this.db.Employees.SingleOrDefault(e => e.Email == email);
@@ -44,6 +44,8 @@ namespace HatchlingCompany.Core.Services.Listing
             sb.AppendLine(employeeDetails.PrintInfo());
 
             this.writer.WriteLine(sb.ToString());
+
+            return $"All details for employee {employee.FirstName} {employee.LastName} have been listed";
         }
     }
 }

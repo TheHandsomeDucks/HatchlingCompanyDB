@@ -1,12 +1,13 @@
-﻿using HatchlingCompany.Core.Common.Implementations;
+﻿using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class CreateProject : Command
+    public class CreateProject : ICommand
     {
         private readonly IDbContext db;
 
@@ -15,9 +16,13 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public override void Execute()
+        public string Execute(IList<string> parameters)
         {
-            var parameters = this.Parameters;
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+            //var parameters = this.Parameters;
             var name = parameters[1];
             var managerId = int.Parse(parameters[2]);
 
@@ -35,6 +40,8 @@ namespace HatchlingCompany.Core.Services.CRUD
             });
 
             this.db.SaveChanges();
+
+            return $"A new project with name {name} was created.";
         }
     }
 }

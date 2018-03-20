@@ -1,4 +1,5 @@
 ﻿using HatchlingCompany.Models;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -8,6 +9,11 @@ namespace HatchlingCompany.Data
     {
         public HatchlingCompanyDbContext()
             : base("HatchlingCompanyConnection")
+        {
+        }
+
+        public HatchlingCompanyDbContext(DbConnection connection)
+            : base(connection, true)
         {
         }
 

@@ -5,26 +5,25 @@ using System.Linq;
 
 namespace HatchlingCompany.Core.Common.Implementations
 {
-    public class CommandProcessor : ICommandProcessor
+    public class CommandParser : ICommandParser
     {
         private readonly IWriter writer;
         private readonly ICommandFactory commandFactory;
 
-        public CommandProcessor(IWriter writer, ICommandFactory commandFactory)
+        public CommandParser(ICommandFactory commandFactory, IWriter writer)
         {
             this.commandFactory = commandFactory;
             this.writer = writer;
         }
 
-        public void ProcessCommand(string commandLine)
+        public void ParseCommand(string commandLine)
         {
             var commandParts = commandLine.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             var delimeter = "----------------------------------------";
 
             if (!commandParts.Any())
             {
-                this.writer.WriteLine("Please add a valid command!");
-                return;
+                throw new ArgumentException("Please add a valid command!");
             }
 
             try
@@ -34,12 +33,11 @@ namespace HatchlingCompany.Core.Common.Implementations
 
                 if (command == null)
                 {
-                    this.writer.WriteLine("Invalid command! To read about all commmands, write listCommands and press enter");
+                    throw new ArgumentException("Invalid command! Type in help to get all commands");
                 }
                 else
                 {
-                    command.Parameters = commandParts;
-                    command.Execute();
+                    command.Execute(commandParts);
                 }
             }
             catch (Exception ex)

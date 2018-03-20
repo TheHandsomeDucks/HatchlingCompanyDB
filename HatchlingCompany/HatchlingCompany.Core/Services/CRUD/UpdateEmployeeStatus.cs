@@ -1,12 +1,13 @@
-﻿using HatchlingCompany.Core.Common.Implementations;
+﻿using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class UpdateEmployeeStatus : Command
+    public class UpdateEmployeeStatus : ICommand
     {
         private readonly IDbContext db;
 
@@ -15,9 +16,14 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
 
-        public override void Execute()
+        public string Execute(IList<string> parameters)
         {
-            var parameters = this.Parameters;
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+
+            //var parameters = this.Parameters;
             var email = parameters[1];
             var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[2].ToLower());
 
@@ -33,6 +39,8 @@ namespace HatchlingCompany.Core.Services.CRUD
             employee.Status = status;
 
             this.db.SaveChanges();
+
+            return $"{employee.FirstName} {employee.LastName} status was updated to {employee.Status} ";
         }
     }
 }

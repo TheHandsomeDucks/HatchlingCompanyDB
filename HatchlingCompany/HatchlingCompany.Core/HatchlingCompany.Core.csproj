@@ -60,9 +60,8 @@
     <Compile Include="Common\Contracts\ICommand.cs" />
     <Compile Include="Common\Contracts\ICustomMapping.cs" />
     <Compile Include="Common\Contracts\IMapFrom.cs" />
-    <Compile Include="Common\Implemetations\Command.cs" />
-    <Compile Include="Common\Implemetations\CommandProcessor.cs" />
-    <Compile Include="Common\Contracts\ICommandProcessor.cs" />
+    <Compile Include="Common\Implemetations\CommandParser.cs" />
+    <Compile Include="Common\Contracts\ICommandParser.cs" />
     <Compile Include="Factories\Contracts\ICommandFactory.cs" />
     <Compile Include="Factories\Implementations\CommandFactory.cs" />
     <Compile Include="IEngine.cs" />

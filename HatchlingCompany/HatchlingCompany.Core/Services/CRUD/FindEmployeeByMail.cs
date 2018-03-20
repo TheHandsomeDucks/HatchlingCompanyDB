@@ -1,12 +1,12 @@
 ﻿using HatchlingCompany.Core.Common.Contracts;
-using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Data;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HatchlingCompany.Core.Services.CRUD
 {
-    public class FindEmployeeByMail : Command
+    public class FindEmployeeByMail : ICommand
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
@@ -17,9 +17,13 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
 
-        public override void Execute()
+        public string Execute(IList<string> parameters)
         {
-            var parameters = this.Parameters;
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+            //var parameters = this.Parameters;
             var email = parameters[1];
 
             var employee = this.db.Employees.SingleOrDefault(e => e.Email == email);
@@ -32,6 +36,8 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.writer.WriteLine($"Fullname: {employee.FirstName} {employee.LastName}");
             this.writer.WriteLine($"Email: {employee.Email}");
             this.writer.WriteLine($"Phone: {employee.PhoneNumber}");
+
+            return $"Employee with email {email} was found";
         }
     }
 }

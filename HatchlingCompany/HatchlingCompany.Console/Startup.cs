@@ -5,6 +5,8 @@ using HatchlingCompany.Data.Migrations;
 using System;
 using System.Data.Entity;
 using System.Reflection;
+using System.Text;
+using HatchlingCompany.Utils;
 
 namespace HatchlingCompany.Data
 {

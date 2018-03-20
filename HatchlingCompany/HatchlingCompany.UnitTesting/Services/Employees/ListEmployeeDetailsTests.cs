@@ -31,13 +31,13 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
 
             // create listEmployeeDetails
             var listEmployeeDetailsService = new ListEmployeeDetails(dbMock, writerMock.Object);
-            var listDetailsParamas = new List<string>()
+            var parameters = new List<string>()
             {
                 "listemployeedetails", "alex@gmail.com"
             };
 
             // Act
-            listEmployeeDetailsService.Execute(listDetailsParamas);
+            listEmployeeDetailsService.Execute(parameters);
 
             var employee = dbMock.Employees.SingleOrDefault(x => x.Email == "alex@gmail.com");
 

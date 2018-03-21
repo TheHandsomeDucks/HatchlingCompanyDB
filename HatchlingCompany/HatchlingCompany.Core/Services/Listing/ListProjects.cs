@@ -42,12 +42,12 @@ namespace HatchlingCompany.Core.Services.Listing
 
             foreach (var project in projects)
             {
-                sb.AppendLine(project.PrintInfo());
+                sb.Append(project.PrintInfo());
             }
 
             this.writer.WriteLine(sb.ToString());
 
-            this.writer.WriteLine($"All project have been listed");
+            this.writer.WriteLine($"All projects have been listed");
         }
     }
 }

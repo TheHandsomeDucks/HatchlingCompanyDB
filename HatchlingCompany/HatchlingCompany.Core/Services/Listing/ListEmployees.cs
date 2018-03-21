@@ -42,7 +42,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             foreach (var employee in employees)
             {
-                sb.AppendLine(employee.PrintInfo());
+                sb.Append(employee.PrintInfo());
             }
 
             this.writer.WriteLine(sb.ToString());

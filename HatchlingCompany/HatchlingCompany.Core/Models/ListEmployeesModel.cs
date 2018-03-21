@@ -10,14 +10,14 @@ namespace HatchlingCompany.Core.Models
 
         public string LastName { get; set; }
 
-        public string JobTitle { get; set; }
+        public string Email { get; set; }
 
         public string PrintInfo()
         {
             var sb = new StringBuilder();
 
             sb.AppendLine($"Full Name: {this.FirstName} {this.LastName}");
-            sb.AppendLine($"Job Title: {this.JobTitle}");
+            sb.AppendLine($"Email: {this.Email}");
             return sb.ToString();
         }
     }

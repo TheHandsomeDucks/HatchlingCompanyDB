@@ -22,6 +22,11 @@ namespace HatchlingCompany.Core.Services.Listing
 
         public void Execute(IList<string> parameters)
         {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException(nameof(parameters));
+            }
+
             var email = parameters[1];
 
             var employeeExists = this.db.Employees.SingleOrDefault(e => e.Email == email);

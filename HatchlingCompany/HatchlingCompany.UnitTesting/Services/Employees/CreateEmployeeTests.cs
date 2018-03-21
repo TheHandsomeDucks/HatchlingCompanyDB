@@ -1,4 +1,5 @@
-﻿using HatchlingCompany.Core.Commands.Implementations;
+﻿using AutoMapper;
+using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,7 +19,8 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             // Arragne
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
             var writerMock = new Mock<IWriter>();
-            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object);
+            var mapperMock = new Mock<IMapper>();
+            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
 
             //Act
             var parameters = new List<string>()
@@ -36,7 +38,8 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             // Arragne
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
             var writerMock = new Mock<IWriter>();
-            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object);
+            var mapperMock = new Mock<IMapper>();
+            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
 
             //Act
             createEmployeeService.Execute(new List<string>()

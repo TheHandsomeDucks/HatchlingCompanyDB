@@ -1,4 +1,6 @@
-﻿using HatchlingCompany.Core.Common.Contracts;
+﻿using AutoMapper;
+using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using System;
@@ -11,11 +13,13 @@ namespace HatchlingCompany.Core.Commands.Implementations
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
+        private readonly IMapper mapper;
 
-        public CreateEmployee(IDbContext db, IWriter writer)
+        public CreateEmployee(IDbContext db, IWriter writer, IMapper mapper)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public void Execute(IList<string> parameters)
@@ -25,30 +29,27 @@ namespace HatchlingCompany.Core.Commands.Implementations
                 throw new ArgumentNullException(nameof(parameters));
             }
 
-            var firstName = parameters[1];
-            var lastName = parameters[2];
-            var email = parameters[3];
-            var phoneNumber = parameters[4];
-
-            var employee = this.db.Employees.SingleOrDefault(e => e.Email == email);
-
-            if (employee != null)
+            var employee = new ListEmployeeDetailsModel
             {
-                throw new ArgumentNullException($"{employee.FirstName} {employee.LastName} already exists");
+                FirstName = parameters[1],
+                LastName = parameters[2],
+                Email = parameters[3]
+            };
+
+            var employeeExists = this.db.Employees.SingleOrDefault(e => e.Email == employee.Email);
+
+            if (employeeExists != null)
+            {
+                throw new ArgumentNullException($"{employeeExists.FirstName} {employeeExists.LastName} already exists");
             }
 
+            var employeeToAdd = this.mapper.Map<Employee>(employee);
 
-            this.db.Employees.Add(new Employee
-            {
-                FirstName = firstName,
-                LastName = lastName,
-                Email = email,
-                PhoneNumber = phoneNumber
-            });
+            this.db.Employees.Add(employeeToAdd);
 
             this.db.SaveChanges();
 
-            this.writer.WriteLine($"A new employee with name {firstName} {lastName} was created.");
+            this.writer.WriteLine($"A new employee with name {employee.FirstName} {employee.LastName} was created.");
         }
     }
 }

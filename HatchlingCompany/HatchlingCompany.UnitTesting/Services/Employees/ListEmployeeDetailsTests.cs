@@ -1,4 +1,5 @@
-﻿using HatchlingCompany.Core.Commands.Implementations;
+﻿using AutoMapper;
+using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Core.Services.Listing;
@@ -21,7 +22,8 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             AutomapperConfig.Initialize();
             var writerMock = new Mock<IWriter>();
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
-            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object);
+            var mapperMock = new Mock<IMapper>();
+            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
 
             var createParams = new List<string>()
             {

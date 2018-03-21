@@ -16,25 +16,26 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
     [TestClass]
     public class ListEmployeeDetailsTests
     {
-        [ClassInitialize]
-        public static void InitilizeAutomapper(TestContext context)
-        {
-            AutomapperConfig.Initialize();
-        }
+        //[ClassInitialize]
+        //public static void InitilizeAutomapper(TestContext context)
+        //{
+        //    AutomapperConfig.Initialize();
+        //}
 
         [TestMethod]
         public void ListEmployeeDetails_Should_Call_Concret_Employee()
         {
             // Arragne
+            AutomapperConfig.Initialize();
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
             var writerMock = new Mock<IWriter>();
             var mapperMock = new Mock<IMapper>();
 
             var employeeToReturn = new Employee
             {
-                FirstName = "Alex",
-                LastName = "Alexov",
-                Email = "alex@gmail.com"
+                FirstName = "Ace",
+                LastName = "Base",
+                Email = "ace@gmail.com"
             };
 
             mapperMock.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
@@ -43,7 +44,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
 
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+                "createEmployee", "Ace", "Base", "ace@gmail.com"
             });
 
             var listEmployeeDetailsService = new ListEmployeeDetails(dbMock, writerMock.Object);
@@ -51,15 +52,15 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             // Act
             listEmployeeDetailsService.Execute(new List<string>()
             {
-                "listemployeedetails", "alex@gmail.com"
+                "listemployeedetails", "ace@gmail.com"
             });
 
-            var employeeExists = dbMock.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
+            var employeeExists = dbMock.Employees.SingleOrDefault(e => e.Email == "ace@gmail.com");
 
             // Assert
-            Assert.AreEqual("Alex", employeeExists.FirstName);
-            Assert.AreEqual("Alexov", employeeExists.LastName);
-            Assert.AreEqual("alex@gmail.com", employeeExists.Email);
+            Assert.AreEqual("Ace", employeeExists.FirstName);
+            Assert.AreEqual("Base", employeeExists.LastName);
+            Assert.AreEqual("ace@gmail.com", employeeExists.Email);
         }
     }
 }

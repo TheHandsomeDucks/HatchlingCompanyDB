@@ -4,8 +4,6 @@ using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Data.Migrations;
 using System.Data.Entity;
 using System.Reflection;
-using System.Text;
-using HatchlingCompany.Utils;
 
 namespace HatchlingCompany.Data
 {

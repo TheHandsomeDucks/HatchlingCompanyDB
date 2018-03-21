@@ -14,7 +14,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
     public class ListEmployeeDetailsTests
     {
         [TestMethod]
-        public void ListEmployeeDetails_Should_Call_PrintInfo_Of_Concret_Employee()
+        public void ListEmployeeDetails_Should_Call_FirstName_Of_Concret_Employee()
         {
             // Arrange 
             // create employee

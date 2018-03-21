@@ -1,16 +1,16 @@
 ﻿using Autofac;
+using AutoMapper;
 using HatchlingCompany.Core;
 using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Services.CRUD;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
-using System.Data.Entity;
 using System.Reflection;
 
-namespace HatchlingCompany.Console
+namespace HatchlingCompany.Console.AutofacModules
 {
-    public class HatchlingCompanyAutofacConfig : Autofac.Module
+    public class AutofacModule : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -31,6 +31,7 @@ namespace HatchlingCompany.Console
 
             // DbContext
             builder.RegisterType<HatchlingCompanyDbContext>().As<IDbContext>().InstancePerDependency();
+            builder.Register(x => Mapper.Instance);
 
             // --------------------- CRUD -------------------------
             // Employees

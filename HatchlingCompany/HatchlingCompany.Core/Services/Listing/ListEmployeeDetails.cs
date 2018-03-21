@@ -37,10 +37,10 @@ namespace HatchlingCompany.Core.Services.Listing
             }
 
             var employee = this.db
-                       .Employees
-                       .Where(e => e.Email == email)
-                       .ProjectTo<ListEmployeeDetailsModel>()
-                       .SingleOrDefault();
+                             .Employees
+                             .Where(e => e.Email == email)
+                             .ProjectTo<ListEmployeeDetailsModel>()
+                             .SingleOrDefault();
 
             var sb = new StringBuilder();
             sb.AppendLine("Listing employees details...");

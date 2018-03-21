@@ -29,26 +29,24 @@ namespace HatchlingCompany.Core.Services.Listing
 
             var name = parameters[1];
 
-            var project = this.db.Projects.SingleOrDefault(p => p.Name == name);
+            var projectExists = this.db.Projects.SingleOrDefault(p => p.Name == name);
 
-            if (project == null)
+            if (projectExists == null)
             {
                 throw new ArgumentNullException($"Project with {name} could not be found");
             }
 
+            var project = this.db
+                        .Projects
+                        .Where(e => e.Name == name)
+                        .ProjectTo<ListProjectDetailsModel>()
+                        .SingleOrDefault();
+
             var sb = new StringBuilder();
             sb.AppendLine("Listing project details...");
-
-            var projectDetails = this.db
-                                    .Projects
-                                    .ProjectTo<ListProjectDetailsModel>()
-                                    .SingleOrDefault();
-
-            sb.AppendLine(projectDetails.PrintInfo());
-
+            sb.AppendLine(project.PrintInfo());
             this.writer.WriteLine(sb.ToString());
-
-            this.writer.WriteLine($"All details for project {name} have been listed");
+            this.writer.WriteLine($"All details for project {project.Name} have been listed");
         }
     }
 }

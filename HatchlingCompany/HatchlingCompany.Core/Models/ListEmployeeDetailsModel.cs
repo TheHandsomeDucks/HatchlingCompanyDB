@@ -47,7 +47,7 @@ namespace HatchlingCompany.Core.Models
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<Employee, ListEmployeeDetailsModel>().ForMember(x => x.Email, cfg => cfg.MapFrom(x => x.FirstName + " " + x.LastName));
+            configuration.CreateMap<Employee, ListEmployeeDetailsModel>();//.ForMember(x => x.Email, cfg => cfg.MapFrom(x => x.FirstName + " " + x.LastName));
         }
 
     }

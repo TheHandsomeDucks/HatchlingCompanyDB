@@ -9,7 +9,8 @@ namespace HatchlingCompany.Sandbox
             var obj = new Human() { Name = "Pesho", Age = 10 };
 
             var pdfExporter = new PDFExporter();
-            pdfExporter.Export(obj);        }
+            pdfExporter.Export(obj);
+        }
     }
 
     internal class Human

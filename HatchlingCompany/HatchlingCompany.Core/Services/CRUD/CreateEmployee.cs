@@ -29,7 +29,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
                 throw new ArgumentNullException(nameof(parameters));
             }
 
-            var employee = new ListEmployeeDetailsModel
+            var employee = new CreateEmployeeModel
             {
                 FirstName = parameters[1],
                 LastName = parameters[2],

@@ -18,7 +18,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         {
             // Arrange 
             // create employee
-            AutoMapperProfile.Initialize();
+            AutomapperConfig.Initialize();
             var writerMock = new Mock<IWriter>();
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
             var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object);

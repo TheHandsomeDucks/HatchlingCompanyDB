@@ -83,7 +83,7 @@
     <Compile Include="Factories\Implementations\CommandFactory.cs" />
     <Compile Include="IEngine.cs" />
     <Compile Include="Engine.cs" />
-    <Compile Include="Common\Implemetations\AutoMapperProfile.cs" />
+    <Compile Include="Common\Implemetations\AutomapperConfig.cs" />
     <Compile Include="Models\ListEmployeeDetailsModel.cs" />
     <Compile Include="Models\ListEmployeesModel.cs" />
     <Compile Include="Models\ListProjectDetailsModel.cs" />

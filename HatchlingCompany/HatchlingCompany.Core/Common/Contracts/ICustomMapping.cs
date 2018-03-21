@@ -4,6 +4,6 @@ namespace HatchlingCompany.Core.Common.Contracts
 {
     public interface ICustomMapping
     {
-        void ConfigureMapping(Profile mapper);
+        void CreateMappings(IMapperConfigurationExpression configuration);
     }
 }

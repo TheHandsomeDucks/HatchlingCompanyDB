@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
+using HatchlingCompany.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
@@ -20,12 +22,24 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
             var writerMock = new Mock<IWriter>();
             var mapperMock = new Mock<IMapper>();
+
+            var employeeToReturn = new Employee
+            {
+                FirstName = "Alex",
+                LastName = "Alexov",
+                Email = null
+            };
+
+
+            mapperMock.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
+
+
             var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
 
             //Act
             var parameters = new List<string>()
             {
-                "createEmployee", "Alex", "Alexov", null, "phone"
+                "createEmployee", "Alex", "Alexov", null
             };
 
             // Assert
@@ -39,19 +53,30 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
             var writerMock = new Mock<IWriter>();
             var mapperMock = new Mock<IMapper>();
+
+            var employeeToReturn = new Employee
+            {
+                FirstName = "Alex",
+                LastName = "Alexov",
+                Email = "alex@gmail.com"
+            };
+
+            mapperMock.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
+
+
             var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
 
             //Act
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "phone"
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
             });
 
-            var employee = dbMock.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
+            var employeeExists = dbMock.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
 
             // Assert
             Assert.AreEqual(1, dbMock.Employees.Count());
-            Assert.AreEqual("alex@gmail.com", employee.Email);
+            Assert.AreEqual("alex@gmail.com", employeeExists.Email);
         }
     }
 }

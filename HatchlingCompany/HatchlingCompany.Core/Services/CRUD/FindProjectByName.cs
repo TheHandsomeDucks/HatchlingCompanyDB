@@ -1,8 +1,11 @@
-﻿using HatchlingCompany.Core.Common.Contracts;
+﻿using AutoMapper.QueryableExtensions;
+using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace HatchlingCompany.Core.Services.CRUD
 {
@@ -26,18 +29,24 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             var name = parameters[1];
 
-            var project = this.db.Projects.SingleOrDefault(p => p.Name == name);
+            var projectExists = this.db.Projects.SingleOrDefault(p => p.Name == name);
 
-            if (project == null)
+            if (projectExists == null)
             {
                 throw new ArgumentNullException($"Project with {name} could not be found");
             }
 
-            this.writer.WriteLine($"Name: {project.Name}");
-            this.writer.WriteLine($"Manager: {project.Manager.FirstName} {project.Manager.LastName}");
-            this.writer.WriteLine($"Details: {project.Detail}");
+            var project = this.db
+                       .Projects
+                       .Where(e => e.Name == name)
+                       .ProjectTo<ListProjectDetailsModel>()
+                       .SingleOrDefault();
 
-            this.writer.WriteLine($"Project with name {name} was found");
+            var sb = new StringBuilder();
+            sb.AppendLine("Listing project details...");
+            sb.AppendLine(project.PrintInfo());
+            this.writer.WriteLine(sb.ToString());
+            this.writer.WriteLine($"All details for project {project.Name} have been listed");
         }
     }
 }

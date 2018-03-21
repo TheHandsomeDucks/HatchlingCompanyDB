@@ -38,7 +38,7 @@ namespace HatchlingCompany.Core.Services.Listing
             }
 
             var sb = new StringBuilder();
-            sb.AppendLine("Listing employees...");
+            sb.AppendLine("Listing all employees...");
             employees.ForEach(e => sb.AppendLine($"{e.PrintInfo()}"));
             this.writer.WriteLine(sb.ToString());
             this.writer.WriteLine($"All employees have been listed");

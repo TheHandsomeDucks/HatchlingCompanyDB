@@ -49,7 +49,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
             this.db.SaveChanges();
 
-            this.writer.WriteLine($"A new employee with name {employee.FirstName} {employee.LastName} was created.");
+            this.writer.WriteLine($"A new employee with name {employeeToAdd.FirstName} {employeeToAdd.LastName} was created.");
         }
     }
 }

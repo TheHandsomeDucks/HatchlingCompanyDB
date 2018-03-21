@@ -1,8 +1,11 @@
-﻿using HatchlingCompany.Core.Common.Contracts;
+﻿using AutoMapper.QueryableExtensions;
+using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace HatchlingCompany.Core.Services.CRUD
 {
@@ -26,18 +29,24 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             var email = parameters[1];
 
-            var employee = this.db.Employees.SingleOrDefault(e => e.Email == email);
+            var employeeExists = this.db.Employees.SingleOrDefault(e => e.Email == email);
 
-            if (employee == null)
+            if (employeeExists == null)
             {
                 throw new ArgumentNullException($"Person with {email} could not be found");
             }
 
-            this.writer.WriteLine($"Fullname: {employee.FirstName} {employee.LastName}");
-            this.writer.WriteLine($"Email: {employee.Email}");
-            this.writer.WriteLine($"Phone: {employee.PhoneNumber}");
+            var employee = this.db
+                             .Employees
+                             .Where(e => e.Email == email)
+                             .ProjectTo<ListEmployeeDetailsModel>()
+                             .SingleOrDefault();
 
-            this.writer.WriteLine($"Employee with email {email} was found");
+            var sb = new StringBuilder();
+            sb.AppendLine("Listing employees details...");
+            sb.AppendLine(employee.PrintInfo());
+            this.writer.WriteLine(sb.ToString());
+            this.writer.WriteLine($"All details for employee {employee.FirstName} {employee.LastName} have been listed");
         }
     }
 }

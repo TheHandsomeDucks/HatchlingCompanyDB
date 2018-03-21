@@ -43,7 +43,7 @@ namespace HatchlingCompany.Core.Services.Listing
                              .SingleOrDefault();
 
             var sb = new StringBuilder();
-            sb.AppendLine("Listing employees details...");
+            sb.AppendLine("Listing employee details...");
             sb.AppendLine(employee.PrintInfo());
             this.writer.WriteLine(sb.ToString());
             this.writer.WriteLine($"All details for employee {employee.FirstName} {employee.LastName} have been listed");

@@ -12,7 +12,7 @@ namespace HatchlingCompany.Core.Models
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine($"Project Name: {this.Name}");
+            sb.AppendLine($"Project: {this.Name}");
             return sb.ToString();
         }
     }

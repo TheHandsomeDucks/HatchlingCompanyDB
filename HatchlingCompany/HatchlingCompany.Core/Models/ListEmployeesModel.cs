@@ -16,7 +16,7 @@ namespace HatchlingCompany.Core.Models
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine($"Full Name: {this.FirstName} {this.LastName}");
+            sb.AppendLine($"Name: {this.FirstName} {this.LastName}");
             sb.AppendLine($"Email: {this.Email}");
             return sb.ToString();
         }

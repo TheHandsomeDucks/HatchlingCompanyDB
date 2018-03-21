@@ -36,7 +36,7 @@ namespace HatchlingCompany.Core.Models
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine($"Full Name: {this.FirstName} {this.LastName}");
+            sb.AppendLine($"Name: {this.FirstName} {this.LastName}");
             sb.AppendLine($"Email: {this.Email}");
             sb.AppendLine($"PhoneNumber: {this.PhoneNumber}");
             sb.AppendLine($"Job Title: {this.JobTitle}");
@@ -47,8 +47,7 @@ namespace HatchlingCompany.Core.Models
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<Employee, ListEmployeeDetailsModel>();//.ForMember(x => x.Email, cfg => cfg.MapFrom(x => x.FirstName + " " + x.LastName));
+            configuration.CreateMap<Employee, ListEmployeeDetailsModel>();
         }
-
     }
 }

@@ -15,7 +15,7 @@ namespace HatchlingCompany.Core.Models
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine($"Project Name: {this.Name}");
+            sb.AppendLine($"Project: {this.Name}");
             sb.AppendLine($"Details: {this.Detail}");
             return sb.ToString();
         }

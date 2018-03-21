@@ -42,11 +42,8 @@ namespace HatchlingCompany.Core.Services.Listing
             }
 
             var sb = new StringBuilder();
-
-            employees.ForEach(e => sb.AppendLine($"FullName: {e.FirstName} {e.LastName}"));
-
+            employees.ForEach(e => sb.AppendLine($"Name: {e.FirstName} {e.LastName}"));
             this.writer.WriteLine(sb.ToString());
-
             this.writer.WriteLine($"All employees with status {status} have been listed");
         }
     }

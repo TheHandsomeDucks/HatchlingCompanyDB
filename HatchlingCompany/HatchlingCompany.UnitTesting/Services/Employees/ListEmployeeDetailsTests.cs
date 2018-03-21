@@ -2,8 +2,10 @@
 using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Common.Implementations;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
+using HatchlingCompany.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
@@ -14,39 +16,50 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
     [TestClass]
     public class ListEmployeeDetailsTests
     {
-        [TestMethod]
-        public void ListEmployeeDetails_Should_Call_FirstName_Of_Concret_Employee()
+        [ClassInitialize]
+        public static void InitilizeAutomapper(TestContext context)
         {
-            // Arrange 
-            // create employee
             AutomapperConfig.Initialize();
-            var writerMock = new Mock<IWriter>();
-            var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
-            var mapperMock = new Mock<IMapper>();
-            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
-
-            var createParams = new List<string>()
-            {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "phone"
-            };
-            createEmployeeService.Execute(createParams);
-
-            // create listEmployeeDetails
-            var listEmployeeDetailsService = new ListEmployeeDetails(dbMock, writerMock.Object);
-            var parameters = new List<string>()
-            {
-                "listemployeedetails", "alex@gmail.com"
-            };
-
-            // Act
-            listEmployeeDetailsService.Execute(parameters);
-
-            var employee = dbMock.Employees.SingleOrDefault(x => x.Email == "alex@gmail.com");
-
-            // Assert
-            Assert.AreEqual(employee.FirstName, "Alex"); // TODO error Message: Test method HatchlingCompany.UnitTesting.Services.Employees.ListEmployeeDetailsTests.ListEmployeeDetails_Should_Call_PrintInfo_Of_Concret_Employee threw exception: 
-                                                         //System.IO.FileLoadException: Could not load file or assembly 'System.Data.Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies.The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
         }
 
+        [TestMethod]
+        public void ListEmployeeDetails_Should_Call_Concret_Employee()
+        {
+            // Arragne
+            var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
+            var writerMock = new Mock<IWriter>();
+            var mapperMock = new Mock<IMapper>();
+
+            var employeeToReturn = new Employee
+            {
+                FirstName = "Alex",
+                LastName = "Alexov",
+                Email = "alex@gmail.com"
+            };
+
+            mapperMock.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
+
+            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
+
+            createEmployeeService.Execute(new List<string>()
+            {
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+            });
+
+            var listEmployeeDetailsService = new ListEmployeeDetails(dbMock, writerMock.Object);
+
+            // Act
+            listEmployeeDetailsService.Execute(new List<string>()
+            {
+                "listemployeedetails", "alex@gmail.com"
+            });
+
+            var employeeExists = dbMock.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
+
+            // Assert
+            Assert.AreEqual("Alex", employeeExists.FirstName);
+            Assert.AreEqual("Alexov", employeeExists.LastName);
+            Assert.AreEqual("alex@gmail.com", employeeExists.Email);
+        }
     }
 }

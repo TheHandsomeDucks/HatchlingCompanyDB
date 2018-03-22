@@ -30,9 +30,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
                 Email = null
             };
 
-
             mapperMock.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
-
 
             var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
 

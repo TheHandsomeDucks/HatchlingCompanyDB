@@ -26,7 +26,8 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         public void ListEmployeeDetails_Should_Call_Concret_Employee()
         {
             // Arragne
-            AutomapperConfig.Initialize();
+            //AutomapperConfig.Initialize();
+            
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
             var writerMock = new Mock<IWriter>();
             var mapperMock = new Mock<IMapper>();

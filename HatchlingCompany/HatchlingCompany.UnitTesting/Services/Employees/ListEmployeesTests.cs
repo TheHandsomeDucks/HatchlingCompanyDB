@@ -26,7 +26,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         public void ListEmployees_Should_Call_PrintInfo_Of_All_Employee()
         {
             // Arrange
-            AutomapperConfig.Initialize();
+            //AutomapperConfig.Initialize();
             var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
             var writerMock = new Mock<IWriter>();
             var mapperMock = new Mock<IMapper>();
@@ -51,7 +51,6 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             //{
             //    "createEmployee", "John", "Schmid", "schmid@gmail.com"
             //});
-
 
             var listEmployeesService = new ListEmployees(dbMock, writerMock.Object);
 

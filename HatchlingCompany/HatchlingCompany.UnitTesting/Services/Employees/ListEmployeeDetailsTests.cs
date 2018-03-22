@@ -64,5 +64,35 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             Assert.AreEqual("Base", employeeExists.LastName);
             Assert.AreEqual("ace@gmail.com", employeeExists.Email);
         }
+
+        [TestMethod]
+        public void ListEmployeeDetails_Should_Call_Mapper_Once()
+        {
+            // Arrange
+            var employeeToReturn = new Employee
+            {
+                FirstName = "Ace",
+                LastName = "Base",
+                Email = "ace@gmail.com"
+            };
+
+            mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
+
+            createEmployeeService.Execute(new List<string>()
+            {
+                "createEmployee", "Ace", "Base", "ace@gmail.com"
+            });
+
+            var listEmployeeDetailsService = new ListEmployeeDetails(dbStub, writerStub.Object);
+
+            // Act
+            listEmployeeDetailsService.Execute(new List<string>()
+            {
+                "listemployeedetails", "ace@gmail.com"
+            });
+
+            // Assert
+            mapperStub.Verify(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>()), Times.Once);
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace HatchlingCompany.Core.Common.Implementations
 {
     public class AutomapperConfig
     {
-        public static void Initialize()
+        public void Initialize()
         {
             var types = AppDomain.CurrentDomain
                 .GetAssemblies()
@@ -21,19 +21,19 @@ namespace HatchlingCompany.Core.Common.Implementations
             Mapper.Initialize(cfg => Load(types, cfg));
         }
 
-        private static void Load(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
+        private void Load(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
         {
             LoadStandardMappings(types, cfg);
             LoadCustomMappings(types, cfg);
         }
 
-        private static void LoadStandardMappings(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
+        private void LoadStandardMappings(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
         {
             LoadMapFrom(types, cfg);
             LoadMapTo(types, cfg);
         }
 
-        private static void LoadMapTo(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
+        private void LoadMapTo(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
         {
             var typesFoundForMapping = types
                   .Where(t => !t.IsInterface && !t.IsAbstract)
@@ -51,7 +51,7 @@ namespace HatchlingCompany.Core.Common.Implementations
             }
         }
 
-        private static void LoadMapFrom(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
+        private void LoadMapFrom(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
         {
             var typesFoundForMapping = types
                   .Where(t => !t.IsInterface && !t.IsAbstract)
@@ -69,7 +69,7 @@ namespace HatchlingCompany.Core.Common.Implementations
             }
         }
 
-        private static void LoadCustomMappings(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
+        private void LoadCustomMappings(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
         {
             var typesFoundForMapping = types
                   .Where(t => !t.IsInterface && !t.IsAbstract)

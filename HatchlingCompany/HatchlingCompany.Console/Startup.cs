@@ -14,7 +14,8 @@ namespace HatchlingCompany.Data
             var strategy = new MigrateDatabaseToLatestVersion<HatchlingCompanyDbContext, Configuration>();
             Database.SetInitializer(strategy);
 
-            AutomapperConfig.Initialize();
+            var config = new AutomapperConfig();
+            config.Initialize();
 
             var builder = new ContainerBuilder();
 

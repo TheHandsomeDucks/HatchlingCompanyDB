@@ -9,7 +9,8 @@ namespace HatchlingCompany.UnitTesting
         [AssemblyInitialize]
         public static void Initialize(TestContext test)
         {
-            AutomapperConfig.Initialize();
+            var config = new AutomapperConfig();
+            config.Initialize();
         }
     }
 }

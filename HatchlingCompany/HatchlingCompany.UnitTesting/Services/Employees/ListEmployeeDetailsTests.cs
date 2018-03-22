@@ -34,7 +34,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         [TestMethod]
         public void ListEmployeeDetails_Should_Call_Concret_Employee()
         {
-            // Arragne
+            // Arrange
             var employeeToReturn = new Employee
             {
                 FirstName = "Ace",

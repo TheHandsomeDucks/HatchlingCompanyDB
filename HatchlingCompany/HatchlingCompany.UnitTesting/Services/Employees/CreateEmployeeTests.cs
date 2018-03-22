@@ -32,7 +32,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         [TestMethod]
         public void CreateEmployee_Should_Throw_DbEntityValidationException_If_Email_Is_Null()
         {
-            // Arragne
+            // Arrange
             var employeeToReturn = new Employee
             {
                 FirstName = "Alex",
@@ -42,7 +42,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
 
-            //Act
+            // Act
             var parameters = new List<string>()
             {
                 "createEmployee", "Alex", "Alexov", null
@@ -55,7 +55,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         [TestMethod]
         public void CreateEmployee_Should_Create_New_Employee()
         {
-            // Arragne
+            // Arrange
             var employeeToReturn = new Employee
             {
                 FirstName = "Alex",
@@ -65,7 +65,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
 
-            //Act
+            // Act
             createEmployeeService.Execute(new List<string>()
             {
                 "createEmployee", "Alex", "Alexov", "alex@gmail.com"
@@ -81,7 +81,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         [TestCleanup]
         public void CleanUp()
         {
-            
+
         }
     }
 }

@@ -13,15 +13,15 @@
         Height="650" Width="1200"
         MinHeight="650" MinWidth="1200">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Margin="0,0,0,0" Width="1200" Height="600" VerticalAlignment="Bottom" TabStripPlacement="Bottom">
+        <TabControl HorizontalAlignment="Left" Margin="0,0,0,0" Width="1200" Height="611" VerticalAlignment="Bottom" TabStripPlacement="Bottom">
             <TabItem Header="Home">
-                <Grid Background="#FFE5E5E5">
+                <Grid>
                     <TextBlock HorizontalAlignment="Left" Height="30" Margin="400,80,0,0" TextWrapping="Wrap" Text="Welcome to the Hatchling Company DB" VerticalAlignment="Top" Width="480" FontFamily="Verdana" FontSize="20" TextAlignment="Center"/>
                     <Image HorizontalAlignment="Left" Margin="200,10,0,409" Width="200" Height="200" Source="pack://application:,,,/Assets/icon.png"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid/>
             </TabItem>
         </TabControl>
 

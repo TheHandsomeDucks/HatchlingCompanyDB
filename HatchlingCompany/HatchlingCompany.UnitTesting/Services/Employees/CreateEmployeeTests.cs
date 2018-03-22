@@ -77,11 +77,5 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             Assert.AreEqual(1, dbStub.Employees.Count());
             Assert.AreEqual("alex@gmail.com", employeeExists.Email);
         }
-
-        [TestCleanup]
-        public void CleanUp()
-        {
-
-        }
     }
 }

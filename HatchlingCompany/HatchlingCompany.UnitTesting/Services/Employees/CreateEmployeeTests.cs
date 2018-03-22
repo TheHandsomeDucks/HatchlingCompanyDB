@@ -15,14 +15,24 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
     [TestClass]
     public class CreateEmployeeTests
     {
+        private CreateEmployee createEmployeeService;
+        private Mock<IMapper> mapperStub;
+        private Mock<IWriter> writerStub;
+        private IDbContext dbStub;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            this.dbStub = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
+            this.writerStub = new Mock<IWriter>();
+            this.mapperStub = new Mock<IMapper>();
+            this.createEmployeeService = new CreateEmployee(dbStub, writerStub.Object, mapperStub.Object);
+        }
+
         [TestMethod]
         public void CreateEmployee_Should_Throw_DbEntityValidationException_If_Email_Is_Null()
         {
             // Arragne
-            var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
-            var writerMock = new Mock<IWriter>();
-            var mapperMock = new Mock<IMapper>();
-
             var employeeToReturn = new Employee
             {
                 FirstName = "Alex",
@@ -30,9 +40,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
                 Email = null
             };
 
-            mapperMock.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
-
-            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
+            mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
 
             //Act
             var parameters = new List<string>()
@@ -48,10 +56,6 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         public void CreateEmployee_Should_Create_New_Employee()
         {
             // Arragne
-            var dbMock = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
-            var writerMock = new Mock<IWriter>();
-            var mapperMock = new Mock<IMapper>();
-
             var employeeToReturn = new Employee
             {
                 FirstName = "Alex",
@@ -59,9 +63,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
                 Email = "alex@gmail.com"
             };
 
-            mapperMock.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
-
-            var createEmployeeService = new CreateEmployee(dbMock, writerMock.Object, mapperMock.Object);
+            mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
 
             //Act
             createEmployeeService.Execute(new List<string>()
@@ -69,11 +71,17 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
                 "createEmployee", "Alex", "Alexov", "alex@gmail.com"
             });
 
-            var employeeExists = dbMock.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
+            var employeeExists = dbStub.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
 
             // Assert
-            Assert.AreEqual(1, dbMock.Employees.Count());
+            Assert.AreEqual(1, dbStub.Employees.Count());
             Assert.AreEqual("alex@gmail.com", employeeExists.Email);
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+            
         }
     }
 }

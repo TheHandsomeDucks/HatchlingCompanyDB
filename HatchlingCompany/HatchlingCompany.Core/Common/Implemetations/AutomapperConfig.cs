@@ -21,7 +21,6 @@ namespace HatchlingCompany.Core.Common.Implementations
             Mapper.Initialize(cfg => Load(types, cfg));
         }
 
-
         private static void Load(IEnumerable<Type> types, IMapperConfigurationExpression cfg)
         {
             LoadStandardMappings(types, cfg);
@@ -83,7 +82,6 @@ namespace HatchlingCompany.Core.Common.Implementations
                 type.CreateMappings(cfg);
             }
         }
-
 
         #region my config
         //public AutoMapperProfile()

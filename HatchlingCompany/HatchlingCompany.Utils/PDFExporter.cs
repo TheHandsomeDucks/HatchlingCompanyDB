@@ -3,8 +3,6 @@ using HatchlingCompany.Utils.Contracts;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Shapes;
 using MigraDoc.Rendering;
-using PdfSharp;
-using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 
 namespace HatchlingCompany.Utils
@@ -71,7 +69,6 @@ namespace HatchlingCompany.Utils
             var section = doc.Sections[0];
 
             var paragraph = section.AddParagraph(obj.GetType().Name);
-
             paragraph.Format.SpaceBefore = 150;
             paragraph.Format.SpaceAfter = 10;
             paragraph.Format.Font.Size = 12;
@@ -80,7 +77,9 @@ namespace HatchlingCompany.Utils
             foreach (var property in obj.GetType().GetProperties())
             {
                 paragraph = section.AddParagraph();
-                paragraph.AddFormattedText($"{property.Name}:", TextFormat.Underline);
+                paragraph.Format.AddTabStop(100);
+                paragraph.AddFormattedText(property.Name, TextFormat.Underline);
+                paragraph.AddText(":");
                 paragraph.AddTab();
                 paragraph.AddFormattedText(property.GetValue(obj).ToString());
             }

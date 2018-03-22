@@ -42,10 +42,10 @@ namespace HatchlingCompany.Core.Common.Implementations
                     command.Execute();
                 }
             }
-            catch (Exception ex)
-            {
-                this.writer.WriteLine(ex.Message);
-            }
+            //catch (Exception ex)
+            //{
+            //    this.writer.WriteLine(ex.Message);
+            //}
             finally
             {
                 this.writer.WriteLine(delimeter);

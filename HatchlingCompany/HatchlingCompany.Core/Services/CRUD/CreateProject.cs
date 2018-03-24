@@ -29,6 +29,11 @@ namespace HatchlingCompany.Core.Services.CRUD
                 throw new ArgumentException("Invalid parameters! PLease use createProject [name]");
             }
 
+            if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
+            {
+                throw new ArgumentException("Project name cannot be null, empty or whitespace");
+            }
+
             var project = new CreateProjectModel
             {
                 Name = parameters[1]

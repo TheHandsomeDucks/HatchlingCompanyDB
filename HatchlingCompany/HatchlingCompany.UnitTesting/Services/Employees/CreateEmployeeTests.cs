@@ -8,7 +8,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
 
 namespace HatchlingCompany.UnitTesting.Services.Employees
@@ -89,7 +88,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             };
 
             // Assert
-            Assert.ThrowsException<DbEntityValidationException>(() => createEmployeeService.Execute(parameters));
+            Assert.ThrowsException<ArgumentException>(() => createEmployeeService.Execute(parameters));
         }
 
         [TestMethod]

@@ -103,10 +103,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AssemblyInitialize.cs" />
-    <Compile Include="Services\Employees\CreateEmployeeTests.cs" />
-    <Compile Include="Services\Employees\ListEmployeeDetailsTests.cs" />
-    <Compile Include="Services\Employees\ListEmployeesTests.cs" />
-    <Compile Include="Services\Projects\CreateProjectTests.cs" />
+    <Compile Include="Services\CRUD\CreateEmployeeTests.cs" />
+    <Compile Include="Services\Listing\ListEmployeeDetailsTests.cs" />
+    <Compile Include="Services\Listing\ListEmployeesTests.cs" />
+    <Compile Include="Services\CRUD\CreateProjectTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

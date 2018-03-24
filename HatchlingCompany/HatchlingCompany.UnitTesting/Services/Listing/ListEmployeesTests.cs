@@ -10,7 +10,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HatchlingCompany.UnitTesting.Services.Employees
+namespace HatchlingCompany.UnitTesting.Services.Listing
 {
     [TestClass]
     public class ListEmployeesTests

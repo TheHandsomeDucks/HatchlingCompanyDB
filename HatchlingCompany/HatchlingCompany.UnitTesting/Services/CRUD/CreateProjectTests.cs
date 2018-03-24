@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HatchlingCompany.UnitTesting.Services.Projects
+namespace HatchlingCompany.UnitTesting.Services.CRUD
 {
     [TestClass]
     public class CreateProjectTests

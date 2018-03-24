@@ -24,9 +24,9 @@ namespace HatchlingCompany.Core.Services.CRUD
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count() < 2)
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentException("Invalid parameters! PLease use createProject [name]");
             }
 
             var project = new CreateProjectModel
@@ -39,7 +39,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             if (projectExists != null)
             {
-                throw new ArgumentNullException($"{projectExists.Name} already exists");
+                throw new ArgumentException($"Project with name {projectExists.Name} already exists");
             }
 
             var projectToAdd = this.mapper.Map<Project>(project);

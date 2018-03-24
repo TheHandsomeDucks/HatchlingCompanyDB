@@ -105,6 +105,7 @@
     <Compile Include="AssemblyInitialize.cs" />
     <Compile Include="Services\CRUD\CreateEmployeeTests.cs" />
     <Compile Include="Services\CRUD\FindEmployeeByMailTests.cs" />
+    <Compile Include="Services\CRUD\FindProjectByNameTests.cs" />
     <Compile Include="Services\Listing\ListEmployeeDetailsTests.cs" />
     <Compile Include="Services\Listing\ListEmployeesTests.cs" />
     <Compile Include="Services\CRUD\CreateProjectTests.cs" />

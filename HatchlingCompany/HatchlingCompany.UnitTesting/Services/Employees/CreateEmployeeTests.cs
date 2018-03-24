@@ -6,6 +6,7 @@ using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -27,6 +28,45 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
             this.writerStub = new Mock<IWriter>();
             this.mapperStub = new Mock<IMapper>();
             this.createEmployeeService = new CreateEmployee(dbStub, writerStub.Object, mapperStub.Object);
+        }
+
+        [TestMethod]
+        public void CreateEmployee_Should_Throw_ArgumentException_If_No_Params_Are_Passed()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                "createEmployee"
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => createEmployeeService.Execute(parameters));
+        }
+
+        [TestMethod]
+        public void CreateEmployee_Should_Throw_ArgumentException_If_LastName_And_Email_Are_Not_Passed()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                "createEmployee", "Alex"
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => createEmployeeService.Execute(parameters));
+        }
+
+        [TestMethod]
+        public void CreateEmployee_Should_Throw_ArgumentException_If_Email_Is_Not_Passed()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                "createEmployee", "Alex", "Alexov"
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => createEmployeeService.Execute(parameters));
         }
 
         [TestMethod]
@@ -53,7 +93,7 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
         }
 
         [TestMethod]
-        public void CreateEmployee_Should_Create_New_Employee()
+        public void CreateEmployee_Should_Throw_ArgumentException_If_Employee_Already_Exists()
         {
             // Arrange
             var employeeToReturn = new Employee
@@ -71,11 +111,12 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
                 "createEmployee", "Alex", "Alexov", "alex@gmail.com"
             });
 
-            var employeeExists = dbStub.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
-
             // Assert
-            Assert.AreEqual(1, dbStub.Employees.Count());
-            Assert.AreEqual("alex@gmail.com", employeeExists.Email);
+            Assert.ThrowsException<ArgumentException>(() => createEmployeeService.Execute(new List<string>()
+            {
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+            }));
+
         }
 
         [TestMethod]
@@ -99,6 +140,32 @@ namespace HatchlingCompany.UnitTesting.Services.Employees
 
             // Assert
             mapperStub.Verify(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void CreateEmployee_Should_Create_New_Employee_If_Correct_Params_Are_Passed()
+        {
+            // Arrange
+            var employeeToReturn = new Employee
+            {
+                FirstName = "Alex",
+                LastName = "Alexov",
+                Email = "alex@gmail.com"
+            };
+
+            mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
+
+            // Act
+            createEmployeeService.Execute(new List<string>()
+            {
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+            });
+
+            var employeeExists = dbStub.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
+
+            // Assert
+            Assert.AreEqual(1, dbStub.Employees.Count());
+            Assert.AreEqual("alex@gmail.com", employeeExists.Email);
         }
     }
 }

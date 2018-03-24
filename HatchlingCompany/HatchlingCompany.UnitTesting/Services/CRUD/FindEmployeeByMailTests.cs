@@ -163,7 +163,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
         }
 
         [TestMethod]
-        public void FindEmployeeByMail_Should_Return_Employee_TypeOf_ListEmployeeDetailsModel__With_Correcttly_Mapped_Props_If_Employee_Exists()
+        public void FindEmployeeByMail_Should_Return_Employee_TypeOf_ListEmployeeDetailsModel_With_Correcttly_Mapped_Props_If_Employee_Exists()
         {
             // Arrange
             var employeeToReturn = new Employee

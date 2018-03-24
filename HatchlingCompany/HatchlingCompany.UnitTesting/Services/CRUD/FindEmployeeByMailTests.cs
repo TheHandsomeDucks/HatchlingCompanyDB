@@ -133,7 +133,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
         }
 
         [TestMethod]
-        public void FindEmployeeByMail_Should_Return_Concrete_Employee_If_Correct_Email_Is_Passed()
+        public void FindEmployeeByMail_Should_Return_Concrete_Employee_If_Existing_Email_Is_Passed()
         {
             // Arrange
             var employeeToReturn = new Employee

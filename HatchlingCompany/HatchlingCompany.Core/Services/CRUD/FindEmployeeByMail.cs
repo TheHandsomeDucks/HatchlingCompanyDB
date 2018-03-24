@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Services.CRUD
         {
             if (parameters == null || parameters.Count() < 2)
             {
-                throw new ArgumentException("Invalid parameters! PLease use findEmployeeByMail [email]");
+                throw new ArgumentException("Invalid parameters! Please use findEmployeeByMail [email]");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
@@ -34,18 +34,16 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             var email = parameters[1];
 
-            var employeeExists = this.db.Employees.SingleOrDefault(e => e.Email == email);
-
-            if (employeeExists == null)
-            {
-                throw new ArgumentNullException($"Person with {email} could not be found");
-            }
-
             var employee = this.db
                              .Employees
                              .Where(e => e.Email == email)
                              .ProjectTo<ListEmployeeDetailsModel>()
                              .SingleOrDefault();
+
+            if (employee == null)
+            {
+                throw new ArgumentNullException($"Person with {email} could not be found");
+            }
 
             var sb = new StringBuilder();
             sb.AppendLine("Listing employees details...");

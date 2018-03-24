@@ -29,6 +29,21 @@ namespace HatchlingCompany.Core.Commands.Implementations
                 throw new ArgumentException("Invalid parameters! PLease use createEmployee [fistName] [lastName] [email]");
             }
 
+            if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
+            {
+                throw new ArgumentException("First name cannot be null, empty or whitespace");
+            }
+
+            if (String.IsNullOrEmpty(parameters[2]) || String.IsNullOrWhiteSpace(parameters[2]))
+            {
+                throw new ArgumentException("Last name cannot be null, empty or whitespace");
+            }
+
+            if (String.IsNullOrEmpty(parameters[3]) || String.IsNullOrWhiteSpace(parameters[3]))
+            {
+                throw new ArgumentException("Email name cannot be null, empty or whitespace");
+            }
+
             var employee = new CreateEmployeeModel
             {
                 FirstName = parameters[1],

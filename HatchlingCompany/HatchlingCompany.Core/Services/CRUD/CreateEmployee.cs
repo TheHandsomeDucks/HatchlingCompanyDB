@@ -24,9 +24,9 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count() < 4)
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentException("Invalid parameters! PLease use createEmployee [fistName] [lastName] [email]");
             }
 
             var employee = new CreateEmployeeModel
@@ -40,7 +40,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
             if (employeeExists != null)
             {
-                throw new ArgumentNullException($"{employeeExists.FirstName} {employeeExists.LastName} already exists");
+                throw new ArgumentException($"Employee with Name {employeeExists.FirstName} {employeeExists.LastName} already exists");
             }
 
             var employeeToAdd = this.mapper.Map<Employee>(employee);

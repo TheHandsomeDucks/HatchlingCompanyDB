@@ -1,4 +1,6 @@
-﻿using HatchlingCompany.Core.Common.Contracts;
+﻿using AutoMapper.QueryableExtensions;
+using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models.Common;
 using System;
@@ -22,7 +24,7 @@ namespace HatchlingCompany.Core.Services.CRUD
         {
             if (parameters == null || parameters.Count() < 3)
             {
-                throw new ArgumentException("Invalid parameters! PLease use findEmployeeByMail [email]");
+                throw new ArgumentException("Invalid parameters! Please use updateEmployeeStatus [email] [status]");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
@@ -40,6 +42,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             var employee = this.db.Employees
                                 .Where(e => e.Email == email)
+                                .ProjectTo<ListEmployeeDetailsModel>()
                                 .SingleOrDefault();
 
             if (employee == null)

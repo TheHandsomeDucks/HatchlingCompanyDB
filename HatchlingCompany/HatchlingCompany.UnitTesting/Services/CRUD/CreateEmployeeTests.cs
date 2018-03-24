@@ -163,6 +163,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             var employeeExists = dbStub.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
 
             // Assert
+            Assert.IsNotNull(dbStub.Employees);
             Assert.AreEqual(1, dbStub.Employees.Count());
             Assert.AreEqual("alex@gmail.com", employeeExists.Email);
         }

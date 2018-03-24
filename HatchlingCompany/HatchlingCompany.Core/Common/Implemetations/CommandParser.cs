@@ -21,13 +21,13 @@ namespace HatchlingCompany.Core.Common.Implementations
             var commandParts = commandLine.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             var delimeter = "----------------------------------------";
 
-            if (!commandParts.Any())
-            {
-                throw new ArgumentException("Please add a valid command!");
-            }
-
             try
             {
+                if (!commandParts.Any())
+                {
+                    throw new ArgumentException("Please write a valid command with parameters!");
+                }
+
                 var commandName = commandParts[0].ToLower();
                 var command = this.commandFactory.CreateCommand(commandName);
 
@@ -40,10 +40,11 @@ namespace HatchlingCompany.Core.Common.Implementations
                     command.Execute(commandParts);
                 }
             }
-            //catch (Exception ex)
-            //{
-            //    this.writer.WriteLine(ex.Message);
-            //}
+
+            catch (Exception ex)
+            {
+                this.writer.WriteLine(ex.Message);
+            }
             finally
             {
                 this.writer.WriteLine(delimeter);

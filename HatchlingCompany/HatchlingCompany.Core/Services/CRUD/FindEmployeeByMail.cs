@@ -22,9 +22,14 @@ namespace HatchlingCompany.Core.Services.CRUD
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count() < 2)
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentException("Invalid parameters! PLease use findEmployeeByMail [email]");
+            }
+
+            if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
+            {
+                throw new ArgumentException("Email cannot be null, empty or whitespace");
             }
 
             var email = parameters[1];

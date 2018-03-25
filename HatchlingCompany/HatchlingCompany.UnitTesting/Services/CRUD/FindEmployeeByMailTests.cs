@@ -47,7 +47,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
         }
 
         [TestMethod]
-        public void FindEmployeeByMail_Should_Throw_ArgumentException_If_No_Email_Is_Null()
+        public void FindEmployeeByMail_Should_Throw_ArgumentException_If_Email_Is_Null()
         {
             // Arrange
             var parameters = new List<string>()
@@ -60,7 +60,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
         }
 
         [TestMethod]
-        public void FindEmployeeByMail_Should_Throw_ArgumentException_If_No_Email_Is_EmptyString()
+        public void FindEmployeeByMail_Should_Throw_ArgumentException_If_Email_Is_EmptyString()
         {
             // Arrange
             var parameters = new List<string>()

@@ -91,7 +91,7 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
             // Arrange & Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() => listEmployeeDetailsService.Execute(new List<string>()
             {
-                "listEmployeeDetails", "alex@gmail.com"
+                "listEmployeeDetails", "noneExistingMail"
             }));
         }
 

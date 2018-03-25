@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null || parameters.Count() < 2)
+            if (parameters == null || parameters.Count != 2)
             {
                 throw new ArgumentException("Invalid parameters! PLease use createProject [name]");
             }

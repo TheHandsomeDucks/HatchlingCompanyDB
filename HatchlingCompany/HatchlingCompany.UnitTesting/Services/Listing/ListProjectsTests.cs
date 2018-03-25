@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Core.Services.CRUD;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
+using HatchlingCompany.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HatchlingCompany.UnitTesting.Services.Listing
 {
@@ -59,13 +63,66 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
         public void ListEmployeesShould_Return_ProjectList_TypeOf_ListEmployeesModel_If_Prpjects_Are_Found()
         {
             // Arrange
-            var parameters = new List<string>()
+            // Arrange
+            var projectToReturn = new Project
             {
-                null
+                Name = "TestProject"
             };
 
-            // Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => listProjectsService.Execute(parameters));
+            mapperStub.Setup(x => x.Map<Project>(It.IsAny<CreateProjectModel>())).Returns(projectToReturn);
+
+            // Act
+            createProjectService.Execute(new List<string>()
+            {
+                "createProject", "TestProject"
+            });
+
+            // Act
+            listProjectsService.Execute(new List<string>()
+            {
+                "listEmployees"
+            });
+
+            var projects = this.dbStub
+                               .Projects
+                               .ProjectTo<ListProjectsModel>()
+                               .ToList();
+
+            // Assert
+            Assert.IsInstanceOfType(projects, typeof(List<ListProjectsModel>));
+        }
+
+        [TestMethod]
+        public void ListEmployeesShould_Should_Call_PrintInfo_Of_All_Projects()
+        {
+            // Arrange
+            var projectToReturn = new Project
+            {
+                Name = "TestProject"
+            };
+
+            mapperStub.Setup(x => x.Map<Project>(It.IsAny<CreateProjectModel>())).Returns(projectToReturn);
+
+            // Act
+            createProjectService.Execute(new List<string>()
+            {
+                "createProject", "TestProject"
+            });
+
+            // Act
+            listProjectsService.Execute(new List<string>()
+            {
+                "listEmployees"
+            });
+
+            var projects = this.dbStub
+                               .Projects
+                               .ProjectTo<ListProjectsModel>()
+                               .ToList();
+
+            // Assert
+            Assert.IsNotNull(projects);
+            Assert.AreEqual("TestProject", projects[0].Name);
         }
 
     }

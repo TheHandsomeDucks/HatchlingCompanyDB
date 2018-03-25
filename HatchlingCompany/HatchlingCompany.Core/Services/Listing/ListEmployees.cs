@@ -34,7 +34,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             if (!employees.Any())
             {
-                throw new ArgumentNullException("No employees registered yet");
+                throw new ArgumentException("No employees registered yet");
             }
 
             var sb = new StringBuilder();

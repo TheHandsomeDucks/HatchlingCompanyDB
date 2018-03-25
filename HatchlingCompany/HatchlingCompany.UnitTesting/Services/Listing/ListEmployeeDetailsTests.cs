@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Models;
@@ -7,6 +8,7 @@ using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,67 +34,101 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
         }
 
         [TestMethod]
-        public void ListEmployeeDetails_Should_Call_Concret_Employee()
+        public void ListEmployeeDetails_Should_Throw_ArgumentNullException_If_FirstParameter_Is_Null()
         {
             // Arrange
-            var employeeToReturn = new Employee
+            var parameters = new List<string>()
             {
-                FirstName = "Ace",
-                LastName = "Base",
-                Email = "ace@gmail.com"
+                null, "alex@gmail.com"
             };
 
-            mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
-
-            createEmployeeService.Execute(new List<string>()
-            {
-                "createEmployee", "Ace", "Base", "ace@gmail.com"
-            });
-
-            var listEmployeeDetailsService = new ListEmployeeDetails(dbStub, writerStub.Object);
-
-            // Act
-            listEmployeeDetailsService.Execute(new List<string>()
-            {
-                "listemployeedetails", "ace@gmail.com"
-            });
-
-            var employeeExists = dbStub.Employees.SingleOrDefault(e => e.Email == "ace@gmail.com");
-
-            // Assert
-            Assert.AreEqual("Ace", employeeExists.FirstName);
-            Assert.AreEqual("Base", employeeExists.LastName);
-            Assert.AreEqual("ace@gmail.com", employeeExists.Email);
+            // Act && Assert
+            Assert.ThrowsException<ArgumentNullException>(() => listEmployeeDetailsService.Execute(parameters));
         }
 
         [TestMethod]
-        public void ListEmployeeDetails_Should_Call_Mapper_Once()
+        public void ListEmployeeDetails_Should_Throw_ArgumentNullException_If_FirstParameter_Is_EmptyString()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                "", "alex@gmail.com"
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentNullException>(() => listEmployeeDetailsService.Execute(parameters));
+        }
+
+        [TestMethod]
+        public void ListEmployeeDetails_Should_Throw_ArgumentNullException_If_SecondtParameter_Is_Null()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                "listEmployeeDetails", "alex@gmail.com"
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentNullException>(() => listEmployeeDetailsService.Execute(parameters));
+        }
+
+        [TestMethod]
+        public void ListEmployeeDetails_Should_Throw_ArgumentNullException_If_SecondParameter_Is_EmptyString()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                "listEmployeeDetails", "alex@gmail.com"
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentNullException>(() => listEmployeeDetailsService.Execute(parameters));
+        }
+
+        [TestMethod]
+        public void ListEmployeeDetails_Should_Throw_ArgumentNullException_If_Employee_Is_Null()
+        {
+            // Arrange & Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => listEmployeeDetailsService.Execute(new List<string>()
+            {
+                "listEmployeeDetails", "alex@gmail.com"
+            }));
+        }
+
+        [TestMethod]
+        public void ListEmployeeDetails_Should_Find_Concrete_Employee()
         {
             // Arrange
             var employeeToReturn = new Employee
             {
-                FirstName = "Ace",
-                LastName = "Base",
-                Email = "ace@gmail.com"
+                FirstName = "Alex",
+                LastName = "Alexov",
+                Email = "alex@gmail.com"
             };
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
 
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Ace", "Base", "ace@gmail.com"
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
             });
-
-            var listEmployeeDetailsService = new ListEmployeeDetails(dbStub, writerStub.Object);
 
             // Act
             listEmployeeDetailsService.Execute(new List<string>()
             {
-                "listemployeedetails", "ace@gmail.com"
+                "listemployeedetails", "alex@gmail.com"
             });
 
+            var employee = this.dbStub
+                             .Employees
+                             .Where(e => e.Email == "alex@gmail.com")
+                             .ProjectTo<ListEmployeeDetailsModel>()
+                             .SingleOrDefault();
+
             // Assert
-            mapperStub.Verify(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>()), Times.Once);
+            Assert.AreEqual("Alex", employee.FirstName);
+            Assert.AreEqual("Alexov", employee.LastName);
+            Assert.AreEqual("alex@gmail.com", employee.Email);
         }
     }
 }

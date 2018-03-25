@@ -22,9 +22,9 @@ namespace HatchlingCompany.Core.Services.Listing
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count != 1 || String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
             }
 
             var employees = this.db
@@ -34,7 +34,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             if (!employees.Any())
             {
-                throw new ArgumentNullException("No employees registered");
+                throw new ArgumentNullException("No employees registered yet");
             }
 
             var sb = new StringBuilder();

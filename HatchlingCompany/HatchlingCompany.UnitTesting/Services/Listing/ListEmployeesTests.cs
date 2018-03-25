@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Models;
@@ -7,6 +8,7 @@ using HatchlingCompany.Data;
 using HatchlingCompany.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +18,7 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
     public class ListEmployeesTests
     {
         private CreateEmployee createEmployeeService;
+        private ListEmployees listEmployeesService;
         private Mock<IMapper> mapperStub;
         private Mock<IWriter> writerStub;
         private IDbContext dbStub;
@@ -27,21 +30,77 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
             this.writerStub = new Mock<IWriter>();
             this.mapperStub = new Mock<IMapper>();
             this.createEmployeeService = new CreateEmployee(dbStub, writerStub.Object, mapperStub.Object);
+            this.listEmployeesService = new ListEmployees(dbStub, writerStub.Object);
+        }
+
+        [TestMethod]
+        public void ListEmployees_Should_Throw_ArgumentNullException_If_Parameter_Is_Null()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                null
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentNullException>(() => listEmployeesService.Execute(parameters));
+        }
+
+        [TestMethod]
+        public void ListEmployees_Should_Throw_ArgumentNullException_If_Parameter_Is_EmptyString()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                ""
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentNullException>(() => listEmployeesService.Execute(parameters));
+        }
+
+        [TestMethod]
+        public void ListEmployees_Should_Return_EmployeesList_TypeOf_ListEmployeesModel_If_Employees_Exist()
+        {
+            // Arrange
+            var employeeToReturn = new Employee
+            {
+                FirstName = "Alex",
+                LastName = "Alexov",
+                Email = "alex@gmail.com"
+            };
+
+            mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
+
+            createEmployeeService.Execute(new List<string>()
+            {
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+            });
+
+            // Act
+            listEmployeesService.Execute(new List<string>()
+            {
+                "listEmployees"
+            });
+
+            var employees = this.dbStub
+                            .Employees
+                            .ProjectTo<ListEmployeesModel>()
+                            .ToList();
+
+            // Assert
+            Assert.IsInstanceOfType(employees, typeof(List<ListEmployeesModel>));
         }
 
         [TestMethod]
         public void ListEmployees_Should_Call_PrintInfo_Of_All_Employee()
         {
             // Arrange
-            var dbStub = new HatchlingCompanyDbContext(Effort.DbConnectionFactory.CreateTransient());
-            var writerStub = new Mock<IWriter>();
-            var mapperStub = new Mock<IMapper>();
-
             var employeeToReturn = new Employee
             {
-                FirstName = "Harry",
-                LastName = "Poter",
-                Email = "harry@gmail.com"
+                FirstName = "Alex",
+                LastName = "Alexov",
+                Email = "alex@gmail.com"
             };
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
@@ -50,7 +109,7 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
 
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Harry", "Poter", "harry@gmail.com"
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
             });
 
             var listEmployeesService = new ListEmployees(dbStub, writerStub.Object);
@@ -61,13 +120,16 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
                 "listemployees"
             });
 
-            var employees = dbStub.Employees.ToList();
+            var employees = this.dbStub
+                          .Employees
+                          .ProjectTo<ListEmployeesModel>()
+                          .ToList();
 
             // Assert
             Assert.IsNotNull(employees);
-            Assert.AreEqual("Harry", employees[0].FirstName);
-            Assert.AreEqual("Poter", employees[0].LastName);
-            Assert.AreEqual("harry@gmail.com", employees[0].Email);
+            Assert.AreEqual("Alex", employees[0].FirstName);
+            Assert.AreEqual("Alexov", employees[0].LastName);
+            Assert.AreEqual("alex@gmail.com", employees[0].Email);
         }
     }
 }

@@ -65,7 +65,7 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
             // Arrange
             var parameters = new List<string>()
             {
-                "listEmployeeDetails", "alex@gmail.com"
+                "listEmployeeDetails", null
             };
 
             // Act && Assert
@@ -78,7 +78,7 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
             // Arrange
             var parameters = new List<string>()
             {
-                "listEmployeeDetails", "alex@gmail.com"
+                "listEmployeeDetails", ""
             };
 
             // Act && Assert

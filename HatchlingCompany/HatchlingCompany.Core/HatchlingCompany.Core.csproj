@@ -95,7 +95,7 @@
     <Compile Include="Models\ListEmployeeDetailsModel.cs" />
     <Compile Include="Models\ListEmployeesModel.cs" />
     <Compile Include="Models\ListProjectDetailsModel.cs" />
-    <Compile Include="Models\ListProjectModel.cs" />
+    <Compile Include="Models\ListProjectsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\Contracts\IReader.cs" />
     <Compile Include="Common\Contracts\IWriter.cs" />

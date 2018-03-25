@@ -29,7 +29,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             var projects = this.db
                                .Projects
-                               .ProjectTo<ListProjectModel>()
+                               .ProjectTo<ListProjectsModel>()
                                .ToList();
 
             if (!projects.Any())

@@ -22,9 +22,9 @@ namespace HatchlingCompany.Core.Services.Listing
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count != 1 || String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
             }
 
             var projects = this.db
@@ -39,14 +39,8 @@ namespace HatchlingCompany.Core.Services.Listing
 
             var sb = new StringBuilder();
             sb.AppendLine("Listing projects...");
-
-            foreach (var project in projects)
-            {
-                sb.Append(project.PrintInfo());
-            }
-
+            projects.ForEach(p => sb.AppendLine($"{p.PrintInfo()}"));
             this.writer.WriteLine(sb.ToString());
-
             this.writer.WriteLine($"All projects have been listed");
         }
     }

@@ -86,19 +86,6 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
         }
 
         [TestMethod]
-        public void FindEmployeeByMail_Should_Throw_ArgumentNullException_If_Employee_With_Passed_Email_Does_Not_Exists()
-        {
-            // Arrange
-            var parameters = new List<string>()
-            {
-                "findEmployeeByMail", "noneExistingMail"
-            };
-
-            // Act && Assert
-            Assert.ThrowsException<ArgumentNullException>(() => findEmployeeByMailService.Execute(parameters));
-        }
-
-        [TestMethod]
         public void FindEmployeeByMail_Should_Return_Employee_TypeOf_ListEmployeeDetailsModel_If_Employee_Exists()
         {
             // Arrange
@@ -160,6 +147,19 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
 
             // Assert
             Assert.AreEqual("alex@gmail.com", employeeExists.Email);
+        }
+
+        [TestMethod]
+        public void FindEmployeeByMail_Should_Throw_ArgumentNullException_If_Employee_With_Passed_Email_Does_Not_Exists()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                "findEmployeeByMail", "noneExistingMail"
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentNullException>(() => findEmployeeByMailService.Execute(parameters));
         }
 
         [TestMethod]

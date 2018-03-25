@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null || parameters.Count() < 4)
+            if (parameters == null || parameters.Count != 4)
             {
                 throw new ArgumentException("Invalid parameters! PLease use createEmployee [fistName] [lastName] [email]");
             }

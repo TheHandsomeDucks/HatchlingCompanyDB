@@ -54,7 +54,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             if (!employees.Any())
             {
-                throw new ArgumentException($"Employees with {status} could not be found");
+                throw new ArgumentException($"Employees with status {status} could not be found");
             }
 
             var sb = new StringBuilder();

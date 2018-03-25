@@ -34,7 +34,7 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
         }
 
         [TestMethod]
-        public void ListEmployees_Should_Throw_ArgumentNullException_If_Parameter_Is_Null()
+        public void ListProjects_Should_Throw_ArgumentNullException_If_Parameter_Is_Null()
         {
             // Arrange
             var parameters = new List<string>()
@@ -47,7 +47,7 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
         }
 
         [TestMethod]
-        public void ListEmployees_Should_Throw_ArgumentNullException_If_Parameter_Is_EmptyString()
+        public void ListProjects_Should_Throw_ArgumentNullException_If_Parameter_Is_EmptyString()
         {
             // Arrange
             var parameters = new List<string>()
@@ -60,7 +60,7 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
         }
 
         [TestMethod]
-        public void ListEmployeesShould_Return_ProjectList_TypeOf_ListEmployeesModel_If_Prpjects_Are_Found()
+        public void ListProjects_Should_Return_ProjectList_TypeOf_ListEmployeesModel_If_Prpjects_Are_Found()
         {
             // Arrange
             // Arrange
@@ -93,7 +93,17 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
         }
 
         [TestMethod]
-        public void ListEmployeesShould_Should_Call_PrintInfo_Of_All_Projects()
+        public void ListProjects_Should_Throw_ArgumentException_If_EmployeesList_Is_Null()
+        {
+            // Arrange & Act & Assert
+            Assert.ThrowsException<ArgumentException>(() => listProjectsService.Execute(new List<string>()
+            {
+                "listemployees"
+            }));
+        }
+
+        [TestMethod]
+        public void ListProjects_Should_Call_PrintInfo_Of_All_Projects()
         {
             // Arrange
             var projectToReturn = new Project

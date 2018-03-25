@@ -26,7 +26,7 @@ namespace HatchlingCompany.Core.Services.CRUD
         {
             if (parameters == null || parameters.Count != 2)
             {
-                throw new ArgumentException("Invalid parameters! PLease use createProject [name]");
+                throw new ArgumentException("Invalid parameters! Please type in createProject [name]");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))

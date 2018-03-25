@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Services.CRUD
         {
             if (parameters == null || parameters.Count() < 3)
             {
-                throw new ArgumentException("Invalid parameters! Please use updateEmployeeStatus [email] [status]");
+                throw new ArgumentException("Invalid parameters! Please type in updateEmployeeStatus [email] [status]");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))

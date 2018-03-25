@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Services.CRUD
         {
             if (parameters == null || parameters.Count() < 2)
             {
-                throw new ArgumentException("Invalid parameters! Please use findEmployeeByMail [email]");
+                throw new ArgumentException("Invalid parameters! Please type in findEmployeeByMail [email]");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))

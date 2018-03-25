@@ -17,9 +17,9 @@ namespace HatchlingCompany.Core.Services.Listing
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count != 1 || String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
             }
 
             var commandsList = this.GetAllCommandNames().OrderBy(x => x);
@@ -30,8 +30,8 @@ namespace HatchlingCompany.Core.Services.Listing
             }
 
             this.writer.WriteLine($"Listing available commands...");
-            var counter = 0;
 
+            var counter = 0;
             foreach (var command in commandsList)
             {
                 this.writer.WriteLine($"{++counter}. {command}");

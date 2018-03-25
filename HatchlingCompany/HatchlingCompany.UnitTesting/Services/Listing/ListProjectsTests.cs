@@ -63,7 +63,6 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
         public void ListProjects_Should_Return_ProjectList_TypeOf_ListEmployeesModel_If_Prpjects_Are_Found()
         {
             // Arrange
-            // Arrange
             var projectToReturn = new Project
             {
                 Name = "TestProject"

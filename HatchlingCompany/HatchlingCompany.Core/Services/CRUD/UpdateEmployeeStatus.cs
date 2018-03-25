@@ -47,7 +47,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             if (employee == null)
             {
-                throw new ArgumentNullException($"Person with {email} could not be found");
+                throw new ArgumentNullException($"Person with email:{email} could not be found");
             }
 
             employee.Status = status;

@@ -93,7 +93,7 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
         }
 
         [TestMethod]
-        public void ListEmployees_Should_Call_PrintInfo_Of_All_Employee()
+        public void ListEmployees_Should_Call_PrintInfo_Of_All_Employees()
         {
             // Arrange
             var employeeToReturn = new Employee

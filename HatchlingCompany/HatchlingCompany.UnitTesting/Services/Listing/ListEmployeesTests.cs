@@ -93,6 +93,16 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
         }
 
         [TestMethod]
+        public void ListEmployees_Should_Throw_ArgumentException_If_EmployeesList_Is_Null()
+        {
+            // Arrange & Act & Assert
+            Assert.ThrowsException<ArgumentException>(() => listEmployeesService.Execute(new List<string>()
+            {
+                "listemployees"
+            }));
+        }
+
+        [TestMethod]
         public void ListEmployees_Should_Call_PrintInfo_Of_All_Employees()
         {
             // Arrange

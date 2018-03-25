@@ -34,7 +34,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             if (!projects.Any())
             {
-                throw new ArgumentNullException("No projects registered");
+                throw new ArgumentException("No projects registered yet");
             }
 
             var sb = new StringBuilder();

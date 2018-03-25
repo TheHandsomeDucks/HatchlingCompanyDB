@@ -93,6 +93,7 @@
     <Compile Include="Models\CreateEmployeeModel.cs" />
     <Compile Include="Models\CreateProjectModel.cs" />
     <Compile Include="Models\ListEmployeeDetailsModel.cs" />
+    <Compile Include="Models\ListEmployeesByStatusModel.cs" />
     <Compile Include="Models\ListEmployeesModel.cs" />
     <Compile Include="Models\ListProjectDetailsModel.cs" />
     <Compile Include="Models\ListProjectsModel.cs" />

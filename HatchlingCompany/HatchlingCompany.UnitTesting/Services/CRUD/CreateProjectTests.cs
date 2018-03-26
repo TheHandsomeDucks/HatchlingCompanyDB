@@ -43,7 +43,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
         }
 
         [TestMethod]
-        public void CreateProject_Should_Throw_DbEntityValidationException_If_Name_Is_Null()
+        public void CreateProject_Should_Throw_ArgumentException_If_Name_Is_Null()
         {
             // Arrange
             var parameters = new List<string>()

@@ -2,7 +2,7 @@
   "TestRunner": "",
   "TestPlatform": "x64",
   "TestApartmentState": "MTA",
-  "TestAdapterMode": "Standard",
+  "TestAdapterMode": "Integrated",
   "IsRedirectingFrameworkAssemblies": false,
   "TestSettings": null,
   "ExcludeAttributes": "System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute",

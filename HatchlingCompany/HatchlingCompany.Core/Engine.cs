@@ -5,13 +5,13 @@ namespace HatchlingCompany.Core
 {
     public class Engine : IEngine
     {
-        private readonly ICommandParser commandProcessor;
+        private readonly ICommandParser commandParser;
         private readonly IReader reader;
         private readonly IWriter writer;
 
-        public Engine(ICommandParser commandProcessor, IReader reader, IWriter writer)
+        public Engine(ICommandParser commandParser, IReader reader, IWriter writer)
         {
-            this.commandProcessor = commandProcessor ?? throw new ArgumentNullException("commandProcessor");
+            this.commandParser = commandParser ?? throw new ArgumentNullException("commandParser");
             this.reader = reader ?? throw new ArgumentNullException(nameof(reader));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
         }
@@ -24,13 +24,18 @@ namespace HatchlingCompany.Core
             {
                 var commandLine = this.reader.ReadLine();
 
+                if (String.IsNullOrEmpty(commandLine) || String.IsNullOrWhiteSpace(commandLine))
+                {
+                    throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+                }
+
                 if (commandLine.Trim().ToLower() == "end")
                 {
                     this.writer.WriteLine("Ciao!");
                     break;
                 }
 
-                this.commandProcessor.ParseCommand(commandLine);
+                this.commandParser.ParseCommand(commandLine);
 
                 this.writer.WriteLine("Waiting for command...");
             }

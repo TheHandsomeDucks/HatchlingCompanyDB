@@ -69,7 +69,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
         }
 
         [TestMethod]
-        public void CreateEmployee_Should_Throw_DbEntityValidationException_If_Email_Is_Null()
+        public void CreateEmployee_Should_Throw_ArgumentException_If_Email_Is_Null()
         {
             // Arrange
             var employeeToReturn = new Employee

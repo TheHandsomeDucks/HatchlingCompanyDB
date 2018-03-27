@@ -22,9 +22,14 @@ namespace HatchlingCompany.Core.Services.CRUD
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count() < 2)
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentException("Invalid parameters! Please type in findProjectByName [project name]");
+            }
+
+            if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
+            {
+                throw new ArgumentException("Project name cannot be null, empty or whitespace");
             }
 
             var name = parameters[1];

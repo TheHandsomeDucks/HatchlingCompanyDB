@@ -102,10 +102,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Employees\AssemblyInitialize.cs" />
-    <Compile Include="Services\Employees\CreateEmployeeTests.cs" />
-    <Compile Include="Services\Employees\ListEmployeeDetailsTests.cs" />
-    <Compile Include="Services\Employees\ListEmployeesTests.cs" />
+    <Compile Include="AssemblyInitialize.cs" />
+    <Compile Include="Services\CRUD\CreateEmployeeTests.cs" />
+    <Compile Include="Services\CRUD\FindEmployeeByMailTests.cs" />
+    <Compile Include="Services\CRUD\FindProjectByNameTests.cs" />
+    <Compile Include="Services\CRUD\UpdateEmployeeStatusTests.cs" />
+    <Compile Include="Services\Factories\CommandFactoryTests.cs" />
+    <Compile Include="Services\Listing\ListEmployeeDetailsTests.cs" />
+    <Compile Include="Services\Listing\ListEmployeesTests.cs" />
+    <Compile Include="Services\CRUD\CreateProjectTests.cs" />
+    <Compile Include="Services\Listing\ListProjectsTests.cs" />
+    <Compile Include="Services\Listing\ListProjectDetailsTests.cs" />
+    <Compile Include="Services\Listing\ListEmployeesByStatusTests.cs" />
+    <Compile Include="Services\Listing\HelpTests.cs" />
+    <Compile Include="EngineTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

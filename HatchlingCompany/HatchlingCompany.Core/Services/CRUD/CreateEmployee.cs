@@ -24,9 +24,24 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count != 4)
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentException("Invalid parameters! Please type in createEmployee [fistName] [lastName] [email]");
+            }
+
+            if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
+            {
+                throw new ArgumentException("First name cannot be null, empty or whitespace");
+            }
+
+            if (String.IsNullOrEmpty(parameters[2]) || String.IsNullOrWhiteSpace(parameters[2]))
+            {
+                throw new ArgumentException("Last name cannot be null, empty or whitespace");
+            }
+
+            if (String.IsNullOrEmpty(parameters[3]) || String.IsNullOrWhiteSpace(parameters[3]))
+            {
+                throw new ArgumentException("Email name cannot be null, empty or whitespace");
             }
 
             var employee = new CreateEmployeeModel
@@ -40,7 +55,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
 
             if (employeeExists != null)
             {
-                throw new ArgumentNullException($"{employeeExists.FirstName} {employeeExists.LastName} already exists");
+                throw new ArgumentException($"Employee with Name {employeeExists.FirstName} {employeeExists.LastName} already exists");
             }
 
             var employeeToAdd = this.mapper.Map<Employee>(employee);

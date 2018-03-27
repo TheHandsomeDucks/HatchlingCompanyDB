@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HatchlingCompany.Core.Models
 {
-    public class ListProjectModel : IMapFrom<Project>
+    public class ListProjectsModel : IMapFrom<Project>
     {
         public string Name { get; set; }
 

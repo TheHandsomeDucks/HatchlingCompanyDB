@@ -33,7 +33,7 @@ namespace HatchlingCompany.Core.Services.Listing
                 throw new ArgumentNullException("Status cannot be null, empty or whitespace!");
             }
 
-            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[1].ToLower());
+            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[1], true);
 
 
             if (status == 0)

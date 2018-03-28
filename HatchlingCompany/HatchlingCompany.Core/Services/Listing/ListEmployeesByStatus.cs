@@ -25,7 +25,7 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             if (parameters == null || parameters.Count != 2)
             {
-                throw new ArgumentNullException("Invalid parameters! Please type in ListEmployeesByStatus [Employee_Status]!");
+                throw new ArgumentNullException("Invalid parameters! Please type in ListEmployeesByStatus [Employee_Status]");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
@@ -38,7 +38,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             if (status == 0)
             {
-                throw new ArgumentException("Status does not exists");
+                throw new ArgumentException("Status does not exists!");
             }
 
             var employees = this.db

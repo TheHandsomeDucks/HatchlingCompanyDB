@@ -19,7 +19,7 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             if (parameters == null || parameters.Count != 1 || String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
             {
-                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace!");
             }
 
             var commandsList = this.GetAllCommandNames().OrderBy(x => x);
@@ -42,7 +42,8 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             var assembly = Assembly.GetAssembly(typeof(ICommand));
             var types = assembly.DefinedTypes
-                .Where(type => type.ImplementedInterfaces.Any(i => i == typeof(ICommand))).ToList();
+                .Where(type => type.ImplementedInterfaces.Any(i => i == typeof(ICommand)))
+                .ToList();
 
             var result = new HashSet<string>();
 

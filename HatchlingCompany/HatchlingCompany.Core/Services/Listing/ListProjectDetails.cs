@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             if (parameters == null || parameters.Count != 2)
             {
-                throw new ArgumentNullException("Parameters are invalid!");
+                throw new ArgumentNullException("Invalid Parameters! Please type in ListProjectDetails [Project_Name]");
             }
 
             if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))

@@ -38,12 +38,12 @@ namespace HatchlingCompany.Core.Services.CRUD
             }
 
             var email = parameters[1];
-            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[2].ToLower());
+            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[2], true);
 
             var employee = this.db.Employees
                                 .Where(e => e.Email == email)
-                                .ProjectTo<ListEmployeeDetailsModel>()
-                                .SingleOrDefault();
+                                //.ProjectTo<ListEmployeeDetailsModel>()
+                                .FirstOrDefault();
 
             if (employee == null)
             {

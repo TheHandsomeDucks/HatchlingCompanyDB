@@ -26,7 +26,7 @@ namespace HatchlingCompany.Core.Commands.Implementations
         {
             if (parameters == null || parameters.Count != 5)
             {
-                throw new ArgumentException("Invalid parameters! Please type in createEmployee [fistName] [lastName] [email] [phoneNumber]!");
+                throw new ArgumentException("Invalid parameters! Please type in CreateEmployee [fistName] [lastName] [email] [phoneNumber]!");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))

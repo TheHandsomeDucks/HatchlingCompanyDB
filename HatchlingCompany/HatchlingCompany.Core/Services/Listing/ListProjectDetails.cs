@@ -22,25 +22,33 @@ namespace HatchlingCompany.Core.Services.Listing
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count != 2)
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentNullException("Parameters are invalid");
+            }
+
+            if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
+            {
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+            }
+
+            if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
+            {
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
             }
 
             var name = parameters[1];
-
-            var projectExists = this.db.Projects.SingleOrDefault(p => p.Name == name);
-
-            if (projectExists == null)
-            {
-                throw new ArgumentNullException($"Project with {name} could not be found");
-            }
 
             var project = this.db
                         .Projects
                         .Where(e => e.Name == name)
                         .ProjectTo<ListProjectDetailsModel>()
                         .SingleOrDefault();
+
+            if (project == null)
+            {
+                throw new ArgumentNullException($"Project with {name} could not be found");
+            }
 
             var sb = new StringBuilder();
             sb.AppendLine("Listing project details...");

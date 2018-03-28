@@ -31,6 +31,8 @@ namespace HatchlingCompany.Console.AutofacModules
 
             // DbContext
             builder.RegisterType<HatchlingCompanyDbContext>().As<IDbContext>().InstancePerDependency();
+
+            // Automapper
             builder.Register(x => Mapper.Instance);
 
             // --------------------- CRUD -------------------------

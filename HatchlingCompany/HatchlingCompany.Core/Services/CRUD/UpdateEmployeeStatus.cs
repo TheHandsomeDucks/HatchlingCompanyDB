@@ -1,4 +1,6 @@
-﻿using HatchlingCompany.Core.Common.Contracts;
+﻿using AutoMapper.QueryableExtensions;
+using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
 using HatchlingCompany.Models.Common;
 using System;
@@ -20,9 +22,19 @@ namespace HatchlingCompany.Core.Services.CRUD
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count() < 3)
             {
-                throw new ArgumentNullException(nameof(parameters));
+                throw new ArgumentException("Invalid parameters! Please type in updateEmployeeStatus [email] [status]");
+            }
+
+            if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
+            {
+                throw new ArgumentException("Email cannot be null, empty or whitespace");
+            }
+
+            if (String.IsNullOrEmpty(parameters[2]) || String.IsNullOrWhiteSpace(parameters[2]))
+            {
+                throw new ArgumentException("Status cannot be null, empty or whitespace");
             }
 
             var email = parameters[1];
@@ -30,11 +42,12 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             var employee = this.db.Employees
                                 .Where(e => e.Email == email)
+                                .ProjectTo<ListEmployeeDetailsModel>()
                                 .SingleOrDefault();
 
             if (employee == null)
             {
-                throw new ArgumentNullException($"Person with {email} could not be found");
+                throw new ArgumentNullException($"Person with email:{email} could not be found");
             }
 
             employee.Status = status;

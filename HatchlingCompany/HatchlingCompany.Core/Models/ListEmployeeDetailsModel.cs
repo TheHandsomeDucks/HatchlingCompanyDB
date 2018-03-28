@@ -8,7 +8,6 @@ namespace HatchlingCompany.Core.Models
 {
     public class ListEmployeeDetailsModel : IMapFrom<Employee>, ICustomMapping
     {
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -22,7 +21,6 @@ namespace HatchlingCompany.Core.Models
         public decimal Salary { get; set; }
 
         public string JobTitle { get; set; }
-
 
         public string PrintInfo()
         {

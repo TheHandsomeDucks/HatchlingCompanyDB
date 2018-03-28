@@ -102,6 +102,7 @@
     <Compile Include="Common\Contracts\IWriter.cs" />
     <Compile Include="Common\Implemetations\ConsoleReader.cs" />
     <Compile Include="Common\Implemetations\ConsoleWriter.cs" />
+    <Compile Include="Services\AssignToProject.cs" />
     <Compile Include="Services\CRUD\CreateEmployee.cs" />
     <Compile Include="Services\CRUD\CreateProject.cs" />
     <Compile Include="Services\CRUD\FindEmployeeByMail.cs" />

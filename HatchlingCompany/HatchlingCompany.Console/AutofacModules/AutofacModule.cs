@@ -3,6 +3,7 @@ using AutoMapper;
 using HatchlingCompany.Core;
 using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Services;
 using HatchlingCompany.Core.Services.CRUD;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
@@ -57,6 +58,7 @@ namespace HatchlingCompany.Console.AutofacModules
             // Projects
             builder.RegisterType<ListProjects>().Named<ICommand>("listprojects").InstancePerDependency();
             builder.RegisterType<ListProjectDetails>().Named<ICommand>("listprojectdetails").InstancePerDependency();
+            builder.RegisterType<AssignToProject>().Named<ICommand>("assigntoproject").InstancePerDependency();
         }
     }
 }

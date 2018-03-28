@@ -24,17 +24,17 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             if (parameters == null || parameters.Count != 2)
             {
-                throw new ArgumentNullException("Parameters are invalid");
+                throw new ArgumentNullException("Parameters are invalid!");
             }
 
             if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
             {
-                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace!");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
-                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace!");
             }
 
             var name = parameters[1];
@@ -47,7 +47,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             if (project == null)
             {
-                throw new ArgumentNullException($"Project with {name} could not be found");
+                throw new ArgumentNullException($"Project {name} could not be found!");
             }
 
             var sb = new StringBuilder();

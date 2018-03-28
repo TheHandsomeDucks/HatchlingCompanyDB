@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Services.Listing
 
             var commandsList = this.GetAllCommandNames().OrderBy(x => x);
 
-            if (commandsList == null)
+            if (commandsList.Count() == 0)
             {
                 throw new ArgumentNullException("No commands created yet");
             }

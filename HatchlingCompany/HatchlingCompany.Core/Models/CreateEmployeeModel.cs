@@ -12,6 +12,8 @@ namespace HatchlingCompany.Core.Models
 
         public string Email { get; set; }
 
+        public string PhoneNumber { get; set; }
+
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Employee, CreateEmployeeModel>();

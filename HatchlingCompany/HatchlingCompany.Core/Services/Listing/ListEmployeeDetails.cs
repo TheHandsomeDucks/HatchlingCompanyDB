@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             if (parameters == null || parameters.Count != 2)
             {
-                throw new ArgumentNullException("Parameters are invalid");
+                throw new ArgumentNullException("Invalid parameters! Please type in ListEmployeeDetals [Employee_Email]");
             }
 
             if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))

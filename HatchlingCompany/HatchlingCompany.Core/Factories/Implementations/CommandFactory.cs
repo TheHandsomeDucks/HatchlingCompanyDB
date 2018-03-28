@@ -16,10 +16,11 @@ namespace HatchlingCompany.Core.Factories.Implementations
 
         public ICommand CreateCommand(string name)
         {
-            if(String.IsNullOrEmpty(name) || String.IsNullOrWhiteSpace(name))
+            if (String.IsNullOrEmpty(name) || String.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("Command name cannot be null, empty or whitespace");
             }
+
             return this.container.ResolveNamed<ICommand>(name);
         }
     }

@@ -37,7 +37,7 @@ namespace HatchlingCompany.Core.Services.CRUD
             var employee = this.db
                              .Employees
                              .Where(e => e.Email == email)
-                             .ProjectTo<ListEmployeeDetailsModel>()
+                             .ProjectTo<FindEmployeeByMailModel>()
                              .SingleOrDefault();
 
             if (employee == null)

@@ -19,16 +19,21 @@ namespace HatchlingCompany.Utils
 
         public void Export(object obj)
         {
-            string serialized = JsonConvert.SerializeObject(obj);
+            string serialized = Serialize(obj);
 
             SaveToFile(serialized, this.path, this.fileName);
         }
 
         public void Export(object obj, string path, string fileName)
         {
-            string serialized = JsonConvert.SerializeObject(obj);
+            string serialized = Serialize(obj);
 
             SaveToFile(serialized, path, fileName);
+        }
+
+        private string Serialize(object obj)
+        {
+            return JsonConvert.SerializeObject(obj);
         }
 
         private void SaveToFile(string text, string path, string fileName)

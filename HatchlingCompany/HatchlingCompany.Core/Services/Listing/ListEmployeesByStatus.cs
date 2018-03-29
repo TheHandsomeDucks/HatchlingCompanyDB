@@ -28,6 +28,11 @@ namespace HatchlingCompany.Core.Services.Listing
                 throw new ArgumentNullException("Invalid parameters! Please type in ListEmployeesByStatus [Employee_Status]");
             }
 
+            if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
+            {
+                throw new ArgumentException("Command cannot be null, empty or whitespace!");
+            }
+
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
                 throw new ArgumentNullException("Status cannot be null, empty or whitespace!");

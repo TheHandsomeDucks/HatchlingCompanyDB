@@ -27,6 +27,11 @@ namespace HatchlingCompany.Core.Services.CRUD
                 throw new ArgumentException("Invalid parameters! Please type in updateEmployeeStatus [email] [status]!");
             }
 
+            if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
+            {
+                throw new ArgumentException("Command cannot be null, empty or whitespace!");
+            }
+
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
                 throw new ArgumentException("Email cannot be null, empty or whitespace!");

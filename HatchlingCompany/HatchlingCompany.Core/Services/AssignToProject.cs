@@ -24,6 +24,11 @@ namespace HatchlingCompany.Core.Services
                 throw new ArgumentNullException("Invalid parameters! Please type in AssignToProject [Employee_Email] [Project_Name]!");
             }
 
+            if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
+            {
+                throw new ArgumentException("Command cannot be null, empty or whitespace!");
+            }
+
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
                 throw new ArgumentException("Employee Email cannot be null, empty or whitespace!");

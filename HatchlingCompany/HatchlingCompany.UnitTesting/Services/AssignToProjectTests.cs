@@ -62,6 +62,36 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
+        public void AssignToProject_Should_Throw_ArgumentException_When_CommandName_IsNull()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                null,
+                "employeeEmail",
+                "projectName"
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => assignToProjectMock.Execute(parameters));
+        }
+
+        [TestMethod]
+        public void AssignToProject_Should_Throw_ArgumentException_When_CommandName_IsWhitespace()
+        {
+            // Arrange
+            var parameters = new List<string>()
+            {
+                " ",
+                "employeeEmail",
+                "projectName"
+            };
+
+            // Act && Assert
+            Assert.ThrowsException<ArgumentException>(() => assignToProjectMock.Execute(parameters));
+        }
+
+        [TestMethod]
         public void AssignToProject_Should_Throw_ArgumentException_When_EmployeeEmail_IsNull()
         {
             // Arrange

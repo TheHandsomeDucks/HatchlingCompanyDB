@@ -68,6 +68,9 @@ namespace HatchlingCompany.Data
                 .HasRequired(x => x.Recipient)
                 .WithMany(x => x.ReceivedRelationships);
 
+            modelBuilder.Entity<Relationship>()
+                .HasKey(x => new { x. })
+
             base.OnModelCreating(modelBuilder);
         }
     }

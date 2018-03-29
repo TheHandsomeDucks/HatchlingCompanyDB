@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace HatchlingCompany.Core.Services
 {
-    public class AssignToProject : ICommand
+    public class RemoveFromProject : ICommand
     {
         private readonly IDbContext db;
         private readonly IWriter writer;
 
-        public AssignToProject(IDbContext db, IWriter writer)
+        public RemoveFromProject(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
             this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
@@ -21,7 +21,7 @@ namespace HatchlingCompany.Core.Services
         {
             if (parameters == null || parameters.Count != 3)
             {
-                throw new ArgumentNullException("Invalid parameters! Please type in AssignToProject [Employee_Email] [Project_Name]!");
+                throw new ArgumentNullException("Invalid parameters! Please type in RemoveFromProject [Employee_Email] [Project_Name]!");
             }
 
             if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
@@ -63,17 +63,17 @@ namespace HatchlingCompany.Core.Services
                 throw new ArgumentNullException($"Project {projectName} could not be found!");
             }
 
-            if (employee.Projects.Contains(project))
+            if (!employee.Projects.Contains(project))
             {
-                throw new ArgumentException($"Employee with email \"{employee.Email}\" has already been assigned to Project {project.Name}");
+                throw new ArgumentException($"Employee with email \"{employeeEmail}\" has not been assigned to Project {projectName}");
             }
 
-            employee.Projects.Add(project);
-            project.Employees.Add(employee);
+            employee.Projects.Remove(project);
+            project.Employees.Remove(employee);
 
             this.db.SaveChanges();
 
-            this.writer.WriteLine($"Employee with email \"{employeeEmail}\" has been successfully assigned to Project {projectName}");
+            this.writer.WriteLine($"Employee with email \"{employeeEmail}\" has been successfully removed from Project {projectName}");
         }
     }
 }

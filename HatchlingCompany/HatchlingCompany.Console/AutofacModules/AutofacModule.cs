@@ -59,6 +59,7 @@ namespace HatchlingCompany.Console.AutofacModules
             builder.RegisterType<ListProjects>().Named<ICommand>("listprojects").InstancePerDependency();
             builder.RegisterType<ListProjectDetails>().Named<ICommand>("listprojectdetails").InstancePerDependency();
             builder.RegisterType<AssignToProject>().Named<ICommand>("assigntoproject").InstancePerDependency();
+            builder.RegisterType<RemoveFromProject>().Named<ICommand>("removefromproject").InstancePerDependency();
         }
     }
 }

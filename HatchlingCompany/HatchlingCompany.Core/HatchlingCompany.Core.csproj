@@ -114,6 +114,7 @@
     <Compile Include="Services\Listing\ListEmployeesByStatus.cs" />
     <Compile Include="Services\Listing\ListProjectDetails.cs" />
     <Compile Include="Services\Listing\ListProjects.cs" />
+    <Compile Include="Services\RemoveFromProject.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">

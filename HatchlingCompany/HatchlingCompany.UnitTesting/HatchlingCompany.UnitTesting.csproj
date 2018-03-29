@@ -117,6 +117,7 @@
     <Compile Include="Services\Listing\ListEmployeesByStatusTests.cs" />
     <Compile Include="Services\Listing\HelpTests.cs" />
     <Compile Include="EngineTests.cs" />
+    <Compile Include="Services\RemoveFromProjectTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

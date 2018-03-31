@@ -112,11 +112,11 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             var employeeExists = this.dbStub
                              .Employees
                              .Where(e => e.Email == "alex@gmail.com")
-                             .ProjectTo<ListEmployeeDetailsModel>()
+                             .ProjectTo<FindEmployeeByMailModel>()
                              .SingleOrDefault();
 
             // Assert
-            Assert.IsInstanceOfType(employeeExists, typeof(ListEmployeeDetailsModel));
+            Assert.IsInstanceOfType(employeeExists, typeof(FindEmployeeByMailModel));
         }
 
         [TestMethod]
@@ -189,7 +189,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             var employeeExists = this.dbStub
                              .Employees
                              .Where(e => e.Email == "alex@gmail.com")
-                             .ProjectTo<ListEmployeeDetailsModel>()
+                             .ProjectTo<FindEmployeeByMailModel>()
                              .SingleOrDefault();
 
             // Assert

@@ -92,6 +92,7 @@
     <Compile Include="Engine.cs" />
     <Compile Include="Models\CreateEmployeeModel.cs" />
     <Compile Include="Models\CreateProjectModel.cs" />
+    <Compile Include="Models\FindEmployeeByMailModel.cs" />
     <Compile Include="Models\ListEmployeeDetailsModel.cs" />
     <Compile Include="Models\ListEmployeesByStatusModel.cs" />
     <Compile Include="Models\ListEmployeesModel.cs" />

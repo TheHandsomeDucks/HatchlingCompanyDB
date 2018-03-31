@@ -43,13 +43,6 @@ namespace HatchlingCompany.Core.Services
                 throw new InvalidOperationException("Employee emails cannot be equal");
             }
 
-            if (firstEmployeeEmail.CompareTo(secondEmployeeEmail) > 0)
-            {
-                var tempEmployeeEmail = firstEmployeeEmail;
-                firstEmployeeEmail = secondEmployeeEmail;
-                secondEmployeeEmail = tempEmployeeEmail;
-            }
-
             var firstEmployee = this.db
                 .Employees
                 .Where(e => e.Email == firstEmployeeEmail)
@@ -65,6 +58,12 @@ namespace HatchlingCompany.Core.Services
                 .Where(e => e.Email == secondEmployeeEmail)
                 .SingleOrDefault();
 
+            if (firstEmployee.Id > secondEmployee.Id)
+            {
+                var tempEmployee = firstEmployee;
+                firstEmployee = secondEmployee;
+                secondEmployee = tempEmployee;
+            }
 
             var relationshipStrength = int.Parse(parameters[3]);
 

@@ -60,9 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IExporter.cs" />
-    <Compile Include="Contracts\IImporter.cs" />
-    <Compile Include="JSONExporter.cs" />
-    <Compile Include="JSONImporter.cs" />
+    <Compile Include="Contracts\IDeserializer.cs" />
+    <Compile Include="Contracts\ISerializer.cs" />
+    <Compile Include="FileExporter.cs" />
+    <Compile Include="JSONSerializer.cs" />
+    <Compile Include="JSONDeserializer.cs" />
     <Compile Include="PDFExporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

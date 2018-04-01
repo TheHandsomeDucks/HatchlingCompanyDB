@@ -5,8 +5,11 @@ using HatchlingCompany.Core.Commands.Implementations;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Services;
 using HatchlingCompany.Core.Services.CRUD;
+using HatchlingCompany.Core.Services.Exporting;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
+using HatchlingCompany.Utils;
+using HatchlingCompany.Utils.Contracts;
 using System.Reflection;
 
 namespace HatchlingCompany.Console.AutofacModules
@@ -63,6 +66,14 @@ namespace HatchlingCompany.Console.AutofacModules
             builder.RegisterType<ListProjectDetails>().Named<ICommand>("listprojectdetails").InstancePerDependency();
             builder.RegisterType<AssignToProject>().Named<ICommand>("assigntoproject").InstancePerDependency();
             builder.RegisterType<RemoveFromProject>().Named<ICommand>("removefromproject").InstancePerDependency();
+
+            // Misc
+            builder.RegisterType<JSONSerializer>().As<ISerializer>().InstancePerDependency();
+            //builder.RegisterType<JSONDeserializer>().As<IDeserializer>().InstancePerDependency();
+            builder.RegisterType<FileExporter>().As<IExporter>().InstancePerDependency();
+
+            // Exporers & Importers
+            builder.RegisterType<JSONExportEmployees>().Named<ICommand>("jsonexportemployees");
         }
     }
 }

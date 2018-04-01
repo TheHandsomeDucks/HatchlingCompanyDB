@@ -110,6 +110,7 @@
     <Compile Include="Services\CRUD\FindEmployeeByMail.cs" />
     <Compile Include="Services\CRUD\FindProjectByName.cs" />
     <Compile Include="Services\CRUD\UpdateEmployeeStatus.cs" />
+    <Compile Include="Services\Exporting\JSONExportEmployees.cs" />
     <Compile Include="Services\Listing\ListEmployeeDetails.cs" />
     <Compile Include="Services\Listing\Help.cs" />
     <Compile Include="Services\Listing\ListEmployees.cs" />
@@ -127,13 +128,16 @@
       <Project>{840E7571-093D-4287-B9A9-0FA296CC027E}</Project>
       <Name>HatchlingCompany.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HatchlingCompany.Utils\HatchlingCompany.Utils.csproj">
+      <Project>{F89833FC-A673-4CD5-92F1-2A8D034B7204}</Project>
+      <Name>HatchlingCompany.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\Exporting\" />
     <Folder Include="Services\Importing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

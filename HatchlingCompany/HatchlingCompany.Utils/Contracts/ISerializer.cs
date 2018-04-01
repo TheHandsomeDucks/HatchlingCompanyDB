@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace HatchlingCompany.Utils.Contracts
 {
-    public interface IImporter
+    public interface ISerializer
     {
-        object Import();
+        string Serialize(object obj);
     }
 }

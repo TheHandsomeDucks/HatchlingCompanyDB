@@ -5,12 +5,12 @@ using System.IO;
 
 namespace HatchlingCompany.Utils
 {
-    public class JSONImporter : IImporter
+    public class JSONDeserializer //: IDeserializer
     {
         private string path;
         private string fileName;
 
-        public JSONImporter()
+        public JSONDeserializer()
         {
             this.path = "./../../../JSON/Imports/";
             this.fileName = "import.json";

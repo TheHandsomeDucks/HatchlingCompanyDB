@@ -37,6 +37,7 @@ namespace HatchlingCompany.Models
         [MaxLength(50)]
         [Index(IsUnique = true)]
         [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage ="Invalid Email Address")]
         public string Email { get; set; }
 
         [Index(IsUnique = true)]

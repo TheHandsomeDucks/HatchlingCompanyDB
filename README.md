@@ -47,9 +47,16 @@ You'll be able to:
 
 Feature | Owner(s) | Estimated Time | Actual Time | Unit Testing ET | Unit Testing AT
 |:-|:-:|:-:|:-:|:-:|:-:|
-Add Record | Marto | 3hrs | - | 2hrs | - 
-Find Record | Marto | 3hrs | - | 2hrs | -
-Update Record | Orlin <br> Marto <br> Iovo | 15hrs | - | 5hrs | -
+Create Employee | Marto | 3hrs | 1.5hrs | 2hrs | 2hrs 
+Find Employee | Marto | 3hrs | 1hr | 2hrs | 2hrs
+List Employees | Marto | 3hrs | 1hrs | 2hrs | 1hr
+Update Employee | Orlin <br> Marto <br> Iovo | 10hrs | 8hrs | 5hrs | 2hrs
+Create Project | Marto <br> Iovo | 2hrs | 1.5hr | 2hrs | 2hrs 
+Find Project | Marto | 1hr | 1hr | 2hrs | 1hrs
+List Projects | Marto | 1hr | 1hr | 2hrs | 1hrs
+Update Project | Orlin <br> Marto <br> Iovo | 8hrs | 6hrs | 5hrs | 4hrs
+Assign To Project | Iovo | 1hr | 1hr | 1hr | 1hr
+Remove From Project | Iovo | 1hr | 1hr | 1hr | 1hr
 Import JSON file | Iovo | 3hrs | - | 2hrs | -
 Export JSON file | Iovo | 3hrs | - | 2hrs | -
 Generate PDF | Orlin | 6hrs | - | 2hrs | -

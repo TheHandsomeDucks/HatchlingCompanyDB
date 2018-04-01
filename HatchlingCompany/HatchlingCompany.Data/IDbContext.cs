@@ -15,6 +15,8 @@ namespace HatchlingCompany.Data
 
         IDbSet<Country> Countries { get; set; }
 
+        IDbSet<Relationship> Relationships { get; set; }
+
         int SaveChanges();
     }
 }

@@ -7,13 +7,13 @@ namespace HatchlingCompany.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Relationship : IMigrationMetadata
+    public sealed partial class workingonrelationship : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Relationship));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(workingonrelationship));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804010935540_Relationship"; }
+            get { return "201804011014364_working on relationship"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Core.Models;
 using HatchlingCompany.Data;
+using HatchlingCompany.Models;
 
-namespace HatchlingCompany.Core.Services
+namespace HatchlingCompany.Core.Services.CRUD
 {
     public class CreateRelationship : ICommand
     {
         private IDbContext db;
         private IWriter writer;
+        private IMapper mapper;
 
-        public CreateRelationship(IDbContext db, IWriter writer)
+        public CreateRelationship(IDbContext db, IWriter writer, IMapper mapper)
         {
             this.db = db;
             this.writer = writer;
+            this.mapper = mapper;
         }
 
         public void Execute(IList<string> parameters)
@@ -63,6 +68,11 @@ namespace HatchlingCompany.Core.Services
                 .Where(e => e.Email == secondEmployeeEmail)
                 .SingleOrDefault();
 
+            if (secondEmployee == null)
+            {
+                throw new ArgumentNullException($"Employee with Email \"{secondEmployeeEmail}\" could not be found!");
+            }
+
             if (firstEmployee.Id > secondEmployee.Id)
             {
                 var tempEmployee = firstEmployee;
@@ -70,14 +80,34 @@ namespace HatchlingCompany.Core.Services
                 secondEmployee = tempEmployee;
             }
 
-            string comment;
-
-            if (parameters.Count > 3)
+            if (this.db
+                    .Relationships
+                    .SingleOrDefault(e => (e.FirstEmployeeId == firstEmployee.Id || e.SecondEmployeeId == firstEmployee.Id)
+                                       && (e.FirstEmployeeId == secondEmployee.Id || e.SecondEmployeeId == secondEmployee.Id)) != null)
             {
-                comment = string.Join(" ", parameters.Skip(3));
+                throw new ArgumentException($"Relationship already exists");
             }
 
-            
+            var comment = String.Empty;
+
+            if (parameters.Count > 4)
+            {
+                comment = string.Join(" ", parameters.Skip(4));
+            }
+
+            var relationship = new CreateRelationshipModel()
+            {
+                FirstEmployeeId = firstEmployee.Id,
+                SecondEmployeeId = secondEmployee.Id,
+                RelationshipStrength = relationshipStrength,
+                Comment = comment
+            };
+
+            var toAdd = this.mapper.Map<Relationship>(relationship);
+
+            this.db.Relationships.Add(toAdd);
+            this.db.SaveChanges();
+
         }
     }
 }

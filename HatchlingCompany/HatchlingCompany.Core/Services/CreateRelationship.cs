@@ -22,7 +22,7 @@ namespace HatchlingCompany.Core.Services
             if (parameters == null || parameters.Count < 3)
             {
                 throw new ArgumentNullException(
-                    "Invalid parameters! Please type in AssignToProject [Employee_Email] [Project_Name]!");
+                    "Invalid parameters! Please type in CreateRelationship [First_Employee_Email] [Second_Employee_Email] [Relationship_Strength] [Comment *optional*]!");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
@@ -33,6 +33,11 @@ namespace HatchlingCompany.Core.Services
             if (String.IsNullOrEmpty(parameters[2]) || String.IsNullOrWhiteSpace(parameters[2]))
             {
                 throw new ArgumentException("Project Name cannot be null, empty or whitespace!");
+            }
+
+            if (!int.TryParse(parameters[3], out var relationshipStrength) || relationshipStrength < 0 || 9 < relationshipStrength )
+            {
+                throw new ArgumentException("Relationship Strength should be integer between 0 and 9");
             }
 
             var firstEmployeeEmail = parameters[1];
@@ -64,8 +69,6 @@ namespace HatchlingCompany.Core.Services
                 firstEmployee = secondEmployee;
                 secondEmployee = tempEmployee;
             }
-
-            var relationshipStrength = int.Parse(parameters[3]);
 
             string comment;
 

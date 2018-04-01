@@ -9,12 +9,10 @@ namespace HatchlingCompany.Models
     public class Employee
     {
         private ICollection<Project> projects;
-        private ICollection<Relationship> relationships;
 
         public Employee()
         {
             this.projects = new HashSet<Project>();
-            this.relationships = new HashSet<Relationship>();
         }
         
         public int Id { get; set; }
@@ -73,13 +71,6 @@ namespace HatchlingCompany.Models
             get => this.projects;
 
             set => this.projects = value;
-        }
-
-        public virtual ICollection<Relationship> Relationships
-        {
-            get => this.relationships;
-
-            set => this.relationships = value;
         }
     }
 }

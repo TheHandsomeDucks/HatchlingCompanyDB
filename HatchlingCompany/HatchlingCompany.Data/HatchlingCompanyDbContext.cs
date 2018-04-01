@@ -42,7 +42,7 @@ namespace HatchlingCompany.Data
             modelBuilder.Entity<Employee>()
                .HasMany(x => x.Projects)
                .WithMany(x => x.Employees);
-
+                        
             modelBuilder.Entity<Employee>()
                 .HasOptional(x => x.Manager);
 
@@ -64,14 +64,10 @@ namespace HatchlingCompany.Data
                 .HasKey(x => new { x.FirstEmployeeId, x.SecondEmployeeId });
 
             modelBuilder.Entity<Relationship>()
-                .HasRequired(x => x.FirstEmployee)
-                .WithMany(x => x.Relationships)
-                .HasForeignKey(x => x.FirstEmployeeId);
+                .HasRequired(x => x.FirstEmployee);
 
             modelBuilder.Entity<Relationship>()
-                .HasRequired(x => x.SecondEmployee)
-                .WithMany(x => x.Relationships)
-                .HasForeignKey(x => x.SecondEmployeeId);
+                .HasRequired(x => x.SecondEmployee);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -88,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HatchlingCompany.Core\HatchlingCompany.Core.csproj">
-      <Project>{00CEBC20-1262-4F2D-9041-79673AEEE5A9}</Project>
+      <Project>{00cebc20-1262-4f2d-9041-79673aeee5a9}</Project>
       <Name>HatchlingCompany.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\HatchlingCompany.Data\HatchlingCompany.Data.csproj">

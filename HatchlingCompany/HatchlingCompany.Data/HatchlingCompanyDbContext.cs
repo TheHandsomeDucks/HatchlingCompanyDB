@@ -61,12 +61,17 @@ namespace HatchlingCompany.Data
                 .WithMany(x => x.Projects);
 
             modelBuilder.Entity<Relationship>()
-                .HasRequired(x => x.Author)
-                .WithMany(x => x.SentRelationships);
+                .HasKey(x => new { x.FirstEmployeeId, x.SecondEmployeeId });
 
             modelBuilder.Entity<Relationship>()
-                .HasRequired(x => x.Recipient)
-                .WithMany(x => x.ReceivedRelationships);
+                .HasRequired(x => x.FirstEmployee)
+                .WithMany(x => x.Relationships)
+                .HasForeignKey(x => x.FirstEmployeeId);
+
+            modelBuilder.Entity<Relationship>()
+                .HasRequired(x => x.SecondEmployee)
+                .WithMany(x => x.Relationships)
+                .HasForeignKey(x => x.SecondEmployeeId);
 
             base.OnModelCreating(modelBuilder);
         }

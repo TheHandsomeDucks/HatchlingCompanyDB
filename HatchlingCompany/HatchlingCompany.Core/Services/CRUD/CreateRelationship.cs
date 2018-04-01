@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using AutoMapper;
 using HatchlingCompany.Core.Common.Contracts;
 using HatchlingCompany.Core.Models;
@@ -24,20 +25,30 @@ namespace HatchlingCompany.Core.Services.CRUD
 
         public void Execute(IList<string> parameters)
         {
-            if (parameters == null || parameters.Count < 3)
+            if (parameters == null || parameters.Count < 4)
             {
-                throw new ArgumentNullException(
+                throw new ArgumentException(
                     "Invalid parameters! Please type in CreateRelationship [First_Employee_Email] [Second_Employee_Email] [Relationship_Strength] [Comment *optional*]!");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
-                throw new ArgumentException("Employee Email cannot be null, empty or whitespace!");
+                throw new ArgumentException("First Employee Email cannot be null, empty or whitespace!");
+            }
+
+            if (!Regex.IsMatch(parameters[1], @"[0-9,A-z]*@[A-z,0-9]*.[A-z]*"))
+            {
+                throw new ArgumentException("Invalid first email address.");
             }
 
             if (String.IsNullOrEmpty(parameters[2]) || String.IsNullOrWhiteSpace(parameters[2]))
             {
-                throw new ArgumentException("Project Name cannot be null, empty or whitespace!");
+                throw new ArgumentException("Second Employee Email cannot be null, empty or whitespace!");
+            }
+
+            if (!Regex.IsMatch(parameters[2], @"[0-9,A-z]*@[A-z,0-9]*.[A-z]*"))
+            {
+                throw new ArgumentException("Invalid second email address.");
             }
 
             if (!int.TryParse(parameters[3], out var relationshipStrength) || relationshipStrength < 0 || 9 < relationshipStrength )
@@ -50,7 +61,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             if (firstEmployeeEmail.Equals(secondEmployeeEmail))
             {
-                throw new InvalidOperationException("Employee emails cannot be equal");
+                throw new ArgumentException("Employee emails cannot be equal");
             }
 
             var firstEmployee = this.db

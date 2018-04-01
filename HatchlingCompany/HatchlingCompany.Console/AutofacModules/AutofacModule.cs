@@ -45,6 +45,9 @@ namespace HatchlingCompany.Console.AutofacModules
             builder.RegisterType<CreateProject>().Named<ICommand>("createproject").InstancePerDependency();
             builder.RegisterType<FindProjectByName>().Named<ICommand>("findprojectbyname").InstancePerDependency();
 
+            // Relationships
+            builder.RegisterType<CreateRelationship>().Named<ICommand>("createrelationship").InstancePerDependency();
+
             // ------------------   Listing  ---------------------------------
             // Help
             builder.RegisterType<Help>().Named<ICommand>("help").InstancePerDependency();

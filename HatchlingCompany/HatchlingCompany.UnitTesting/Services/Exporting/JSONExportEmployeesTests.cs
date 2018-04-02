@@ -20,7 +20,6 @@ namespace HatchlingCompany.UnitTesting.Services.Exporting
         private Mock<ISerializer> serializerStub;
         private Mock<IExporter> exporterStub;
         private Mock<IWriter> writerStub;
-        private object JSONExportEmployeesMock;
 
         [TestInitialize]
         public void TestInitialize()

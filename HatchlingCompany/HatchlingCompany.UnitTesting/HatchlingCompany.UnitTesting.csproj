@@ -111,6 +111,7 @@
     <Compile Include="Services\CRUD\UpdateEmployeeStatusTests.cs" />
     <Compile Include="Services\Exporting\JSONExportEmployeesTests.cs" />
     <Compile Include="Services\Factories\CommandFactoryTests.cs" />
+    <Compile Include="Services\Importing\JSONImportEmployeesTests.cs" />
     <Compile Include="Services\Listing\ListEmployeeDetailsTests.cs" />
     <Compile Include="Services\Listing\ListEmployeesTests.cs" />
     <Compile Include="Services\CRUD\CreateProjectTests.cs" />

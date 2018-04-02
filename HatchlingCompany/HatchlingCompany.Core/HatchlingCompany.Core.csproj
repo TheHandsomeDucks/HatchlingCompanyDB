@@ -111,6 +111,7 @@
     <Compile Include="Services\CRUD\FindProjectByName.cs" />
     <Compile Include="Services\CRUD\UpdateEmployeeStatus.cs" />
     <Compile Include="Services\Exporting\JSONExportEmployees.cs" />
+    <Compile Include="Services\Importing\JSONImportEmployees.cs" />
     <Compile Include="Services\Listing\ListEmployeeDetails.cs" />
     <Compile Include="Services\Listing\Help.cs" />
     <Compile Include="Services\Listing\ListEmployees.cs" />
@@ -137,8 +138,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Importing\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

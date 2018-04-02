@@ -8,8 +8,10 @@ using HatchlingCompany.Core.Services.CRUD;
 using HatchlingCompany.Core.Services.Exporting;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
+using HatchlingCompany.Models;
 using HatchlingCompany.Utils;
 using HatchlingCompany.Utils.Contracts;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace HatchlingCompany.Console.AutofacModules
@@ -69,11 +71,13 @@ namespace HatchlingCompany.Console.AutofacModules
 
             // Misc
             builder.RegisterType<JSONSerializer>().As<ISerializer>().InstancePerDependency();
-            //builder.RegisterType<JSONDeserializer>().As<IDeserializer>().InstancePerDependency();
+            builder.RegisterType<JSONDeserializer<IList<Employee>>>().As<IDeserializer<IList<Employee>>>().InstancePerDependency();
             builder.RegisterType<FileExporter>().As<IExporter>().InstancePerDependency();
+            builder.RegisterType<FileImporter>().As<IImporter>().InstancePerDependency();
 
             // Exporers & Importers
             builder.RegisterType<JSONExportEmployees>().Named<ICommand>("jsonexportemployees");
+            builder.RegisterType<JSONImportEmployees>().Named<ICommand>("jsonimportemployees");
         }
     }
 }

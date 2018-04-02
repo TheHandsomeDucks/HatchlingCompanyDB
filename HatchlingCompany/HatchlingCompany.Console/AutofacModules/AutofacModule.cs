@@ -65,6 +65,10 @@ namespace HatchlingCompany.Console.AutofacModules
             builder.RegisterType<AssignToProject>().Named<ICommand>("assigntoproject").InstancePerDependency();
             builder.RegisterType<RemoveFromProject>().Named<ICommand>("removefromproject").InstancePerDependency();
 
+            // Relationships
+            builder.RegisterType<ListRelationshipsByEmail>().Named<ICommand>("listrelationshipsbyemail")
+                .InstancePerDependency();
+
             // ------------------   System  ---------------------------------
             // Exit
             builder.RegisterType<Exit>().Named<ICommand>("exit").InstancePerDependency();

@@ -18,9 +18,9 @@ namespace HatchlingCompany.Core.Services.CRUD
 
         public CreateRelationship(IDbContext db, IWriter writer, IMapper mapper)
         {
-            this.db = db;
-            this.writer = writer;
-            this.mapper = mapper;
+            this.db = db ?? throw new ArgumentNullException(nameof(db));
+            this.writer = writer ?? throw new ArgumentNullException(nameof(writer));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public void Execute(IList<string> parameters)
@@ -119,6 +119,8 @@ namespace HatchlingCompany.Core.Services.CRUD
             this.db.Relationships.Add(toAdd);
             this.db.SaveChanges();
 
+            var output = $"Successfully added relationship to {firstEmployeeEmail} and {secondEmployeeEmail}: {relationshipStrength}";
+            this.writer.WriteLine(output);
         }
     }
 }

@@ -92,33 +92,6 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
         }
 
         [TestMethod]
-        public void CreateEmployee_Should_Throw_ArgumentException_If_Employee_Already_Exists()
-        {
-            // Arrange
-            var employeeToReturn = new Employee
-            {
-                FirstName = "Alex",
-                LastName = "Alexov",
-                Email = "alex@gmail.com"
-            };
-
-            mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
-
-            // Act
-            createEmployeeService.Execute(new List<string>()
-            {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
-            });
-
-            // Assert
-            Assert.ThrowsException<ArgumentException>(() => createEmployeeService.Execute(new List<string>()
-            {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
-            }));
-
-        }
-
-        [TestMethod]
         public void CreateEmployee_Should_Call_Mapper_Once()
         {
             // Arrange
@@ -126,7 +99,8 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             {
                 FirstName = "Alex",
                 LastName = "Alexov",
-                Email = "alex@gmail.com"
+                Email = "alex@gmail.com",
+                PhoneNumber = "123456789"
             };
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
@@ -134,7 +108,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             // Act
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "123456789"
             });
 
             // Assert
@@ -149,7 +123,8 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             {
                 FirstName = "Alex",
                 LastName = "Alexov",
-                Email = "alex@gmail.com"
+                Email = "alex@gmail.com",
+                PhoneNumber = "123456789"
             };
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
@@ -157,7 +132,7 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             // Act
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "123456789"
             });
 
             var employeeExists = dbStub.Employees.SingleOrDefault(e => e.Email == "alex@gmail.com");
@@ -166,6 +141,34 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             Assert.IsNotNull(dbStub.Employees);
             Assert.AreEqual(1, dbStub.Employees.Count());
             Assert.AreEqual("alex@gmail.com", employeeExists.Email);
+        }
+
+        [TestMethod]
+        public void CreateEmployee_Should_Throw_ArgumentException_If_Employee_Already_Exists()
+        {
+            // Arrange
+            var employeeToReturn = new Employee
+            {
+                FirstName = "Alex",
+                LastName = "Alexov",
+                Email = "alex@gmail.com",
+                PhoneNumber = "123456789"
+            };
+
+            mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
+
+            // Act
+            createEmployeeService.Execute(new List<string>()
+            {
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "123456789"
+            });
+
+            // Assert
+            Assert.ThrowsException<ArgumentException>(() => createEmployeeService.Execute(new List<string>()
+            {
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "123456789"
+            }));
+
         }
     }
 }

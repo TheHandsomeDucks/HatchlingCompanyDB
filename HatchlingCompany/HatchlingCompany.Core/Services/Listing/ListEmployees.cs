@@ -24,7 +24,7 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             if (parameters == null || parameters.Count != 1 || String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
             {
-                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace!");
             }
 
             var employees = this.db

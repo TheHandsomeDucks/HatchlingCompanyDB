@@ -25,25 +25,25 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             if (parameters == null || parameters.Count != 2)
             {
-                throw new ArgumentNullException("Parameters are invalid");
+                throw new ArgumentNullException("Invalid parameters! Please type in ListEmployeesByStatus [Employee_Status]");
             }
 
             if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
             {
-                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+                throw new ArgumentException("Command cannot be null, empty or whitespace!");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
-                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+                throw new ArgumentNullException("Status cannot be null, empty or whitespace!");
             }
 
-            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[1].ToLower());
+            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[1], true);
 
 
             if (status == 0)
             {
-                throw new ArgumentException("Status does not exists");
+                throw new ArgumentException("Status does not exists!");
             }
 
             var employees = this.db

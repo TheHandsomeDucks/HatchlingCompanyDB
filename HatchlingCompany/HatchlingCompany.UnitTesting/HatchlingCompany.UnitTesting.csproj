@@ -103,7 +103,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AssemblyInitialize.cs" />
+    <Compile Include="Services\AssignToProjectTests.cs" />
     <Compile Include="Services\CRUD\CreateEmployeeTests.cs" />
+    <Compile Include="Services\CRUD\CreateRelationshipTests.cs" />
     <Compile Include="Services\CRUD\FindEmployeeByMailTests.cs" />
     <Compile Include="Services\CRUD\FindProjectByNameTests.cs" />
     <Compile Include="Services\CRUD\UpdateEmployeeStatusTests.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="Services\Listing\ListEmployeesByStatusTests.cs" />
     <Compile Include="Services\Listing\HelpTests.cs" />
     <Compile Include="EngineTests.cs" />
+    <Compile Include="Services\RemoveFromProjectTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

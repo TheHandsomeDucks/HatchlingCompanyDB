@@ -103,14 +103,15 @@ namespace HatchlingCompany.UnitTesting.Services.Listing
             {
                 FirstName = "Alex",
                 LastName = "Alexov",
-                Email = "alex@gmail.com"
+                Email = "alex@gmail.com",
+                PhoneNumber = "123456789"
             };
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
 
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "123456789"
             });
 
             // Act

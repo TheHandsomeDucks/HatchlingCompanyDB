@@ -24,30 +24,35 @@ namespace HatchlingCompany.Core.Services.CRUD
         {
             if (parameters == null || parameters.Count() < 3)
             {
-                throw new ArgumentException("Invalid parameters! Please type in updateEmployeeStatus [email] [status]");
+                throw new ArgumentException("Invalid parameters! Please type in updateEmployeeStatus [email] [status]!");
+            }
+
+            if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
+            {
+                throw new ArgumentException("Command cannot be null, empty or whitespace!");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
-                throw new ArgumentException("Email cannot be null, empty or whitespace");
+                throw new ArgumentException("Email cannot be null, empty or whitespace!");
             }
 
             if (String.IsNullOrEmpty(parameters[2]) || String.IsNullOrWhiteSpace(parameters[2]))
             {
-                throw new ArgumentException("Status cannot be null, empty or whitespace");
+                throw new ArgumentException("Status cannot be null, empty or whitespace!");
             }
 
             var email = parameters[1];
-            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[2].ToLower());
+            var status = (EmployeeStatus)Enum.Parse(typeof(EmployeeStatus), parameters[2], true);
 
             var employee = this.db.Employees
                                 .Where(e => e.Email == email)
-                                .ProjectTo<ListEmployeeDetailsModel>()
-                                .SingleOrDefault();
+                                //.ProjectTo<ListEmployeeDetailsModel>()
+                                .FirstOrDefault();
 
             if (employee == null)
             {
-                throw new ArgumentNullException($"Person with email:{email} could not be found");
+                throw new ArgumentNullException($"Employee with Email \"{email}\" could not be found");
             }
 
             employee.Status = status;

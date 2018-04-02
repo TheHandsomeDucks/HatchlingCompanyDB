@@ -93,14 +93,15 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             {
                 FirstName = "Alex",
                 LastName = "Alexov",
-                Email = "alex@gmail.com"
+                Email = "alex@gmail.com",
+                PhoneNumber = "123456789"
             };
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
 
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "123456789"
             });
 
             // Act
@@ -127,14 +128,15 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             {
                 FirstName = "Alex",
                 LastName = "Alexov",
-                Email = "alex@gmail.com"
+                Email = "alex@gmail.com",
+                PhoneNumber = "123456789"
             };
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
 
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "123456789"
             });
 
             // Act
@@ -147,6 +149,8 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
 
             // Assert
             Assert.AreEqual("alex@gmail.com", employeeExists.Email);
+            Assert.AreEqual("Alex", employeeExists.FirstName);
+            Assert.AreEqual("Alexov", employeeExists.LastName);
         }
 
         [TestMethod]
@@ -170,14 +174,15 @@ namespace HatchlingCompany.UnitTesting.Services.CRUD
             {
                 FirstName = "Alex",
                 LastName = "Alexov",
-                Email = "alex@gmail.com"
+                Email = "alex@gmail.com",
+                PhoneNumber = "123456789"
             };
 
             mapperStub.Setup(x => x.Map<Employee>(It.IsAny<CreateEmployeeModel>())).Returns(employeeToReturn);
 
             createEmployeeService.Execute(new List<string>()
             {
-                "createEmployee", "Alex", "Alexov", "alex@gmail.com"
+                "createEmployee", "Alex", "Alexov", "alex@gmail.com", "123456789"
             });
 
             // Act

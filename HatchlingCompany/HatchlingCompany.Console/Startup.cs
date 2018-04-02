@@ -2,6 +2,7 @@
 using HatchlingCompany.Core;
 using HatchlingCompany.Core.Common.Implementations;
 using HatchlingCompany.Data.Migrations;
+using HatchlingCompany.Utils;
 using System.Data.Entity;
 using System.Reflection;
 

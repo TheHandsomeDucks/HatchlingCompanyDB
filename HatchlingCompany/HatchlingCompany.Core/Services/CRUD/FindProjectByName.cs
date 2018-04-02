@@ -24,12 +24,17 @@ namespace HatchlingCompany.Core.Services.CRUD
         {
             if (parameters == null || parameters.Count() < 2)
             {
-                throw new ArgumentException("Invalid parameters! Please type in findProjectByName [project name]");
+                throw new ArgumentException("Invalid parameters! Please type in findProjectByName [project name]!");
+            }
+
+            if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
+            {
+                throw new ArgumentException("Command cannot be null, empty or whitespace!");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
-                throw new ArgumentException("Project name cannot be null, empty or whitespace");
+                throw new ArgumentException("Project name cannot be null, empty or whitespace!");
             }
 
             var name = parameters[1];
@@ -38,7 +43,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             if (projectExists == null)
             {
-                throw new ArgumentNullException($"Project with {name} could not be found");
+                throw new ArgumentNullException($"Project {name} could not be found!");
             }
 
             var project = this.db

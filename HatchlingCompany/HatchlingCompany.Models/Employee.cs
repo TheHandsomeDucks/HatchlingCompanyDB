@@ -1,4 +1,5 @@
 ﻿using HatchlingCompany.Models.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,14 +10,10 @@ namespace HatchlingCompany.Models
     public class Employee
     {
         private ICollection<Project> projects;
-        private ICollection<Relationship> sentRelationships;
-        private ICollection<Relationship> receivedRelationships;
 
         public Employee()
         {
             this.projects = new HashSet<Project>();
-            this.sentRelationships = new HashSet<Relationship>();
-            this.receivedRelationships = new HashSet<Relationship>();
         }
         
         public int Id { get; set; }
@@ -37,6 +34,7 @@ namespace HatchlingCompany.Models
         [MaxLength(50)]
         [Index(IsUnique = true)]
         [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage ="Invalid Email Address")]
         public string Email { get; set; }
 
         [Index(IsUnique = true)]
@@ -62,7 +60,7 @@ namespace HatchlingCompany.Models
         [MinLength(2)]
         [MaxLength(30)]
         public string JobTitle { get; set; }
-
+        
         public int? ManagerId { get; set; }
         public virtual Employee Manager { get; set; }
 
@@ -74,20 +72,6 @@ namespace HatchlingCompany.Models
             get => this.projects;
 
             set => this.projects = value;
-        }
-
-        public virtual ICollection<Relationship> SentRelationships
-        {
-            get => this.sentRelationships;
-
-            set => this.sentRelationships = value;
-        }
-
-        public virtual ICollection<Relationship> ReceivedRelationships
-        {
-            get => this.receivedRelationships;
-
-            set => this.receivedRelationships = value;
         }
     }
 }

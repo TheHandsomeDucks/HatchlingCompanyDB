@@ -26,12 +26,17 @@ namespace HatchlingCompany.Core.Services.CRUD
         {
             if (parameters == null || parameters.Count != 2)
             {
-                throw new ArgumentException("Invalid parameters! Please type in createProject [name]");
+                throw new ArgumentException("Invalid parameters! Please type in createProject [Project_Name]!");
+            }
+
+            if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
+            {
+                throw new ArgumentException("Command cannot be null, empty or whitespace!");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
-                throw new ArgumentException("Project name cannot be null, empty or whitespace");
+                throw new ArgumentException("Project name cannot be null, empty or whitespace!");
             }
 
             var project = new CreateProjectModel
@@ -44,7 +49,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             if (projectExists != null)
             {
-                throw new ArgumentException($"Project with name {projectExists.Name} already exists");
+                throw new ArgumentException($"Project with name {projectExists.Name} already exists!");
             }
 
             var projectToAdd = this.mapper.Map<Project>(project);

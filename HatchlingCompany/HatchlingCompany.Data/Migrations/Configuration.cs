@@ -6,6 +6,7 @@ namespace HatchlingCompany.Data.Migrations
     {
         public Configuration()
         {
+            AutomaticMigrationsEnabled = false;
         }
     }
 }

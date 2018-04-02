@@ -1,9 +1,11 @@
-﻿using HatchlingCompany.Models.Common;
+﻿using HatchlingCompany.Core.Common.Contracts;
+using HatchlingCompany.Models;
+using HatchlingCompany.Models.Common;
 using System.Text;
 
 namespace HatchlingCompany.Core.Models
 {
-    public class ListEmployeesByStatusModel
+    public class ListEmployeesByStatusModel : IMapFrom<Employee>
     {
         public string FirstName { get; set; }
 

@@ -8,7 +8,7 @@ namespace HatchlingCompany.Utils.Contracts
 {
     public interface IExporter
     {
-        void Export(object obj);
+        void Export(string fileType, string text);
 
         //void Export(object obj, string path);
     }

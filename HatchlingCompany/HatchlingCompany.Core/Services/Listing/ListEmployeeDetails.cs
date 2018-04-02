@@ -14,6 +14,10 @@ namespace HatchlingCompany.Core.Services.Listing
         private readonly IDbContext db;
         private readonly IWriter writer;
 
+        public ListEmployeeDetails()
+        {
+        }
+
         public ListEmployeeDetails(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
@@ -24,17 +28,17 @@ namespace HatchlingCompany.Core.Services.Listing
         {
             if (parameters == null || parameters.Count != 2)
             {
-                throw new ArgumentNullException("Parameters are invalid");
+                throw new ArgumentNullException("Invalid parameters! Please type in ListEmployeeDetals [Employee_Email]");
             }
 
             if (String.IsNullOrEmpty(parameters[0]) || String.IsNullOrWhiteSpace(parameters[0]))
             {
-                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+                throw new ArgumentNullException("Command cannot be null, empty or whitespace!");
             }
 
             if (String.IsNullOrEmpty(parameters[1]) || String.IsNullOrWhiteSpace(parameters[1]))
             {
-                throw new ArgumentNullException("Command cannot be null, empty or whitespace");
+                throw new ArgumentNullException("Employee Email cannot be null, empty or whitespace!");
             }
 
             var email = parameters[1];

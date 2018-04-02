@@ -87,9 +87,9 @@ namespace HatchlingCompany.Utils
 
             if (obj.GetType().GetInterface(nameof(ICollection<object>)) != null)
             {
-                foreach (var item in obj as ICollection<object>)
+                foreach (var item in (ICollection<object>) obj)
                 {
-                    this.FillProperties(doc, obj);
+                    this.FillProperties(doc, item);
                 }
             }
             else

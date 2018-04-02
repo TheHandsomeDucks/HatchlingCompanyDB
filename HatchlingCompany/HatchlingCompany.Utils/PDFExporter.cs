@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using HatchlingCompany.Utils.Contracts;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Shapes;
@@ -74,14 +77,32 @@ namespace HatchlingCompany.Utils
             paragraph.Format.Font.Size = 12;
             paragraph.Format.Font.Bold = true;
 
-            foreach (var property in obj.GetType().GetProperties())
+            FillProperties(doc, obj);
+        }
+
+        private void FillProperties(Document doc, object obj)
+        {
+            var section = doc.Sections[0];
+            Paragraph paragraph;
+
+            if (obj.GetType().GetInterface(nameof(ICollection<object>)) != null)
             {
-                paragraph = section.AddParagraph();
-                paragraph.Format.AddTabStop(100);
-                paragraph.AddFormattedText(property.Name, TextFormat.Underline);
-                paragraph.AddText(":");
-                paragraph.AddTab();
-                paragraph.AddFormattedText(property.GetValue(obj).ToString());
+                foreach (var item in (ICollection<object>) obj)
+                {
+                    this.FillProperties(doc, item);
+                }
+            }
+            else
+            {
+                foreach (var property in obj.GetType().GetProperties())
+                {
+                    paragraph = section.AddParagraph();
+                    paragraph.Format.AddTabStop(100);
+                    paragraph.AddFormattedText(property.Name, TextFormat.Underline);
+                    paragraph.AddText(":");
+                    paragraph.AddTab();
+                    paragraph.AddFormattedText(property.GetValue(obj).ToString());
+                }
             }
         }
 

@@ -135,45 +135,52 @@ namespace HatchlingCompany.UnitTesting.Services.Exporting
             Assert.ThrowsException<ArgumentException>(() => JSONImportEmployeesMock.Execute(parameters));
         }
 
-        //[TestMethod]
-        //public void Execute_Should_Call_Import_Once()
-        //{
-        //    // Arrange
-        //    this.importerStub.Setup(x => x.Import(It.IsAny<string>())).Returns("json");
-        //    this.deserializerStub.Setup(x => x.Deserialize(It.IsAny<string>())).Returns(new List<Employee>());
+        [TestMethod]
+        public void Execute_Should_Call_Import_Once()
+        {
+            // Arrange
+            this.importerStub.Setup(x => x.Import(It.IsAny<string>())).Returns("json");
+            this.deserializerStub.Setup(x => x.Deserialize(It.IsAny<string>())).Returns(new List<Employee>()
+            {
+                new Employee() {FirstName="Test", LastName = "Test", Email = "test@test.bg", PhoneNumber = "0891234512"}
+            });
 
-        //    var JSONImportEmployeesMock = new JSONImportEmployees(this.dbStub, this.deserializerStub.Object, this.importerStub.Object, this.writerStub.Object);
+            var JSONImportEmployeesMock = new JSONImportEmployees(this.dbStub, this.deserializerStub.Object, this.importerStub.Object, this.writerStub.Object);
 
-        //    var parameters = new List<string>()
-        //    {
-        //        "JSONImportEmployees"
-        //    };
+            var parameters = new List<string>()
+            {
+                "JSONImportEmployees"
+            };
 
-        //    // Act
-        //    JSONImportEmployeesMock.Execute(parameters);
+            // Act
+            JSONImportEmployeesMock.Execute(parameters);
 
-        //    // Assert
-        //    this.importerStub.Verify(x => x.Import(It.IsAny<string>()), Times.Once);
-        //}
+            // Assert
+            this.importerStub.Verify(x => x.Import(It.IsAny<string>()), Times.Once);
+        }
 
-        //[TestMethod]
-        //public void Execute_Should_Call_Deserialize_Once()
-        //{
-        //    // Arrange
-        //    this.deserializerStub.Setup(x => x.Deserialize(It.IsAny<string>()));
+        [TestMethod]
+        public void Execute_Should_Call_Deserialize_Once()
+        {
+            // Arrange
+            this.importerStub.Setup(x => x.Import(It.IsAny<string>())).Returns("json");
+            this.deserializerStub.Setup(x => x.Deserialize(It.IsAny<string>())).Returns(new List<Employee>()
+            {
+                new Employee() {FirstName="Test", LastName = "Test", Email = "test@test.bg", PhoneNumber = "0891234512"}
+            });
 
-        //    var JSONImportEmployeesMock = new JSONImportEmployees(this.dbStub, this.deserializerStub.Object, this.importerStub.Object, this.writerStub.Object);
+            var JSONImportEmployeesMock = new JSONImportEmployees(this.dbStub, this.deserializerStub.Object, this.importerStub.Object, this.writerStub.Object);
 
-        //    var parameters = new List<string>()
-        //    {
-        //        "JSONImportEmployees"
-        //    };
+            var parameters = new List<string>()
+            {
+                "JSONImportEmployees"
+            };
 
-        //    // Act
-        //    JSONImportEmployeesMock.Execute(parameters);
+            // Act
+            JSONImportEmployeesMock.Execute(parameters);
 
-        //    // Assert
-        //    this.deserializerStub.Verify(x => x.Deserialize(It.IsAny<string>()), Times.Once);
-        //}
+            // Assert
+            this.deserializerStub.Verify(x => x.Deserialize(It.IsAny<string>()), Times.Once);
+        }
     }
 }

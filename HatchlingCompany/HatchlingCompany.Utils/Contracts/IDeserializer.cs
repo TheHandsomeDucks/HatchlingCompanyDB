@@ -1,7 +1,7 @@
 ﻿namespace HatchlingCompany.Utils.Contracts
 {
-    public interface IDeserializer
+    public interface IDeserializer<T>
     {
-        object Deserialize(string json);
+        T Deserialize(string json);
     }
 }

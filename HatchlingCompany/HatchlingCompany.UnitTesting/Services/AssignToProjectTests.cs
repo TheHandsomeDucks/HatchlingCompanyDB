@@ -41,14 +41,14 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentNullException_When_Parameters_AreNull()
+        public void Execute_Should_Throw_ArgumentNullException_When_Parameters_AreNull()
         {
             // Act && Assert
             Assert.ThrowsException<ArgumentNullException>(() => this.assignToProjectMock.Execute(null));
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentNullException_When_Parameters_AreInvalid()
+        public void Execute_Should_Throw_ArgumentNullException_When_Parameters_AreInvalid()
         {
             // Arrange
             var parameters = new List<string>()
@@ -62,7 +62,7 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentException_When_CommandName_IsNull()
+        public void Execute_Should_Throw_ArgumentException_When_CommandName_IsNull()
         {
             // Arrange
             var parameters = new List<string>()
@@ -77,7 +77,7 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentException_When_CommandName_IsWhitespace()
+        public void Execute_Should_Throw_ArgumentException_When_CommandName_IsWhitespace()
         {
             // Arrange
             var parameters = new List<string>()
@@ -92,7 +92,7 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentException_When_EmployeeEmail_IsNull()
+        public void Execute_Should_Throw_ArgumentException_When_EmployeeEmail_IsNull()
         {
             // Arrange
             var parameters = new List<string>()
@@ -107,7 +107,7 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentException_When_EmployeeEmail_IsWhiteSpace()
+        public void Execute_Should_Throw_ArgumentException_When_EmployeeEmail_IsWhiteSpace()
         {
             // Arrange
             var parameters = new List<string>()
@@ -122,7 +122,7 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentException_When_ProjectName_IsNull()
+        public void Execute_Should_Throw_ArgumentException_When_ProjectName_IsNull()
         {
             // Arrange
             var parameters = new List<string>()
@@ -137,7 +137,7 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentException_When_ProjectName_IsWhiteSpace()
+        public void Execute_Should_Throw_ArgumentException_When_ProjectName_IsWhiteSpace()
         {
             // Arrange
             var parameters = new List<string>()
@@ -152,7 +152,7 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentNullException_When_Employee_IsNotFound()
+        public void Execute_Should_Throw_ArgumentNullException_When_Employee_IsNotFound()
         {
             // Arrange
             var parameters = new List<string>()
@@ -167,7 +167,7 @@ namespace HatchlingCompany.UnitTesting.Services
         }
 
         [TestMethod]
-        public void AssignToProject_Should_Throw_ArgumentNullException_When_Project_IsNotFound()
+        public void Execute_Should_Throw_ArgumentNullException_When_Project_IsNotFound()
         {
             // Arrange
             var employeeStub = new Mock<Employee>();

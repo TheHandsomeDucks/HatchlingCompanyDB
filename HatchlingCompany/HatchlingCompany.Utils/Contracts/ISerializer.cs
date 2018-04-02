@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace HatchlingCompany.Utils.Contracts
 {
-    public interface IExporter
+    public interface ISerializer
     {
-        void Export(string fileType, string text);
-
-        //void Export(object obj, string path);
+        string Serialize(object obj);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HatchlingCompany.Models.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -59,7 +60,7 @@ namespace HatchlingCompany.Models
         [MinLength(2)]
         [MaxLength(30)]
         public string JobTitle { get; set; }
-
+        
         public int? ManagerId { get; set; }
         public virtual Employee Manager { get; set; }
 

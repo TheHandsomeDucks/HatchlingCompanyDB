@@ -170,6 +170,8 @@ namespace HatchlingCompany.UnitTesting.Services
         public void AssignToProject_Should_Throw_ArgumentNullException_When_Project_IsNotFound()
         {
             // Arrange
+            var employeeStub = new Mock<Employee>();
+
             this.dbStub.Employees.Add(new Employee() {
                 FirstName = "firstName",
                 LastName = "lastName",

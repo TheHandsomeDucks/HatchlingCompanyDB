@@ -14,6 +14,10 @@ namespace HatchlingCompany.Core.Services.Listing
         private readonly IDbContext db;
         private readonly IWriter writer;
 
+        public ListEmployeeDetails()
+        {
+        }
+
         public ListEmployeeDetails(IDbContext db, IWriter writer)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));

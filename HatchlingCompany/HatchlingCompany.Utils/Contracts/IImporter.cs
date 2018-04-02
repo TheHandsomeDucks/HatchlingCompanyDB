@@ -8,6 +8,6 @@ namespace HatchlingCompany.Utils.Contracts
 {
     public interface IImporter
     {
-        object Import();
+        string Import(string fileType);
     }
 }

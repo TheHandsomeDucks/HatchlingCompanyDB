@@ -7,7 +7,7 @@ using PdfSharp.Pdf;
 
 namespace HatchlingCompany.Utils
 {
-    public class PDFExporter : IExporter
+    public class PDFExporter
     {
         private string path;
         private string fileName;

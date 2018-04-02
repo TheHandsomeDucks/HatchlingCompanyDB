@@ -71,7 +71,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             if (firstEmployee == null)
             {
-                throw new ArgumentNullException($"Employee with Email \"{firstEmployeeEmail}\" could not be found!");
+                throw new ArgumentException($"Employee with Email \"{firstEmployeeEmail}\" could not be found!");
             }
 
             var secondEmployee = this.db
@@ -81,7 +81,7 @@ namespace HatchlingCompany.Core.Services.CRUD
 
             if (secondEmployee == null)
             {
-                throw new ArgumentNullException($"Employee with Email \"{secondEmployeeEmail}\" could not be found!");
+                throw new ArgumentException($"Employee with Email \"{secondEmployeeEmail}\" could not be found!");
             }
 
             if (firstEmployee.Id > secondEmployee.Id)

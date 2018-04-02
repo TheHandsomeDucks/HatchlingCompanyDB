@@ -8,6 +8,7 @@ using HatchlingCompany.Core.Services.CRUD;
 using HatchlingCompany.Core.Services.Listing;
 using HatchlingCompany.Data;
 using System.Reflection;
+using HatchlingCompany.Core.Services.System;
 
 namespace HatchlingCompany.Console.AutofacModules
 {
@@ -63,6 +64,10 @@ namespace HatchlingCompany.Console.AutofacModules
             builder.RegisterType<ListProjectDetails>().Named<ICommand>("listprojectdetails").InstancePerDependency();
             builder.RegisterType<AssignToProject>().Named<ICommand>("assigntoproject").InstancePerDependency();
             builder.RegisterType<RemoveFromProject>().Named<ICommand>("removefromproject").InstancePerDependency();
+
+            // ------------------   System  ---------------------------------
+            // Exit
+            builder.RegisterType<Exit>().Named<ICommand>("exit").InstancePerDependency();
         }
     }
 }

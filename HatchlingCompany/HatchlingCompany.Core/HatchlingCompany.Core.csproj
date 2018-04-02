@@ -110,6 +110,7 @@
     <Compile Include="Services\CRUD\FindEmployeeByMail.cs" />
     <Compile Include="Services\CRUD\FindProjectByName.cs" />
     <Compile Include="Services\CRUD\UpdateEmployeeStatus.cs" />
+    <Compile Include="Services\System\Exit.cs" />
     <Compile Include="Services\Listing\ListEmployeeDetails.cs" />
     <Compile Include="Services\Listing\Help.cs" />
     <Compile Include="Services\Listing\ListEmployees.cs" />

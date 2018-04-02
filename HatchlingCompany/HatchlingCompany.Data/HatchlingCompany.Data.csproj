@@ -54,9 +54,9 @@
   <ItemGroup>
     <Compile Include="HatchlingCompanyDbContext.cs" />
     <Compile Include="IDbContext.cs" />
-    <Compile Include="Migrations\201804011145142_Working on relationship.cs" />
-    <Compile Include="Migrations\201804011145142_Working on relationship.Designer.cs">
-      <DependentUpon>201804011145142_Working on relationship.cs</DependentUpon>
+    <Compile Include="Migrations\201804021047227_Init183.cs" />
+    <Compile Include="Migrations\201804021047227_Init183.Designer.cs">
+      <DependentUpon>201804021047227_Init183.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +72,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804011145142_Working on relationship.resx">
-      <DependentUpon>201804011145142_Working on relationship.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804021047227_Init183.resx">
+      <DependentUpon>201804021047227_Init183.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,7 +3,7 @@ namespace HatchlingCompany.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Workingonrelationship : DbMigration
+    public partial class Init183 : DbMigration
     {
         public override void Up()
         {

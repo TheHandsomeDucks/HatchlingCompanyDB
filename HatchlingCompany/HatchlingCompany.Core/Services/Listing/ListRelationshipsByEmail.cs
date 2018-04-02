@@ -60,7 +60,8 @@ namespace HatchlingCompany.Core.Services.Listing
             var relationships = this.db.Relationships
                     .Where(x => (x.FirstEmployee.Id.Equals(employee.Id))
                              || (x.SecondEmployee.Id.Equals(employee.Id)))
-                .ToList();
+                    .OrderByDescending(x => x.RelationshipStrength)
+                    .ToList();
 
             if (!relationships.Any())
             {
